@@ -1,10 +1,4 @@
----
-title: Lexical Syntax
-layout: default
-chapter: 1
----
-
-# Lexical Syntax
+# 1. Lexical Syntax
 
 Scala programs are written using the Unicode Basic Multilingual Plane
 (_BMP_) character set; Unicode supplementary characters are not

@@ -1,10 +1,4 @@
----
-title: Identifiers, Names and Scopes
-layout: default
-chapter: 2
----
-
-# Identifiers, Names and Scopes
+# 2. Identifiers, Names and Scopes
 
 Names in Scala identify types, values, methods, and classes which are
 collectively called _entities_. Names are introduced by local

@@ -1,10 +1,4 @@
----
-title: Expressions
-layout: default
-chapter: 6
----
-
-# Expressions
+# 6. Expressions
 
 ```ebnf
 Expr         ::=  (Bindings | id | `_') `=>' Expr

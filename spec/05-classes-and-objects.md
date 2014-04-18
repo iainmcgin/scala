@@ -1,10 +1,4 @@
----
-title: Classes and Objects
-layout: default
-chapter: 5
----
-
-# Classes and Objects
+# 5. Classes and Objects
 
 ```ebnf
 TmplDef          ::= [`case'] `class' ClassDef

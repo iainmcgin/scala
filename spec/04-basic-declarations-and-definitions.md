@@ -1,10 +1,4 @@
----
-title: Basic Declarations and Definitions
-layout: default
-chapter: 4
----
-
-# Basic Declarations and Definitions
+# 4. Basic Declarations and Definitions
 
 
 ```ebnf

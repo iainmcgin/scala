@@ -1,10 +1,4 @@
----
-title: Pattern Matching
-layout: default
-chapter: 8
----
-
-# Pattern Matching
+# 8. Pattern Matching
 
 ## Patterns
 

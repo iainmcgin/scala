@@ -1,11 +1,4 @@
----
-title: References
-layout: default
-chapter: 14
----
-
-
-# References
+# 14. References
 
 TODO (see comments in markdown source)
 

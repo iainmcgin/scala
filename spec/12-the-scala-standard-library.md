@@ -1,10 +1,4 @@
----
-title: The Scala Standard Library
-layout: default
-chapter: 12
----
-
-# The Scala Standard Library
+# 12. The Scala Standard Library
 
 The Scala standard library consists of the package `scala` with a
 number of classes and modules. Some of these classes are described in

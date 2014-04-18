@@ -1,43 +1,49 @@
-# Scala Language Reference
+# The Scala Language Specification 2.11
 
-First of all, the language specification is meant to be correct, precise and clear.
+### Martin Odersky, Philippe Altherr, Vincent Cremet, Gilles Dubochet, Burak Emir, Philipp Haller, Stéphane Micheloud, Nikolay Mihaylov, Adriaan Moors, Lukas Rytz, Michel Schinz, Erik Stenman, Matthias Zenger
 
-Second, editing, previewing and generating output for the markdown should be simple and easy.
+### Markdown Conversion by Iain McGinniss
 
-Third, we'd like to support different output formats. An html page per chapter with MathJax seems like a good start, as it satisfies the second requirement, and enables the first one.
+## Preface
 
-## Editing
+Scala is a Java-like programming language which unifies
+object-oriented and functional programming.  It is a pure
+object-oriented language in the sense that every value is an
+object. Types and behavior of objects are described by
+classes. Classes can be composed using mixin composition.  Scala is
+designed to work seamlessly with less pure but mainstream
+object-oriented languages like Java.
 
-We use redcarpet 3.1 and jekyll 2 (currently in alpha) to generate the html. Essentially, this is what github pages use.
+Scala is a functional language in the sense that every function is a
+value. Nesting of function definitions and higher-order functions are
+naturally supported. Scala also supports a general notion of pattern
+matching which can model the algebraic types used in many functional
+languages.
 
-## Building
+Scala has been designed to interoperate seamlessly with Java.
+Scala classes can call Java methods, create Java objects, inherit from Java
+classes and implement Java interfaces. None of this requires interface
+definitions or glue code.
 
-Travis CI builds the spec automatically on every commit to master and publishes to http://www.scala-lang.org/files/archive/spec/2.11/. 
+Scala has been developed from 2001 in the programming methods
+laboratory at EPFL. Version 1.0 was released in November 2003. This
+document describes the second version of the language, which was
+released in March 2006. It acts a reference for the language
+definition and some core library modules. It is not intended to teach
+Scala or its concepts; for this there are [other documents](14-references.html).
 
-To preview locally, run `bundle exec jekyll serve -d build/spec/ -s spec/ -w --baseurl=""` (in the root of your checkout of scala/scala),
-and open http://0.0.0.0:4000/. Jekyll will rebuild as you edit the markdown, but make sure to restart it when you change `_config.yml`.
+Scala has been a collective effort of many people. The design and the
+implementation of version 1.0 was completed by Philippe Altherr,
+Vincent Cremet, Gilles Dubochet, Burak Emir, Stéphane Micheloud,
+Nikolay Mihaylov, Michel Schinz, Erik Stenman, Matthias Zenger, and
+the author. Iulian Dragos, Gilles Dubochet, Philipp Haller, Sean
+McDirmid, Lex Spoon, and Geoffrey Washburn joined in the effort to
+develop the second version of the language and tools.  Gilad Bracha,
+Craig Chambers, Erik Ernst, Matthias Felleisen, Shriram Krishnamurti,
+Gary Leavens, Sebastian Maneth, Erik Meijer, Klaus Ostermann, Didier
+Rémy, Mads Torgersen, and Philip Wadler have shaped the design of
+the language through lively and inspiring discussions and comments on
+previous versions of this document.  The contributors to the Scala
+mailing list have also given very useful feedback that helped us
+improve the language and its tools.
 
-
-## General Advice for editors
-
-- All files must be saved as UTF-8: ensure your editors are configured appropriately.
-- Use of the appropriate unicode characters instead of the latex modifiers for accents, etc. is necessary. For example, é instead of `\'e`.
-- MathJAX errors  will appear within the  rendered DOM as span  elements with class `mtext` and style attribute `color: red` applied. It is  possible to search for this combination in the development  tools of the browser of your choice. In chrome, CTRL+F / CMD+F within the inspect element panel allows you to do this.
-
-
-### Macro replacements:
-
-- While  MathJAX just  support LaTeX style  command definition,  it is recommended  to not use  this as  it will likely cause issues with preparing the document for PDF or ebook distribution.
-- `\SS` (which I could not find defined within the latex source) seems to be closest to `\mathscr{S}`
-- `\TYPE` is equivalent to `\boldsymbol{type}'
-- As MathJAX has  no support for slanted font (latex  command \sl), so in all instances  this should be replaced with \mathit{}
-- The macro \U{ABCD} used for unicode character references can be replaced with \\uABCD.
-- The macro \URange{ABCD}{DCBA} used for unicode character ranges can be replaced with \\uABCD-\\uDBCA.
-- The macro \commadots can be replaced with ` , … , `.
-- There is no adequate replacement for `\textsc{...}`  (small caps) in pandoc markdown. While unicode contains a number of  small capital  letters, it  is notably  missing Q and  X as  these glyphs  are intended  for phonetic spelling, therefore these  cannot be reliably used. For now,  the best option is to use  underscore emphasis and capitalise the text manually, `_LIKE THIS_`.
-
-
-### Unicode Character replacements
-
-- The unicode  left and right single  quotation marks (‘ and  ’) have been used in  place of ` and  ', where the quotation marks  are intended to  be paired. These can  be typed on  a mac using  Option+] for a left  quote and Option+Shift+] for the right quote.
-- Similarly for left and right double quotation marks (“ and ”) in place of ". These can be typed on a mac using Option+[ and Option+Shift+].

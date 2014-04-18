@@ -1,10 +1,4 @@
----
-title: User-Defined Annotations
-layout: default
-chapter: 11
----
-
-# User-Defined Annotations
+# 11. User-Defined Annotations
 
 ```ebnf
   Annotation       ::=  ‘@’ SimpleType {ArgumentExprs}

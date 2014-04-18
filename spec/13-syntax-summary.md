@@ -1,10 +1,4 @@
----
-title: Syntax Summary
-layout: default
-chapter: 13
----
-
-# Syntax Summary
+# 13. Syntax Summary
 
 The following descriptions of Scala tokens uses literal characters `‘c’` when referring to the ASCII fragment `\u0000` – `\u007F`.
 

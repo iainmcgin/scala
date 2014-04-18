@@ -1,10 +1,4 @@
----
-title: Types
-layout: default
-chapter: 3
----
-
-# Types
+# 3. Types
 
 ```ebnf
   Type              ::=  FunctionArgTypes ‘=>’ Type

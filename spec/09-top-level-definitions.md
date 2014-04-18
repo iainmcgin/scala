@@ -1,10 +1,4 @@
----
-title: Top-Level Definitions
-layout: default
-chapter: 9
----
-
-# Top-Level Definitions
+# 9. Top-Level Definitions
 
 ## Compilation Units
 

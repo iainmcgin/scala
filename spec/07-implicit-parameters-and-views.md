@@ -1,10 +1,4 @@
----
-title: Implicit Parameters and Views
-layout: default
-chapter: 7
----
-
-# Implicit Parameters and Views
+# 7. Implicit Parameters and Views
 
 ## The Implicit Modifier
 
