@@ -1,0 +1,424 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head prefix="og: http://ogp.me/ns# book: http://ogp.me/ns/book#">
+        
+        <meta charset="UTF-8">
+        <title>XML Expressions &amp; Patterns | The Scala Language Specification 2.11</title>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="iainmcgin">
+        <meta name="description" content="Scala is a Java-like programming language which unifies
+object-oriented and functional programming.  It is a pure
+object-oriented language in the sense that every value is an
+object. Types and behavior of objects are described by
+classes. Classes can be composed using mixin composition.  Scala is
+designed to work seamlessly with less pure but mainstream
+object-oriented languages like Java.">
+        <meta name="keywords" content="gitbook,github" >
+        <meta name="generator" content="www.gitbook.io">
+
+        
+        <link rel="next" href="./11-user-defined-annotations.html" />
+        
+        
+        <link rel="prev" href="./09-top-level-definitions.html" />
+        
+
+        <meta property="og:title" content="XML Expressions &amp; Patterns | The Scala Language Specification 2.11">
+        <meta property="og:site_name" content="The Scala Language Specification 2.11">
+        <meta property="og:type" content="book">
+        <meta property="og:locale" content="en_US">
+
+        <meta property="book:author" content="https://github.com/iainmcgin">
+        <meta property="book:tag" content="GitBook">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+          <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            tex2jax: {
+              inlineMath: [['$','$'], ['\\(','\\)']],
+              skipTags: ['script', 'noscript', 'style', 'textarea'],
+              processEscapes: true
+            }
+          });
+          </script>
+          <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+          <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+          <!--
+          <script type="text/javascript">
+            // clear content of H3 nodes that start with "Example:"
+            // the content is only there to determine ID of the H3 element (redcarpet doesn't let us set css id)
+            $( document ).ready(function(){ $("h3[id*='example']").text("") })
+          </script>
+          -->
+        
+    </head>
+    <body>
+        
+    <div class="book" data-github="iainmcgin/scala" data-level="10" data-basepath="." data-revision="1397801841390">
+    <div class="book-header">
+    <!-- Actions Left -->
+    
+    <a href="https://github.com/iainmcgin/scala" target="_blank" class="btn pull-left"><i class="fa fa-github-alt"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-summary"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search"><i class="fa fa-search"></i></a>
+
+    <!-- Actions Right -->
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="google-plus"><i class="fa fa-google-plus"></i></a>
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="facebook"><i class="fa fa-facebook"></i></a>
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="twitter"><i class="fa fa-twitter"></i></a>
+
+    
+    <a href="https://github.com/iainmcgin/scala/stargazers" target="_blank" class="btn pull-right count-star"><i class="fa fa-star-o"></i> Star (<span>-</span>)</a>
+    <a href="https://github.com/iainmcgin/scala/watchers" target="_blank" class="btn pull-right count-watch"><i class="fa fa-eye"></i> Watch (<span>-</span>)</a>
+    
+
+    <!-- Title -->
+    <h1><a href="./" >The Scala Language Specification 2.11</a></h1>
+</div>
+
+    <div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        <li>
+            <a href="https://github.com/iainmcgin" target="blank">About the author</a>
+        </li>
+        <li>
+            <a href="https://github.com/iainmcgin/scala/issues" target="blank">Questions and Issues</a>
+        </li>
+        <li>
+            <a href="https://github.com/iainmcgin/scala/edit/master/10-xml-expressions-and-patterns.md" target="blank">Edit and Contribute</a>
+        </li>
+        <li class="divider"></li>
+        
+        <li data-level="0" data-path="index.html">
+            <a href="./"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+            <li  data-level="1" data-path="01-lexical-syntax.html">
+                
+                <a href="./01-lexical-syntax.html">
+                    <i class="fa fa-check"></i> <b>1.</b> Lexical Syntax
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="2" data-path="02-identifiers-names-and-scopes.html">
+                
+                <a href="./02-identifiers-names-and-scopes.html">
+                    <i class="fa fa-check"></i> <b>2.</b> Identifiers, Names &amp; Scopes
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="3" data-path="03-types.html">
+                
+                <a href="./03-types.html">
+                    <i class="fa fa-check"></i> <b>3.</b> Types
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="4" data-path="04-basic-declarations-and-definitions.html">
+                
+                <a href="./04-basic-declarations-and-definitions.html">
+                    <i class="fa fa-check"></i> <b>4.</b> Basic Declarations &amp; Definitions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="5" data-path="05-classes-and-objects.html">
+                
+                <a href="./05-classes-and-objects.html">
+                    <i class="fa fa-check"></i> <b>5.</b> Classes and Objects
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="6" data-path="06-expressions.html">
+                
+                <a href="./06-expressions.html">
+                    <i class="fa fa-check"></i> <b>6.</b> Expressions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="7" data-path="07-implicit-parameters-and-views.html">
+                
+                <a href="./07-implicit-parameters-and-views.html">
+                    <i class="fa fa-check"></i> <b>7.</b> Implicit Patterns &amp; Views
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="8" data-path="08-pattern-matching.html">
+                
+                <a href="./08-pattern-matching.html">
+                    <i class="fa fa-check"></i> <b>8.</b> Pattern Matching
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="9" data-path="09-top-level-definitions.html">
+                
+                <a href="./09-top-level-definitions.html">
+                    <i class="fa fa-check"></i> <b>9.</b> Top Level Definitions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="10" data-path="10-xml-expressions-and-patterns.html">
+                
+                <a href="./10-xml-expressions-and-patterns.html">
+                    <i class="fa fa-check"></i> <b>10.</b> XML Expressions &amp; Patterns
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="11" data-path="11-user-defined-annotations.html">
+                
+                <a href="./11-user-defined-annotations.html">
+                    <i class="fa fa-check"></i> <b>11.</b> Top Level Definitions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="12" data-path="12-the-scala-standard-library.html">
+                
+                <a href="./12-the-scala-standard-library.html">
+                    <i class="fa fa-check"></i> <b>12.</b> The Scala Standard Library
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="13" data-path="13-syntax-summary.html">
+                
+                <a href="./13-syntax-summary.html">
+                    <i class="fa fa-check"></i> <b>13.</b> Syntax Summary
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="14" data-path="14-references.html">
+                
+                <a href="./14-references.html">
+                    <i class="fa fa-check"></i> <b>14.</b> References
+                </a>
+                
+                
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 14.285714285714286%;min-width: 7.142857142857143%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="./index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="./01-lexical-syntax.html" title="Lexical Syntax" class="chapter done new-chapter" data-progress="1" style="left: 7.142857142857143%;"></a>
+    
+        <a href="./10-xml-expressions-and-patterns.html" title="XML Expressions &amp; Patterns" class="chapter done " data-progress="10" style="left: 14.285714285714286%;"></a>
+    
+        <a href="./11-user-defined-annotations.html" title="Top Level Definitions" class="chapter  " data-progress="11" style="left: 21.428571428571427%;"></a>
+    
+        <a href="./12-the-scala-standard-library.html" title="The Scala Standard Library" class="chapter  " data-progress="12" style="left: 28.571428571428573%;"></a>
+    
+        <a href="./13-syntax-summary.html" title="Syntax Summary" class="chapter  " data-progress="13" style="left: 35.714285714285715%;"></a>
+    
+        <a href="./14-references.html" title="References" class="chapter  " data-progress="14" style="left: 42.857142857142854%;"></a>
+    
+        <a href="./02-identifiers-names-and-scopes.html" title="Identifiers, Names &amp; Scopes" class="chapter  new-chapter" data-progress="2" style="left: 50%;"></a>
+    
+        <a href="./03-types.html" title="Types" class="chapter  new-chapter" data-progress="3" style="left: 57.142857142857146%;"></a>
+    
+        <a href="./04-basic-declarations-and-definitions.html" title="Basic Declarations &amp; Definitions" class="chapter  new-chapter" data-progress="4" style="left: 64.28571428571429%;"></a>
+    
+        <a href="./05-classes-and-objects.html" title="Classes and Objects" class="chapter  new-chapter" data-progress="5" style="left: 71.42857142857143%;"></a>
+    
+        <a href="./06-expressions.html" title="Expressions" class="chapter  new-chapter" data-progress="6" style="left: 78.57142857142857%;"></a>
+    
+        <a href="./07-implicit-parameters-and-views.html" title="Implicit Patterns &amp; Views" class="chapter  new-chapter" data-progress="7" style="left: 85.71428571428571%;"></a>
+    
+        <a href="./08-pattern-matching.html" title="Pattern Matching" class="chapter  new-chapter" data-progress="8" style="left: 92.85714285714286%;"></a>
+    
+        <a href="./09-top-level-definitions.html" title="Top Level Definitions" class="chapter  new-chapter" data-progress="9" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_12">
+                    
+                        <h1 id="10-xml-expressions-and-patterns">10. XML Expressions and Patterns</h1>
+<p><strong>By Burak Emir</strong></p>
+<p>This chapter describes the syntactic structure of XML expressions and patterns.
+It follows as closely as possible the XML 1.0 specification,
+changes being mandated by the possibility of embedding Scala code fragments.</p>
+<h2 id="xml-expressions">XML expressions</h2>
+<p>XML expressions are expressions generated by the following production, where the 
+opening bracket <code>&lt;</code> of the first element must be in a position to start the lexical
+<a href="01-lexical-syntax.html#xml-mode">XML mode</a>.</p>
+<pre><code class="lang-ebnf">XmlExpr ::= XmlContent {Element}
+</code></pre>
+<p>Well-formedness constraints of the XML specification apply, which
+means for instance that start tags and end tags must match, and
+attributes may only be defined once, with the exception of constraints
+related to entity resolution.</p>
+<p>The following productions describe Scala&#39;s extensible markup language,
+designed as close as possible to the W3C extensible markup language
+standard. Only the productions for attribute values and character data are changed. 
+Scala does not support declarations, CDATA sections or processing instructions.
+Entity references are not resolved at runtime.</p>
+<pre><code class="lang-ebnf">Element       ::=    EmptyElemTag
+                |    STag Content ETag                                       
+
+EmptyElemTag  ::=    ‘&lt;’ Name {S Attribute} [S] ‘/&gt;’                         
+
+STag          ::=    ‘&lt;’ Name {S Attribute} [S] ‘&gt;’                          
+ETag          ::=    ‘&lt;/’ Name [S] ‘&gt;’                                        
+Content       ::=    [CharData] {Content1 [CharData]}
+Content1      ::=    XmlContent
+                |    Reference
+                |    ScalaExpr
+XmlContent    ::=    Element
+                |    CDSect
+                |    PI
+                |    Comment
+</code></pre>
+<p>If an XML expression is a single element, its value is a runtime
+representation of an XML node (an instance of a subclass of 
+<code>scala.xml.Node</code>). If the XML expression consists of more
+than one element, then its value is a runtime representation of a
+sequence of XML nodes (an instance of a subclass of 
+<code>scala.Seq[scala.xml.Node]</code>).</p>
+<p>If an XML expression is an entity reference, CDATA section, processing 
+instructions or a comments, it is represented by an instance of the 
+corresponding Scala runtime class.</p>
+<p>By default, beginning and trailing whitespace in element content is removed, 
+and consecutive occurrences of whitespace are replaced by a single space
+character <code>\u0020</code>. This behavior can be changed to preserve all whitespace
+with a compiler option.</p>
+<pre><code class="lang-ebnf">Attribute  ::=    Name Eq AttValue                                    
+
+AttValue      ::=    ‘&quot;’ {CharQ | CharRef} ‘&quot;’
+                |    ‘&#39;’ {CharA | CharRef} ‘&#39;’
+                |    ScalaExpr
+
+ScalaExpr     ::=    Block
+
+CharData      ::=   { CharNoRef } $\mbox{\rm\em without}$ {CharNoRef}`{&#39;CharB {CharNoRef} 
+                                  $\mbox{\rm\em and without}$ {CharNoRef}`]]&gt;&#39;{CharNoRef}
+</code></pre>
+<!-- {% raw  %} stupid liquid borks on the double brace below; brace yourself, liquid! -->
+XML expressions may contain Scala expressions as attribute values or
+within nodes. In the latter case, these are embedded using a single opening 
+brace <code>{</code> and ended by a closing brace <code>}</code>. To express a single opening braces
+within XML text as generated by CharData, it must be doubled.
+Thus, <code>{{</code> represents the XML text <code>{</code> and does not introduce an embedded Scala expression.
+<!-- {% endraw %} -->
+
+<pre><code class="lang-ebnf">BaseChar, Char, Comment, CombiningChar, Ideographic, NameChar, S, Reference
+              ::=  $\mbox{\rm\em “as in W3C XML”}$
+
+Char1         ::=  Char $\mbox{\rm\em without}$ ‘&lt;’ | ‘&amp;’
+CharQ         ::=  Char1 $\mbox{\rm\em without}$ ‘&quot;’
+CharA         ::=  Char1 $\mbox{\rm\em without}$ ‘&#39;’
+CharB         ::=  Char1 $\mbox{\rm\em without}$ ‘{’
+
+Name          ::=  XNameStart {NameChar}
+
+XNameStart    ::= ‘_’ | BaseChar | Ideographic 
+                 $\mbox{\rm\em (as in W3C XML, but without }$ ‘:’
+</code></pre>
+<h2 id="xml-patterns">XML patterns</h2>
+<p>XML patterns are patterns generated by the following production, where
+the opening bracket <code>&lt;</code> of the element patterns must be in a position
+to start the lexical <a href="01-lexical-syntax.html#xml-mode">XML mode</a>.</p>
+<pre><code class="lang-ebnf">XmlPattern  ::= ElementPattern
+</code></pre>
+<p>Well-formedness constraints of the XML specification apply.</p>
+<p>An XML pattern has to be a single element pattern. It
+matches exactly those runtime
+representations of an XML tree
+that have the same structure as described by the pattern.
+XML patterns may contain <a href="08-pattern-matching.html#pattern-matching-expressions">Scala patterns</a>.</p>
+<p>Whitespace is treated the same way as in XML expressions.</p>
+<p>By default, beginning and trailing whitespace in element content is removed, 
+and consecutive occurrences of whitespace are replaced by a single space
+character <code>\u0020</code>. This behavior can be changed to preserve all whitespace
+with a compiler option.</p>
+<pre><code class="lang-ebnf">ElemPattern   ::=    EmptyElemTagP
+                |    STagP ContentP ETagP                                    
+
+EmptyElemTagP ::=    ‘&lt;’  Name [S] ‘/&gt;’
+STagP         ::=    ‘&lt;’  Name [S] ‘&gt;’                          
+ETagP         ::=    ‘&lt;/’ Name [S] ‘&gt;’                                        
+ContentP      ::=    [CharData] {(ElemPattern|ScalaPatterns) [CharData]}
+ContentP1     ::=    ElemPattern
+                |    Reference
+                |    CDSect
+                |    PI
+                |    Comment
+                |    ScalaPatterns
+ScalaPatterns ::=    ‘{’ Patterns ‘}’
+</code></pre>
+
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./09-top-level-definitions.html" class="navigation navigation-prev"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./11-user-defined-annotations.html" class="navigation navigation-next"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+        <link rel="stylesheet" href="gitbook/style.css">
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/mode-javascript.js"></script>
+        <script src="gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+        <script src="gitbook/app.js"></script>
+        
+    </body>
+</html>

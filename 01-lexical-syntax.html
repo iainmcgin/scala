@@ -1,0 +1,828 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head prefix="og: http://ogp.me/ns# book: http://ogp.me/ns/book#">
+        
+        <meta charset="UTF-8">
+        <title>Lexical Syntax | The Scala Language Specification 2.11</title>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="iainmcgin">
+        <meta name="description" content="Scala is a Java-like programming language which unifies
+object-oriented and functional programming.  It is a pure
+object-oriented language in the sense that every value is an
+object. Types and behavior of objects are described by
+classes. Classes can be composed using mixin composition.  Scala is
+designed to work seamlessly with less pure but mainstream
+object-oriented languages like Java.">
+        <meta name="keywords" content="gitbook,github" >
+        <meta name="generator" content="www.gitbook.io">
+
+        
+        <link rel="next" href="./02-identifiers-names-and-scopes.html" />
+        
+        
+        <link rel="prev" href="./index.html" />
+        
+
+        <meta property="og:title" content="Lexical Syntax | The Scala Language Specification 2.11">
+        <meta property="og:site_name" content="The Scala Language Specification 2.11">
+        <meta property="og:type" content="book">
+        <meta property="og:locale" content="en_US">
+
+        <meta property="book:author" content="https://github.com/iainmcgin">
+        <meta property="book:tag" content="GitBook">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+          <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            tex2jax: {
+              inlineMath: [['$','$'], ['\\(','\\)']],
+              skipTags: ['script', 'noscript', 'style', 'textarea'],
+              processEscapes: true
+            }
+          });
+          </script>
+          <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+          <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+          <!--
+          <script type="text/javascript">
+            // clear content of H3 nodes that start with "Example:"
+            // the content is only there to determine ID of the H3 element (redcarpet doesn't let us set css id)
+            $( document ).ready(function(){ $("h3[id*='example']").text("") })
+          </script>
+          -->
+        
+    </head>
+    <body>
+        
+    <div class="book" data-github="iainmcgin/scala" data-level="1" data-basepath="." data-revision="1397801841390">
+    <div class="book-header">
+    <!-- Actions Left -->
+    
+    <a href="https://github.com/iainmcgin/scala" target="_blank" class="btn pull-left"><i class="fa fa-github-alt"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-summary"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search"><i class="fa fa-search"></i></a>
+
+    <!-- Actions Right -->
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="google-plus"><i class="fa fa-google-plus"></i></a>
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="facebook"><i class="fa fa-facebook"></i></a>
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="twitter"><i class="fa fa-twitter"></i></a>
+
+    
+    <a href="https://github.com/iainmcgin/scala/stargazers" target="_blank" class="btn pull-right count-star"><i class="fa fa-star-o"></i> Star (<span>-</span>)</a>
+    <a href="https://github.com/iainmcgin/scala/watchers" target="_blank" class="btn pull-right count-watch"><i class="fa fa-eye"></i> Watch (<span>-</span>)</a>
+    
+
+    <!-- Title -->
+    <h1><a href="./" >The Scala Language Specification 2.11</a></h1>
+</div>
+
+    <div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        <li>
+            <a href="https://github.com/iainmcgin" target="blank">About the author</a>
+        </li>
+        <li>
+            <a href="https://github.com/iainmcgin/scala/issues" target="blank">Questions and Issues</a>
+        </li>
+        <li>
+            <a href="https://github.com/iainmcgin/scala/edit/master/01-lexical-syntax.md" target="blank">Edit and Contribute</a>
+        </li>
+        <li class="divider"></li>
+        
+        <li data-level="0" data-path="index.html">
+            <a href="./"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+            <li  data-level="1" data-path="01-lexical-syntax.html">
+                
+                <a href="./01-lexical-syntax.html">
+                    <i class="fa fa-check"></i> <b>1.</b> Lexical Syntax
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="2" data-path="02-identifiers-names-and-scopes.html">
+                
+                <a href="./02-identifiers-names-and-scopes.html">
+                    <i class="fa fa-check"></i> <b>2.</b> Identifiers, Names &amp; Scopes
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="3" data-path="03-types.html">
+                
+                <a href="./03-types.html">
+                    <i class="fa fa-check"></i> <b>3.</b> Types
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="4" data-path="04-basic-declarations-and-definitions.html">
+                
+                <a href="./04-basic-declarations-and-definitions.html">
+                    <i class="fa fa-check"></i> <b>4.</b> Basic Declarations &amp; Definitions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="5" data-path="05-classes-and-objects.html">
+                
+                <a href="./05-classes-and-objects.html">
+                    <i class="fa fa-check"></i> <b>5.</b> Classes and Objects
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="6" data-path="06-expressions.html">
+                
+                <a href="./06-expressions.html">
+                    <i class="fa fa-check"></i> <b>6.</b> Expressions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="7" data-path="07-implicit-parameters-and-views.html">
+                
+                <a href="./07-implicit-parameters-and-views.html">
+                    <i class="fa fa-check"></i> <b>7.</b> Implicit Patterns &amp; Views
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="8" data-path="08-pattern-matching.html">
+                
+                <a href="./08-pattern-matching.html">
+                    <i class="fa fa-check"></i> <b>8.</b> Pattern Matching
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="9" data-path="09-top-level-definitions.html">
+                
+                <a href="./09-top-level-definitions.html">
+                    <i class="fa fa-check"></i> <b>9.</b> Top Level Definitions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="10" data-path="10-xml-expressions-and-patterns.html">
+                
+                <a href="./10-xml-expressions-and-patterns.html">
+                    <i class="fa fa-check"></i> <b>10.</b> XML Expressions &amp; Patterns
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="11" data-path="11-user-defined-annotations.html">
+                
+                <a href="./11-user-defined-annotations.html">
+                    <i class="fa fa-check"></i> <b>11.</b> Top Level Definitions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="12" data-path="12-the-scala-standard-library.html">
+                
+                <a href="./12-the-scala-standard-library.html">
+                    <i class="fa fa-check"></i> <b>12.</b> The Scala Standard Library
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="13" data-path="13-syntax-summary.html">
+                
+                <a href="./13-syntax-summary.html">
+                    <i class="fa fa-check"></i> <b>13.</b> Syntax Summary
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="14" data-path="14-references.html">
+                
+                <a href="./14-references.html">
+                    <i class="fa fa-check"></i> <b>14.</b> References
+                </a>
+                
+                
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 7.142857142857143%;min-width: 0%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="./index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="./01-lexical-syntax.html" title="Lexical Syntax" class="chapter done new-chapter" data-progress="1" style="left: 7.142857142857143%;"></a>
+    
+        <a href="./10-xml-expressions-and-patterns.html" title="XML Expressions &amp; Patterns" class="chapter  " data-progress="10" style="left: 14.285714285714286%;"></a>
+    
+        <a href="./11-user-defined-annotations.html" title="Top Level Definitions" class="chapter  " data-progress="11" style="left: 21.428571428571427%;"></a>
+    
+        <a href="./12-the-scala-standard-library.html" title="The Scala Standard Library" class="chapter  " data-progress="12" style="left: 28.571428571428573%;"></a>
+    
+        <a href="./13-syntax-summary.html" title="Syntax Summary" class="chapter  " data-progress="13" style="left: 35.714285714285715%;"></a>
+    
+        <a href="./14-references.html" title="References" class="chapter  " data-progress="14" style="left: 42.857142857142854%;"></a>
+    
+        <a href="./02-identifiers-names-and-scopes.html" title="Identifiers, Names &amp; Scopes" class="chapter  new-chapter" data-progress="2" style="left: 50%;"></a>
+    
+        <a href="./03-types.html" title="Types" class="chapter  new-chapter" data-progress="3" style="left: 57.142857142857146%;"></a>
+    
+        <a href="./04-basic-declarations-and-definitions.html" title="Basic Declarations &amp; Definitions" class="chapter  new-chapter" data-progress="4" style="left: 64.28571428571429%;"></a>
+    
+        <a href="./05-classes-and-objects.html" title="Classes and Objects" class="chapter  new-chapter" data-progress="5" style="left: 71.42857142857143%;"></a>
+    
+        <a href="./06-expressions.html" title="Expressions" class="chapter  new-chapter" data-progress="6" style="left: 78.57142857142857%;"></a>
+    
+        <a href="./07-implicit-parameters-and-views.html" title="Implicit Patterns &amp; Views" class="chapter  new-chapter" data-progress="7" style="left: 85.71428571428571%;"></a>
+    
+        <a href="./08-pattern-matching.html" title="Pattern Matching" class="chapter  new-chapter" data-progress="8" style="left: 92.85714285714286%;"></a>
+    
+        <a href="./09-top-level-definitions.html" title="Top Level Definitions" class="chapter  new-chapter" data-progress="9" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_2">
+                    
+                        <h1 id="1-lexical-syntax">1. Lexical Syntax</h1>
+<p>Scala programs are written using the Unicode Basic Multilingual Plane
+(<em>BMP</em>) character set; Unicode supplementary characters are not
+presently supported.  This chapter defines the two modes of Scala&#39;s
+lexical syntax, the Scala mode and the <em>XML mode</em>. If not
+otherwise mentioned, the following descriptions of Scala tokens refer
+to <em>Scala mode</em>, and literal characters ‘c’ refer to the ASCII fragment 
+<code>\u0000</code> – <code>\u007F</code>.</p>
+<p>In Scala mode, <em>Unicode escapes</em> are replaced by the corresponding
+Unicode character with the given hexadecimal code.</p>
+<pre><code class="lang-ebnf">UnicodeEscape ::= ‘\’ ‘u’ {‘u’} hexDigit hexDigit hexDigit hexDigit
+hexDigit      ::= ‘0’ | … | ‘9’ | ‘A’ | … | ‘F’ | ‘a’ | … | ‘f’
+</code></pre>
+<!--
+TODO SI-4583: UnicodeEscape used to allow additional backslashes,
+and there is something in the code `evenSlashPrefix` that alludes to it,
+but I can't make it work nor can I imagine how this would make sense,
+so I removed it for now.
+-->
+
+<p>To construct tokens, characters are distinguished according to the following 
+classes (Unicode general category given in parentheses):</p>
+<ol>
+<li>Whitespace characters. <code>\u0020 | \u0009 | \u000D | \u000A</code>.</li>
+<li>Letters, which include lower case letters (<code>Ll</code>), upper case letters (<code>Lu</code>),
+titlecase letters (<code>Lt</code>), other letters (<code>Lo</code>), letter numerals (<code>Nl</code>) and the
+two characters <code>\u0024 ‘$’</code> and <code>\u005F ‘_’</code>, which both count as upper case
+letters.</li>
+<li>Digits <code>‘0’ | … | ‘9’</code>.</li>
+<li>Parentheses <code>‘(’ | ‘)’ | ‘[’ | ‘]’ | ‘{’ | ‘}’</code>.</li>
+<li>Delimiter characters <code>‘`’ | ‘&#39;’ | ‘&quot;’ | ‘.’ | ‘;’ | ‘,’</code>.</li>
+<li>Operator characters. These consist of all printable ASCII characters
+<code>\u0020</code> - <code>\u007F</code> which are in none of the sets above, mathematical 
+symbols (<code>Sm</code>) and other symbols (<code>So</code>).</li>
+</ol>
+<h2 id="identifiers">Identifiers</h2>
+<pre><code class="lang-ebnf">op       ::=  opchar {opchar} 
+varid    ::=  lower idrest
+plainid  ::=  upper idrest
+           |  varid
+           |  op
+id       ::=  plainid
+           |  ‘`’ stringLiteral ‘`’
+idrest   ::=  {letter | digit} [‘_’ op]
+</code></pre>
+<p>There are three ways to form an identifier. First, an identifier can
+start with a letter which can be followed by an arbitrary sequence of
+letters and digits. This may be followed by underscore ‘<em>’
+characters and another string composed of either letters and digits or
+of operator characters.  Second, an identifier can start with an operator 
+character followed by an arbitrary sequence of operator characters.
+The preceding two forms are called _plain</em> identifiers.  Finally,
+an identifier may also be formed by an arbitrary string between
+back-quotes (host systems may impose some restrictions on which
+strings are legal for identifiers).  The identifier then is composed
+of all characters excluding the backquotes themselves.</p>
+<p>As usual, a longest match rule applies. For instance, the string</p>
+<pre><code class="lang-scala">big_bob++=`<span class="hljs-keyword">def</span>`
+</code></pre>
+<p>decomposes into the three identifiers <code>big_bob</code>, <code>++=</code>, and
+<code>def</code>. The rules for pattern matching further distinguish between
+<em>variable identifiers</em>, which start with a lower case letter, and
+<em>constant identifiers</em>, which do not.</p>
+<p>The ‘\$’ character is reserved for compiler-synthesized identifiers.
+User programs should not define identifiers which contain ‘\$’ characters.</p>
+<p>The following names are reserved words instead of being members of the
+syntactic class <code>id</code> of lexical identifiers.</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">abstract</span>    <span class="hljs-keyword">case</span>        <span class="hljs-keyword">catch</span>       <span class="hljs-class"><span class="hljs-keyword">class</span>       <span class="hljs-title">def</span></span>
+do          <span class="hljs-keyword">else</span>        <span class="hljs-keyword">extends</span>     <span class="hljs-keyword">false</span>       <span class="hljs-keyword">final</span>
+<span class="hljs-keyword">finally</span>     <span class="hljs-keyword">for</span>         forSome     <span class="hljs-keyword">if</span>          implicit
+<span class="hljs-keyword">import</span>      <span class="hljs-keyword">lazy</span>        <span class="hljs-keyword">match</span>       <span class="hljs-keyword">new</span>         <span class="hljs-keyword">null</span>
+<span class="hljs-class"><span class="hljs-keyword">object</span>      <span class="hljs-title">override</span>    <span class="hljs-title">package</span>     <span class="hljs-title">private</span>     <span class="hljs-title">protected</span></span>
+<span class="hljs-keyword">return</span>      <span class="hljs-keyword">sealed</span>      <span class="hljs-keyword">super</span>       <span class="hljs-keyword">this</span>        <span class="hljs-keyword">throw</span>       
+<span class="hljs-class"><span class="hljs-keyword">trait</span>       <span class="hljs-title">try</span>         <span class="hljs-title">true</span>        <span class="hljs-title">type</span>        <span class="hljs-title">val</span>         </span>
+<span class="hljs-keyword">var</span>         <span class="hljs-keyword">while</span>       <span class="hljs-keyword">with</span>        <span class="hljs-keyword">yield</span>
+_    :    =    =&gt;    &lt;-    &lt;:    &lt;%     &gt;:    #    @
+</code></pre>
+<p>The Unicode operators <code>\u21D2</code> ‘$\Rightarrow$’ and <code>\u2190</code> ‘$\leftarrow$’, which have the ASCII
+equivalents <code>=&gt;</code> and <code>&lt;-</code>, are also reserved.</p>
+<h3 id="example">Example</h3>
+<p>Here are examples of identifiers:</p>
+<pre><code class="lang-scala">    x         Object        maxIndex   p2p      empty_?
+    +         `<span class="hljs-keyword">yield</span>`       αρετη     _y       dot_product_*
+    __system  _MAX_LEN_
+</code></pre>
+<h3 id="example">Example</h3>
+<p>When one needs to access Java identifiers that are reserved words in Scala, use backquote-enclosed strings.
+For instance, the statement <code>Thread.yield()</code> is illegal, since
+<code>yield</code> is a reserved word in Scala. However, here&#39;s a
+work-around: <code>Thread.`yield`()</code></p>
+<h2 id="newline-characters">Newline Characters</h2>
+<pre><code class="lang-ebnf">semi ::= ‘;’ |  nl {nl}
+</code></pre>
+<p>Scala is a line-oriented language where statements may be terminated by
+semi-colons or newlines. A newline in a Scala source text is treated
+as the special token “nl” if the three following criteria are satisfied:</p>
+<ol>
+<li>The token immediately preceding the newline can terminate a statement.</li>
+<li>The token immediately following the newline can begin a statement.</li>
+<li>The token appears in a region where newlines are enabled.</li>
+</ol>
+<p>The tokens that can terminate a statement are: literals, identifiers
+and the following delimiters and reserved words:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">this</span>    <span class="hljs-keyword">null</span>    <span class="hljs-keyword">true</span>    <span class="hljs-keyword">false</span>    <span class="hljs-keyword">return</span>    <span class="hljs-keyword">type</span>    &lt;xml-start&gt;    
+_       )       ]       }
+</code></pre>
+<p>The tokens that can begin a statement are all Scala tokens <em>except</em>
+the following delimiters and reserved words:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">catch</span>    <span class="hljs-keyword">else</span>    <span class="hljs-keyword">extends</span>    <span class="hljs-keyword">finally</span>    forSome    <span class="hljs-keyword">match</span>        
+<span class="hljs-keyword">with</span>    <span class="hljs-keyword">yield</span>    ,    .    ;    :    =    =&gt;    &lt;-    &lt;:    &lt;%    
+&gt;:    #    [    )    ]    }
+</code></pre>
+<p>A <code>case</code> token can begin a statement only if followed by a
+<code>class</code> or <code>object</code> token.</p>
+<p>Newlines are enabled in:</p>
+<ol>
+<li>all of a Scala source file, except for nested regions where newlines
+are disabled, and</li>
+<li>the interval between matching <code>{</code> and <code>}</code> brace tokens,
+except for nested regions where newlines are disabled.</li>
+</ol>
+<p>Newlines are disabled in:</p>
+<ol>
+<li>the interval between matching <code>(</code> and <code>)</code> parenthesis tokens, except for
+nested regions where newlines are enabled, and</li>
+<li>the interval between matching <code>[</code> and <code>]</code> bracket tokens, except for nested
+regions where newlines are enabled.</li>
+<li>The interval between a <code>case</code> token and its matching
+<code>=&gt;</code> token, except for nested regions where newlines are
+enabled.</li>
+<li>Any regions analyzed in <a href="#xml-mode">XML mode</a>.</li>
+</ol>
+<p>Note that the brace characters of <code>{...}</code> escapes in XML and
+string literals are not tokens, 
+and therefore do not enclose a region where newlines
+are enabled.</p>
+<p>Normally, only a single <code>nl</code> token is inserted between two
+consecutive non-newline tokens which are on different lines, even if there are multiple lines
+between the two tokens. However, if two tokens are separated by at
+least one completely blank line (i.e a line which contains no
+printable characters), then two <code>nl</code> tokens are inserted.</p>
+<p>The Scala grammar (given in full <a href="#scala-syntax-summary">here</a>)
+contains productions where optional <code>nl</code> tokens, but not
+semicolons, are accepted. This has the effect that a newline in one of these
+positions does not terminate an expression or statement. These positions can
+be summarized as follows:</p>
+<p>Multiple newline tokens are accepted in the following places (note
+that a semicolon in place of the newline would be illegal in every one
+of these cases):</p>
+<ul>
+<li>between the condition of a 
+<a href="06-expressions.html#conditional-expressions">conditional expression</a>
+or <a href="06-expressions.html#while-loop-expressions">while loop</a> and the next
+following expression,</li>
+<li>between the enumerators of a 
+<a href="06-expressions.html#for-comprehensions-and-for-loops">for-comprehension</a>
+and the next following expression, and</li>
+<li>after the initial <code>type</code> keyword in a 
+<a href="04-basic-declarations-and-definitions.html#type-declarations-and-type-aliases">type definition or declaration</a>.</li>
+</ul>
+<p>A single new line token is accepted</p>
+<ul>
+<li>in front of an opening brace ‘{’, if that brace is a legal
+continuation of the current statement or expression,</li>
+<li>after an <a href="06-expressions.html#prefix-infix-and-postfix-operations">infix operator</a>,
+if the first token on the next line can start an expression,</li>
+<li>in front of a <a href="04-basic-declarations-and-definitions.html#function-declarations-and-definitions">parameter clause</a>, and</li>
+<li>after an <a href="11-user-defined-annotations.html#user-defined-annotations">annotation</a>.</li>
+</ul>
+<h3 id="example">Example</h3>
+<p>The newline tokens between the two lines are not
+treated as statement separators.</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">if</span> (x &gt; <span class="hljs-number">0</span>)
+  x = x - <span class="hljs-number">1</span>
+
+<span class="hljs-keyword">while</span> (x &gt; <span class="hljs-number">0</span>)
+  x = x / <span class="hljs-number">2</span>
+
+<span class="hljs-keyword">for</span> (x &lt;- <span class="hljs-number">1</span> to <span class="hljs-number">10</span>)
+  println(x)
+
+<span class="hljs-keyword">type</span>
+  IntList = List[Int]
+</code></pre>
+<h3 id="example">Example</h3>
+<pre><code class="lang-scala"><span class="hljs-keyword">new</span> Iterator[Int]
+{
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> x = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">def</span> hasNext = <span class="hljs-keyword">true</span>
+  <span class="hljs-keyword">def</span> next = { x += <span class="hljs-number">1</span>; x }
+}
+</code></pre>
+<p>With an additional newline character, the same code is interpreted as
+an object creation followed by a local block:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">new</span> Iterator[Int]
+
+{
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> x = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">def</span> hasNext = <span class="hljs-keyword">true</span>
+  <span class="hljs-keyword">def</span> next = { x += <span class="hljs-number">1</span>; x }
+}
+</code></pre>
+<h3 id="example">Example</h3>
+<pre><code class="lang-scala">  x &lt; <span class="hljs-number">0</span> ||
+  x &gt; <span class="hljs-number">10</span>
+</code></pre>
+<p>With an additional newline character, the same code is interpreted as
+two expressions:</p>
+<pre><code class="lang-scala">  x &lt; <span class="hljs-number">0</span> ||
+
+  x &gt; <span class="hljs-number">10</span>
+</code></pre>
+<h3 id="example">Example</h3>
+<pre><code class="lang-scala"><span class="hljs-keyword">def</span> func(x: Int)
+        (y: Int) = x + y
+</code></pre>
+<p>With an additional newline character, the same code is interpreted as
+an abstract function definition and a syntactically illegal statement:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">def</span> func(x: Int)
+
+        (y: Int) = x + y
+</code></pre>
+<h3 id="example">Example</h3>
+<pre><code class="lang-scala"><span class="hljs-annotation">@serializable</span>
+<span class="hljs-keyword">protected</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Data</span> {</span> ... }
+</code></pre>
+<p>With an additional newline character, the same code is interpreted as
+an attribute and a separate statement (which is syntactically
+illegal).</p>
+<pre><code class="lang-scala"><span class="hljs-annotation">@serializable</span>
+
+<span class="hljs-keyword">protected</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Data</span> {</span> ... }
+</code></pre>
+<h2 id="literals">Literals</h2>
+<p>There are literals for integer numbers, floating point numbers,
+characters, booleans, symbols, strings.  The syntax of these literals is in
+each case as in Java.</p>
+<!-- TODO 
+  say that we take values from Java, give examples of some lits in
+  particular float and double. 
+-->
+
+<pre><code class="lang-ebnf">Literal  ::=  [‘-’] integerLiteral
+           |  [‘-’] floatingPointLiteral
+           |  booleanLiteral
+           |  characterLiteral
+           |  stringLiteral
+           |  symbolLiteral
+           |  ‘null’
+</code></pre>
+<h3 id="integer-literals">Integer Literals</h3>
+<pre><code class="lang-ebnf">integerLiteral  ::=  (decimalNumeral | hexNumeral | octalNumeral) 
+                       [‘L’ | ‘l’]
+decimalNumeral  ::=  ‘0’ | nonZeroDigit {digit}
+hexNumeral      ::=  ‘0’ ‘x’ hexDigit {hexDigit}
+octalNumeral    ::=  ‘0’ octalDigit {octalDigit}
+digit           ::=  ‘0’ | nonZeroDigit
+nonZeroDigit    ::=  ‘1’ | … | ‘9’
+octalDigit      ::=  ‘0’ | … | ‘7’
+</code></pre>
+<p>Integer literals are usually of type <code>Int</code>, or of type
+<code>Long</code> when followed by a <code>L</code> or
+<code>l</code> suffix. Values of type <code>Int</code> are all integer
+numbers between $-2\^{31}$ and $2\^{31}-1$, inclusive.  Values of
+type <code>Long</code> are all integer numbers between $-2\^{63}$ and
+$2\^{63}-1$, inclusive. A compile-time error occurs if an integer literal
+denotes a number outside these ranges.</p>
+<p>However, if the expected type <a href="06-expressions.html#expression-typing"><em>pt</em></a> of a literal
+in an expression is either <code>Byte</code>, <code>Short</code>, or <code>Char</code>
+and the integer number fits in the numeric range defined by the type,
+then the number is converted to type <em>pt</em> and the literal&#39;s type
+is <em>pt</em>. The numeric ranges given by these types are:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Byte</code></td>
+<td>$-2\^7$ to $2\^7-1$</td>
+</tr>
+<tr>
+<td><code>Short</code></td>
+<td>$-2\^{15}$ to $2\^{15}-1$</td>
+</tr>
+<tr>
+<td><code>Char</code></td>
+<td>$0$ to $2\^{16}-1$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example">Example</h3>
+<pre><code class="lang-scala"><span class="hljs-number">0</span>          <span class="hljs-number">21</span>          <span class="hljs-number">0xFFFFFFFF</span>       -<span class="hljs-number">42</span>L
+</code></pre>
+<h3 id="floating-point-literals">Floating Point Literals</h3>
+<pre><code class="lang-ebnf">floatingPointLiteral  ::=  digit {digit} ‘.’ digit {digit} [exponentPart] [floatType]
+                        |  ‘.’ digit {digit} [exponentPart] [floatType]
+                        |  digit {digit} exponentPart [floatType]
+                        |  digit {digit} [exponentPart] floatType
+exponentPart          ::=  (‘E’ | ‘e’) [‘+’ | ‘-’] digit {digit}
+floatType             ::=  ‘F’ | ‘f’ | ‘D’ | ‘d’
+</code></pre>
+<p>Floating point literals are of type <code>Float</code> when followed by
+a floating point type suffix <code>F</code> or <code>f</code>, and are
+of type <code>Double</code> otherwise.  The type <code>Float</code>
+consists of all IEEE 754 32-bit single-precision binary floating point
+values, whereas the type <code>Double</code> consists of all IEEE 754
+64-bit double-precision binary floating point values.</p>
+<p>If a floating point literal in a program is followed by a token
+starting with a letter, there must be at least one intervening
+whitespace character between the two tokens.</p>
+<h3 id="example">Example</h3>
+<pre><code class="lang-scala"><span class="hljs-number">0.0</span>        <span class="hljs-number">1e30</span>f      <span class="hljs-number">3.14159</span>f      <span class="hljs-number">1.0e-100</span>      <span class="hljs-number">.1</span>
+</code></pre>
+<h3 id="example">Example</h3>
+<p>The phrase <code>1.toString</code> parses as three different tokens:
+the integer literal <code>1</code>, a <code>.</code>, and the identifier <code>toString</code>.</p>
+<h3 id="example">Example</h3>
+<p><code>1.</code> is not a valid floating point literal because the mandatory digit after the <code>.</code> is missing.</p>
+<h3 id="boolean-literals">Boolean Literals</h3>
+<pre><code class="lang-ebnf">booleanLiteral  ::=  ‘true’ | ‘false’
+</code></pre>
+<p>The boolean literals <code>true</code> and <code>false</code> are
+members of type <code>Boolean</code>.</p>
+<h3 id="character-literals">Character Literals</h3>
+<pre><code class="lang-ebnf">characterLiteral  ::=  ‘&#39;’ (printableChar | charEscapeSeq) ‘&#39;’
+</code></pre>
+<p>A character literal is a single character enclosed in quotes.
+The character is either a printable unicode character or is described
+by an <a href="#escape-sequences">escape sequence</a>.</p>
+<h3 id="example">Example</h3>
+<pre><code class="lang-scala"><span class="hljs-string">'a'</span>    <span class="hljs-string">'\u0041'</span>    <span class="hljs-string">'\n'</span>    <span class="hljs-string">'\t'</span>
+</code></pre>
+<p>Note that <code>&#39;\u000A&#39;</code> is <em>not</em> a valid character literal because
+Unicode conversion is done before literal parsing and the Unicode
+character \u000A (line feed) is not a printable
+character. One can use instead the escape sequence <code>&#39;\n&#39;</code> or
+the octal escape <code>&#39;\12&#39;</code> (<a href="#escape-sequences">see here</a>).</p>
+<h3 id="string-literals">String Literals</h3>
+<pre><code class="lang-ebnf">stringLiteral  ::=  ‘&quot;’ {stringElement} ‘&quot;’
+stringElement  ::=  printableCharNoDoubleQuote  |  charEscapeSeq
+</code></pre>
+<p>A string literal is a sequence of characters in double quotes.  The
+characters are either printable unicode character or are described by
+<a href="#escape-sequences">escape sequences</a>. If the string literal
+contains a double quote character, it must be escaped,
+i.e. <code>&quot;\&quot;&quot;</code>. The value of a string literal is an instance of
+class <code>String</code>. </p>
+<h3 id="example">Example</h3>
+<pre><code class="lang-scala"><span class="hljs-string">"Hello,\nWorld!"</span>
+<span class="hljs-string">"This string contains a \" character."</span>
+</code></pre>
+<h4 id="multi-line-string-literals">Multi-Line String Literals</h4>
+<pre><code class="lang-ebnf">stringLiteral   ::=  ‘&quot;&quot;&quot;’ multiLineChars ‘&quot;&quot;&quot;’
+multiLineChars  ::=  {[‘&quot;’] [‘&quot;’] charNoDoubleQuote} {‘&quot;’}
+</code></pre>
+<p>A multi-line string literal is a sequence of characters enclosed in
+triple quotes <code>&quot;&quot;&quot; ... &quot;&quot;&quot;</code>. The sequence of characters is
+arbitrary, except that it may contain three or more consuctive quote characters
+only at the very end. Characters
+must not necessarily be printable; newlines or other
+control characters are also permitted.  Unicode escapes work as everywhere else, but none
+of the escape sequences <a href="#escape-sequences">here</a> are interpreted.</p>
+<h3 id="example">Example</h3>
+<pre><code class="lang-scala">  <span class="hljs-string">"""the present string
+     spans three
+     lines."""</span>
+</code></pre>
+<p>This would produce the string:</p>
+<pre><code class="lang-scala">the present string
+     spans three
+     lines.
+</code></pre>
+<p>The Scala library contains a utility method <code>stripMargin</code>
+which can be used to strip leading whitespace from multi-line strings.
+The expression</p>
+<pre><code class="lang-scala"> <span class="hljs-string">"""the present string
+   |spans three
+   |lines."""</span>.stripMargin
+</code></pre>
+<p>evaluates to</p>
+<pre><code class="lang-scala">the present string
+spans three 
+lines.
+</code></pre>
+<p>Method <code>stripMargin</code> is defined in class
+<a href="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.StringLike" target="_blank">scala.collection.immutable.StringLike</a>. 
+Because there is a predefined
+<a href="06-expressions.html#implicit-conversions">implicit conversion</a> from <code>String</code> to
+<code>StringLike</code>, the method is applicable to all strings.</p>
+<h3 id="escape-sequences">Escape Sequences</h3>
+<p>The following escape sequences are recognized in character and string literals.</p>
+<table>
+<thead>
+<tr>
+<th>charEscapeSeq</th>
+<th>unicode</th>
+<th>name</th>
+<th>char</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>‘\‘ ‘b‘</code></td>
+<td><code>\u0008</code></td>
+<td>backspace</td>
+<td><code>BS</code></td>
+</tr>
+<tr>
+<td><code>‘\‘ ‘t‘</code></td>
+<td><code>\u0009</code></td>
+<td>horizontal tab</td>
+<td><code>HT</code></td>
+</tr>
+<tr>
+<td><code>‘\‘ ‘n‘</code></td>
+<td><code>\u000a</code></td>
+<td>linefeed</td>
+<td><code>LF</code></td>
+</tr>
+<tr>
+<td><code>‘\‘ ‘f‘</code></td>
+<td><code>\u000c</code></td>
+<td>form feed</td>
+<td><code>FF</code></td>
+</tr>
+<tr>
+<td><code>‘\‘ ‘r‘</code></td>
+<td><code>\u000d</code></td>
+<td>carriage return</td>
+<td><code>CR</code></td>
+</tr>
+<tr>
+<td><code>‘\‘ ‘&quot;‘</code></td>
+<td><code>\u0022</code></td>
+<td>double quote</td>
+<td><code>&quot;</code></td>
+</tr>
+<tr>
+<td><code>‘\‘ ‘&#39;‘</code></td>
+<td><code>\u0027</code></td>
+<td>single quote</td>
+<td><code>&#39;</code></td>
+</tr>
+<tr>
+<td><code>‘\‘ ‘\‘</code></td>
+<td><code>\u005c</code></td>
+<td>backslash</td>
+<td><code>\</code></td>
+</tr>
+</tbody>
+</table>
+<p>A character with Unicode between 0 and 255 may also be represented by
+an octal escape, i.e. a backslash ‘\’ followed by a
+sequence of up to three octal characters.</p>
+<p>It is a compile time error if a backslash character in a character or
+string literal does not start a valid escape sequence.</p>
+<h3 id="symbol-literals">Symbol literals</h3>
+<pre><code class="lang-ebnf">symbolLiteral  ::=  ‘&#39;’ plainid
+</code></pre>
+<p>A symbol literal <code>&#39;x</code> is a shorthand for the expression
+<code>scala.Symbol(&quot;x&quot;)</code>. <code>Symbol</code> is a <a href="05-classes-and-objects.html#case-classes">case class</a>,
+which is defined as follows.</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> scala
+<span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">case</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Symbol</span> <span class="hljs-title">private</span> <span class="hljs-params">(name: String)</span> {</span>
+  <span class="hljs-keyword">override</span> <span class="hljs-keyword">def</span> toString: String = <span class="hljs-string">"'"</span> + name
+}
+</code></pre>
+<p>The <code>apply</code> method of <code>Symbol</code>&#39;s companion object
+caches weak references to <code>Symbol</code>s, thus ensuring that
+identical symbol literals are equivalent with respect to reference
+equality.</p>
+<h2 id="whitespace-and-comments">Whitespace and Comments</h2>
+<p>Tokens may be separated by whitespace characters
+and/or comments. Comments come in two forms:</p>
+<p>A single-line comment is a sequence of characters which starts with
+<code>//</code> and extends to the end of the line.</p>
+<p>A multi-line comment is a sequence of characters between
+<code>/*</code> and <code>*/</code>. Multi-line comments may be nested,
+but are required to be properly nested.  Therefore, a comment like
+<code>/* /* */</code> will be rejected as having an unterminated
+comment.</p>
+<h2 id="xml-mode">XML mode</h2>
+<p>In order to allow literal inclusion of XML fragments, lexical analysis
+switches from Scala mode to XML mode when encountering an opening
+angle bracket ‘&lt;’ in the following circumstance: The ‘&lt;’ must be
+preceded either by whitespace, an opening parenthesis or an opening
+brace and immediately followed by a character starting an XML name.</p>
+<pre><code class="lang-ebnf"> ( whitespace | ‘(’ | ‘{’ ) ‘&lt;’ (XNameStart | ‘!’ | ‘?’)
+
+  XNameStart ::= ‘_’ | BaseChar | Ideographic // as in W3C XML, but without ‘:’
+</code></pre>
+<p>The scanner switches from XML mode to Scala mode if either</p>
+<ul>
+<li>the XML expression or the XML pattern started by the initial ‘&lt;’ has been 
+successfully parsed, or if</li>
+<li>the parser encounters an embedded Scala expression or pattern and 
+forces the Scanner 
+back to normal mode, until the Scala expression or pattern is
+successfully parsed. In this case, since code and XML fragments can be
+nested, the parser has to maintain a stack that reflects the nesting
+of XML and Scala expressions adequately.</li>
+</ul>
+<p>Note that no Scala tokens are constructed in XML mode, and that comments are interpreted
+as text.</p>
+<h3 id="example">Example</h3>
+<p>The following value definition uses an XML literal with two embedded
+Scala expressions:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">val</span> b = &lt;book&gt;
+          &lt;title&gt;The Scala Language Specification&lt;/title&gt;
+          &lt;version&gt;{scalaBook.version}&lt;/version&gt;
+          &lt;authors&gt;{scalaBook.authors.mkList(<span class="hljs-string">""</span>, <span class="hljs-string">", "</span>, <span class="hljs-string">""</span>)}&lt;/authors&gt;
+        &lt;/book&gt;
+</code></pre>
+
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./index.html" class="navigation navigation-prev"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./02-identifiers-names-and-scopes.html" class="navigation navigation-next"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+        <link rel="stylesheet" href="gitbook/style.css">
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/mode-javascript.js"></script>
+        <script src="gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+        <script src="gitbook/app.js"></script>
+        
+    </body>
+</html>

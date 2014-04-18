@@ -1,0 +1,1233 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head prefix="og: http://ogp.me/ns# book: http://ogp.me/ns/book#">
+        
+        <meta charset="UTF-8">
+        <title>Classes and Objects | The Scala Language Specification 2.11</title>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="iainmcgin">
+        <meta name="description" content="Scala is a Java-like programming language which unifies
+object-oriented and functional programming.  It is a pure
+object-oriented language in the sense that every value is an
+object. Types and behavior of objects are described by
+classes. Classes can be composed using mixin composition.  Scala is
+designed to work seamlessly with less pure but mainstream
+object-oriented languages like Java.">
+        <meta name="keywords" content="gitbook,github" >
+        <meta name="generator" content="www.gitbook.io">
+
+        
+        <link rel="next" href="./06-expressions.html" />
+        
+        
+        <link rel="prev" href="./04-basic-declarations-and-definitions.html" />
+        
+
+        <meta property="og:title" content="Classes and Objects | The Scala Language Specification 2.11">
+        <meta property="og:site_name" content="The Scala Language Specification 2.11">
+        <meta property="og:type" content="book">
+        <meta property="og:locale" content="en_US">
+
+        <meta property="book:author" content="https://github.com/iainmcgin">
+        <meta property="book:tag" content="GitBook">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+          <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            tex2jax: {
+              inlineMath: [['$','$'], ['\\(','\\)']],
+              skipTags: ['script', 'noscript', 'style', 'textarea'],
+              processEscapes: true
+            }
+          });
+          </script>
+          <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+          <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+          <!--
+          <script type="text/javascript">
+            // clear content of H3 nodes that start with "Example:"
+            // the content is only there to determine ID of the H3 element (redcarpet doesn't let us set css id)
+            $( document ).ready(function(){ $("h3[id*='example']").text("") })
+          </script>
+          -->
+        
+    </head>
+    <body>
+        
+    <div class="book" data-github="iainmcgin/scala" data-level="5" data-basepath="." data-revision="1397801841390">
+    <div class="book-header">
+    <!-- Actions Left -->
+    
+    <a href="https://github.com/iainmcgin/scala" target="_blank" class="btn pull-left"><i class="fa fa-github-alt"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-summary"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search"><i class="fa fa-search"></i></a>
+
+    <!-- Actions Right -->
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="google-plus"><i class="fa fa-google-plus"></i></a>
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="facebook"><i class="fa fa-facebook"></i></a>
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="twitter"><i class="fa fa-twitter"></i></a>
+
+    
+    <a href="https://github.com/iainmcgin/scala/stargazers" target="_blank" class="btn pull-right count-star"><i class="fa fa-star-o"></i> Star (<span>-</span>)</a>
+    <a href="https://github.com/iainmcgin/scala/watchers" target="_blank" class="btn pull-right count-watch"><i class="fa fa-eye"></i> Watch (<span>-</span>)</a>
+    
+
+    <!-- Title -->
+    <h1><a href="./" >The Scala Language Specification 2.11</a></h1>
+</div>
+
+    <div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        <li>
+            <a href="https://github.com/iainmcgin" target="blank">About the author</a>
+        </li>
+        <li>
+            <a href="https://github.com/iainmcgin/scala/issues" target="blank">Questions and Issues</a>
+        </li>
+        <li>
+            <a href="https://github.com/iainmcgin/scala/edit/master/05-classes-and-objects.md" target="blank">Edit and Contribute</a>
+        </li>
+        <li class="divider"></li>
+        
+        <li data-level="0" data-path="index.html">
+            <a href="./"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+            <li  data-level="1" data-path="01-lexical-syntax.html">
+                
+                <a href="./01-lexical-syntax.html">
+                    <i class="fa fa-check"></i> <b>1.</b> Lexical Syntax
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="2" data-path="02-identifiers-names-and-scopes.html">
+                
+                <a href="./02-identifiers-names-and-scopes.html">
+                    <i class="fa fa-check"></i> <b>2.</b> Identifiers, Names &amp; Scopes
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="3" data-path="03-types.html">
+                
+                <a href="./03-types.html">
+                    <i class="fa fa-check"></i> <b>3.</b> Types
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="4" data-path="04-basic-declarations-and-definitions.html">
+                
+                <a href="./04-basic-declarations-and-definitions.html">
+                    <i class="fa fa-check"></i> <b>4.</b> Basic Declarations &amp; Definitions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="5" data-path="05-classes-and-objects.html">
+                
+                <a href="./05-classes-and-objects.html">
+                    <i class="fa fa-check"></i> <b>5.</b> Classes and Objects
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="6" data-path="06-expressions.html">
+                
+                <a href="./06-expressions.html">
+                    <i class="fa fa-check"></i> <b>6.</b> Expressions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="7" data-path="07-implicit-parameters-and-views.html">
+                
+                <a href="./07-implicit-parameters-and-views.html">
+                    <i class="fa fa-check"></i> <b>7.</b> Implicit Patterns &amp; Views
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="8" data-path="08-pattern-matching.html">
+                
+                <a href="./08-pattern-matching.html">
+                    <i class="fa fa-check"></i> <b>8.</b> Pattern Matching
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="9" data-path="09-top-level-definitions.html">
+                
+                <a href="./09-top-level-definitions.html">
+                    <i class="fa fa-check"></i> <b>9.</b> Top Level Definitions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="10" data-path="10-xml-expressions-and-patterns.html">
+                
+                <a href="./10-xml-expressions-and-patterns.html">
+                    <i class="fa fa-check"></i> <b>10.</b> XML Expressions &amp; Patterns
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="11" data-path="11-user-defined-annotations.html">
+                
+                <a href="./11-user-defined-annotations.html">
+                    <i class="fa fa-check"></i> <b>11.</b> Top Level Definitions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="12" data-path="12-the-scala-standard-library.html">
+                
+                <a href="./12-the-scala-standard-library.html">
+                    <i class="fa fa-check"></i> <b>12.</b> The Scala Standard Library
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="13" data-path="13-syntax-summary.html">
+                
+                <a href="./13-syntax-summary.html">
+                    <i class="fa fa-check"></i> <b>13.</b> Syntax Summary
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="14" data-path="14-references.html">
+                
+                <a href="./14-references.html">
+                    <i class="fa fa-check"></i> <b>14.</b> References
+                </a>
+                
+                
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 71.42857142857143%;min-width: 64.28571428571429%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="./index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="./01-lexical-syntax.html" title="Lexical Syntax" class="chapter done new-chapter" data-progress="1" style="left: 7.142857142857143%;"></a>
+    
+        <a href="./10-xml-expressions-and-patterns.html" title="XML Expressions &amp; Patterns" class="chapter done " data-progress="10" style="left: 14.285714285714286%;"></a>
+    
+        <a href="./11-user-defined-annotations.html" title="Top Level Definitions" class="chapter done " data-progress="11" style="left: 21.428571428571427%;"></a>
+    
+        <a href="./12-the-scala-standard-library.html" title="The Scala Standard Library" class="chapter done " data-progress="12" style="left: 28.571428571428573%;"></a>
+    
+        <a href="./13-syntax-summary.html" title="Syntax Summary" class="chapter done " data-progress="13" style="left: 35.714285714285715%;"></a>
+    
+        <a href="./14-references.html" title="References" class="chapter done " data-progress="14" style="left: 42.857142857142854%;"></a>
+    
+        <a href="./02-identifiers-names-and-scopes.html" title="Identifiers, Names &amp; Scopes" class="chapter done new-chapter" data-progress="2" style="left: 50%;"></a>
+    
+        <a href="./03-types.html" title="Types" class="chapter done new-chapter" data-progress="3" style="left: 57.142857142857146%;"></a>
+    
+        <a href="./04-basic-declarations-and-definitions.html" title="Basic Declarations &amp; Definitions" class="chapter done new-chapter" data-progress="4" style="left: 64.28571428571429%;"></a>
+    
+        <a href="./05-classes-and-objects.html" title="Classes and Objects" class="chapter done new-chapter" data-progress="5" style="left: 71.42857142857143%;"></a>
+    
+        <a href="./06-expressions.html" title="Expressions" class="chapter  new-chapter" data-progress="6" style="left: 78.57142857142857%;"></a>
+    
+        <a href="./07-implicit-parameters-and-views.html" title="Implicit Patterns &amp; Views" class="chapter  new-chapter" data-progress="7" style="left: 85.71428571428571%;"></a>
+    
+        <a href="./08-pattern-matching.html" title="Pattern Matching" class="chapter  new-chapter" data-progress="8" style="left: 92.85714285714286%;"></a>
+    
+        <a href="./09-top-level-definitions.html" title="Top Level Definitions" class="chapter  new-chapter" data-progress="9" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_5">
+                    
+                        <h1 id="5-classes-and-objects">5. Classes and Objects</h1>
+<pre><code class="lang-ebnf">TmplDef          ::= [`case&#39;] `class&#39; ClassDef
+                  |  [`case&#39;] `object&#39; ObjectDef
+                  |  `trait&#39; TraitDef
+</code></pre>
+<p><a href="#class-definitions">Classes</a> and <a href="#object-definitions">objects</a>
+are both defined in terms of <em>templates</em>.</p>
+<h2 id="templates">Templates</h2>
+<pre><code class="lang-ebnf">ClassTemplate   ::=  [EarlyDefs] ClassParents [TemplateBody]
+TraitTemplate   ::=  [EarlyDefs] TraitParents [TemplateBody]
+ClassParents    ::=  Constr {`with&#39; AnnotType}
+TraitParents    ::=  AnnotType {`with&#39; AnnotType}
+TemplateBody    ::=  [nl] `{&#39; [SelfType] TemplateStat {semi TemplateStat} `}&#39;
+SelfType        ::=  id [`:&#39; Type] `=&gt;&#39;
+                 |   this `:&#39; Type `=&gt;&#39;
+</code></pre>
+<p>A template defines the type signature, behavior and initial state of a
+trait or class of objects or of a single object. Templates form part of
+instance creation expressions, class definitions, and object
+definitions.  A template 
+<code>$sc$ with $mt_1$ with $\ldots$ with $mt_n$ { $\mathit{stats}$ }</code> 
+consists of a constructor invocation $sc$
+which defines the template&#39;s <em>superclass</em>, trait references
+<code>$mt_1 , \ldots , mt_n$</code> $(n \geq 0)$, which define the
+template&#39;s <em>traits</em>, and a statement sequence $\mathit{stats}$ which
+contains initialization code and additional member definitions for the
+template.</p>
+<p>Each trait reference $mt_i$ must denote a <a href="#traits">trait</a>.
+By contrast, the superclass constructor $sc$ normally refers to a
+class which is not a trait. It is possible to write a list of
+parents that starts with a trait reference, e.g.
+<code>$mt_1$ with $\ldots$ with $mt_n$</code>. In that case the list
+of parents is implicitly extended to include the supertype of $mt_1$
+as first parent type. The new supertype must have at least one
+constructor that does not take parameters.  In the following, we will
+always assume that this implicit extension has been performed, so that
+the first parent class of a template is a regular superclass
+constructor, not a trait reference.</p>
+<p>The list of parents of a template must be well-formed. This means that
+the class denoted by the superclass constructor $sc$ must be a
+subclass of the superclasses of all the traits $mt_1 , \ldots , mt_n$.
+In other words, the non-trait classes inherited by a template form a
+chain in the inheritance hierarchy which starts with the template&#39;s
+superclass.</p>
+<p>The <em>least proper supertype</em> of a template is the class type or
+<a href="03-types.html#compound-types">compound type</a> consisting of all its parent
+class types. </p>
+<p>The statement sequence $\mathit{stats}$ contains member definitions that
+define new members or overwrite members in the parent classes.  If the
+template forms part of an abstract class or trait definition, the
+statement part $\mathit{stats}$ may also contain declarations of abstract
+members. If the template forms part of a concrete class definition,
+$\mathit{stats}$ may still contain declarations of abstract type members, but
+not of abstract term members.  Furthermore, $\mathit{stats}$ may in any case
+also contain expressions; these are executed in the order they are
+given as part of the initialization of a template.</p>
+<p>The sequence of template statements may be prefixed with a formal
+parameter definition and an arrow, e.g. <code>$x$ =&gt;</code>, or
+<code>$x$:$T$ =&gt;</code>.  If a formal parameter is given, it can be
+used as an alias for the reference <code>this</code> throughout the
+body of the template.<br>If the formal parameter comes with a type $T$, this definition affects
+the <em>self type</em> $S$ of the underlying class or object as follows:  Let $C$ be the type
+of the class or trait or object defining the template.
+If a type $T$ is given for the formal self parameter, $S$
+is the greatest lower bound of $T$ and $C$.
+If no type $T$ is given, $S$ is just $C$.
+Inside the template, the type of <code>this</code> is assumed to be $S$.</p>
+<p>The self type of a class or object must conform to the self types of
+all classes which are inherited by the template $t$. </p>
+<p>A second form of self type annotation reads just 
+<code>this: $S$ =&gt;</code>. It prescribes the type $S$ for <code>this</code>
+without introducing an alias name for it. </p>
+<h6 id="example">Example</h6>
+<p>Consider the following class definitions:</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Base</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Object</span> {</span>}
+<span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Mixin</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Base</span> {</span>}
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">O</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mixin</span> {</span>}
+</code></pre>
+<p>In this case, the definition of <code>O</code> is expanded to:</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">O</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Base</span> <span class="hljs-keyword">with</span> <span class="hljs-title">Mixin</span> {</span>}
+</code></pre>
+<!-- TODO: Make all references to Java generic -->
+
+<p><strong>Inheriting from Java Types</strong> A template may have a Java class as its superclass and Java interfaces as its
+mixins. </p>
+<p><strong>Template Evaluation</strong> Consider a template <code>$sc$ with $mt_1$ with $mt_n$ { $\mathit{stats}$ }</code>.</p>
+<p>If this is the template of a <a href="#traits">trait</a> then its <em>mixin-evaluation</em> 
+consists of an evaluation of the statement sequence $\mathit{stats}$.</p>
+<p>If this is not a template of a trait, then its <em>evaluation</em>
+consists of the following steps.</p>
+<ul>
+<li>First, the superclass constructor $sc$ is 
+<a href="#constructor-invocations">evaluated</a>.</li>
+<li>Then, all base classes in the template&#39;s <a href="#class-linearization">linearization</a>
+up to the template&#39;s superclass denoted by $sc$ are
+mixin-evaluated. Mixin-evaluation happens in reverse order of
+occurrence in the linearization.</li>
+<li>Finally the statement sequence $\mathit{stats}\,$ is evaluated.</li>
+</ul>
+<h6 id="delayed-initializaton">Delayed Initializaton</h6>
+<p>The initialization code of an object or class (but not a trait) that follows 
+the superclass
+constructor invocation and the mixin-evaluation of the template&#39;s base
+classes is passed to a special hook, which is inaccessible from user
+code. Normally, that hook simply executes the code that is passed to
+it. But templates inheriting the <code>scala.DelayedInit</code> trait
+can override the hook by re-implementing the <code>delayedInit</code>
+method, which is defined as follows:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">def</span> delayedInit(body: =&gt; Unit)
+</code></pre>
+<h3 id="constructor-invocations">Constructor Invocations</h3>
+<pre><code class="lang-ebnf">Constr  ::=  AnnotType {`(&#39; [Exprs] `)&#39;}
+</code></pre>
+<p>Constructor invocations define the type, members, and initial state of
+objects created by an instance creation expression, or of parts of an
+object&#39;s definition which are inherited by a class or object
+definition. A constructor invocation is a function application
+<code>$x$.$c$[$\mathit{targs}$]($\mathit{args}_1$)$\ldots$($\mathit{args}_n$)</code>, where $x$ is a 
+<a href="03-types.html#paths">stable identifier</a>, $c$ is a type name which either designates a
+class or defines an alias type for one, $\mathit{targs}$ is a type argument
+list, $\mathit{args}_1 , \ldots , \mathit{args}_n$ are argument lists, and there is a
+constructor of that class which is <a href="06-expressions.html#function-applications">applicable</a>
+to the given arguments. If the constructor invocation uses named or
+default arguments, it is transformed into a block expression using the
+same transformation as described <a href="sec:named-default" target="_blank">here</a>.</p>
+<p>The prefix <code>$x$.</code> can be omitted.  A type argument list
+can be given only if the class $c$ takes type parameters.  Even then
+it can be omitted, in which case a type argument list is synthesized
+using <a href="06-expressions.html#local-type-inference">local type inference</a>. If no explicit
+arguments are given, an empty list <code>()</code> is implicitly supplied.</p>
+<p>An evaluation of a constructor invocation 
+<code>$x$.$c$[$\mathit{targs}$]($\mathit{args}_1$)$\ldots$($\mathit{args}_n$)</code>
+consists of the following steps:</p>
+<ul>
+<li>First, the prefix $x$ is evaluated.</li>
+<li>Then, the arguments $\mathit{args}_1 , \ldots , \mathit{args}_n$ are evaluated from 
+left to right.</li>
+<li>Finally, the class being constructed is initialized by evaluating the
+template of the class referred to by $c$.</li>
+</ul>
+<h3 id="class-linearization">Class Linearization</h3>
+<p>The classes reachable through transitive closure of the direct
+inheritance relation from a class $C$ are called the <em>base classes</em> of $C$.  Because of mixins, the inheritance relationship
+on base classes forms in general a directed acyclic graph. A
+linearization of this graph is defined as follows.</p>
+<h6 id="definition-linearization">Definition: linearization</h6>
+<p>Let $C$ be a class with template
+<code>$C_1$ with ... with $C_n$ { $\mathit{stats}$ }</code>.
+The <em>linearization</em> of $C$, $\mathcal{L}(C)$ is defined as follows:</p>
+<p>$$\mathcal{L}(C) = C, \mathcal{L}(C_n) \; \vec{+} \; \ldots \; \vec{+} \; \mathcal{L}(C_1)$$</p>
+<p>Here $\vec{+}$ denotes concatenation where elements of the right operand
+replace identical elements of the left operand:</p>
+<p>$$
+\begin{array}{lcll}
+{a, A} \;\vec{+}\; B &amp;=&amp; a, (A \;\vec{+}\; B)  &amp;{\bf if} \; a \not\in B \\
+                       &amp;=&amp; A \;\vec{+}\; B       &amp;{\bf if} \; a \in B
+\end{array}
+$$</p>
+<h6 id="example">Example</h6>
+<p>Consider the following class definitions.</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AbsIterator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AnyRef</span> {</span> ... }
+<span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">RichIterator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbsIterator</span> {</span> ... }
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StringIterator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbsIterator</span> {</span> ... }
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Iter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StringIterator</span> <span class="hljs-keyword">with</span> <span class="hljs-title">RichIterator</span> {</span> ... }
+</code></pre>
+<p>Then the linearization of class <code>Iter</code> is</p>
+<pre><code class="lang-scala">{ Iter, RichIterator, StringIterator, AbsIterator, AnyRef, Any }
+</code></pre>
+<p>Note that the linearization of a class refines the inheritance
+relation: if $C$ is a subclass of $D$, then $C$ precedes $D$ in any
+linearization where both $C$ and $D$ occur.
+<a href="#definition-linearization">Linearization</a> also satisfies the property that
+a linearization of a class always contains the linearization of its direct superclass as a suffix.</p>
+<p>For instance, the linearization of <code>StringIterator</code> is</p>
+<pre><code class="lang-scala">{ StringIterator, AbsIterator, AnyRef, Any }
+</code></pre>
+<p>which is a suffix of the linearization of its subclass <code>Iter</code>.
+The same is not true for the linearization of mixins.
+For instance, the linearization of <code>RichIterator</code> is</p>
+<pre><code class="lang-scala">{ RichIterator, AbsIterator, AnyRef, Any }
+</code></pre>
+<p>which is not a suffix of the linearization of <code>Iter</code>.</p>
+<h3 id="class-members">Class Members</h3>
+<p>A class $C$ defined by a template <code>$C_1$ with $\ldots$ with $C_n$ { $\mathit{stats}$ }</code>
+can define members in its statement sequence
+$\mathit{stats}$ and can inherit members from all parent classes.  Scala
+adopts Java and C#&#39;s conventions for static overloading of
+methods. It is thus possible that a class defines and/or inherits
+several methods with the same name.  To decide whether a defined
+member of a class $C$ overrides a member of a parent class, or whether
+the two co-exist as overloaded variants in $C$, Scala uses the
+following definition of <em>matching</em> on members:</p>
+<h6 id="definition-matching">Definition: matching</h6>
+<p>A member definition $M$ <em>matches</em> a member definition $M&#39;$, if $M$
+and $M&#39;$ bind the same name, and one of following holds.</p>
+<ol>
+<li>Neither $M$ nor $M&#39;$ is a method definition.</li>
+<li>$M$ and $M&#39;$ define both monomorphic methods with equivalent argument types.</li>
+<li>$M$ defines a parameterless method and $M&#39;$ defines a method
+with an empty parameter list <code>()</code> or <em>vice versa</em>.</li>
+<li>$M$ and $M&#39;$ define both polymorphic methods with
+equal number of argument types $\overline T$, $\overline T&#39;$
+and equal numbers of type parameters
+$\overline t$, $\overline t&#39;$, say, and  $\overline T&#39; = [\overline t&#39;/\overline t]\overline T$.</li>
+</ol>
+<!--
+every argument type
+$T_i$ of $M$ is equal to the corresponding argument type $T`_i$ of
+$M`$ where every occurrence of a type parameter $t`$ of $M`$ has been replaced by the corresponding type parameter $t$ of $M$.
+-->
+
+<p>Member definitions fall into two categories: concrete and abstract.
+Members of class $C$ are either <em>directly defined</em> (i.e. they appear in
+$C$&#39;s statement sequence $\mathit{stats}$) or they are <em>inherited</em>.  There are two rules
+that determine the set of members of a class, one for each category:</p>
+<p>A <em>concrete member</em> of a class $C$ is any concrete definition $M$ in
+some class $C_i \in \mathcal{L}(C)$, except if there is a preceding class
+$C_j \in \mathcal{L}(C)$ where $j &lt; i$ which directly defines a concrete
+member $M&#39;$ matching $M$.</p>
+<p>An <em>abstract member</em> of a class $C$ is any abstract definition $M$
+in some class $C_i \in \mathcal{L}(C)$, except if $C$ contains already a
+concrete member $M&#39;$ matching $M$, or if there is a preceding class
+$C_j \in \mathcal{L}(C)$ where $j &lt; i$ which directly defines an abstract
+member $M&#39;$ matching $M$.</p>
+<p>This definition also determines the <a href="#overriding">overriding</a> relationships
+between matching members of a class $C$ and its parents.<br>First, a concrete definition always overrides an abstract definition. 
+Second, for definitions $M$ and $M$&#39; which are both concrete or both abstract,
+$M$ overrides $M&#39;$ if $M$ appears in a class that precedes (in the
+linearization of $C$) the class in which $M&#39;$ is defined.</p>
+<p>It is an error if a template directly defines two matching members. It
+is also an error if a template contains two members (directly defined
+or inherited) with the same name and the same <a href="03-types.html#type-erasure">erased type</a>.
+Finally, a template is not allowed to contain two methods (directly
+defined or inherited) with the same name which both define default arguments.</p>
+<h6 id="example">Example</h6>
+<p>Consider the trait definitions:</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">A</span> {</span> <span class="hljs-keyword">def</span> f: Int }
+<span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">A</span> {</span> <span class="hljs-keyword">def</span> f: Int = <span class="hljs-number">1</span> ; <span class="hljs-keyword">def</span> g: Int = <span class="hljs-number">2</span> ; <span class="hljs-keyword">def</span> h: Int = <span class="hljs-number">3</span> }
+<span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">C</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">A</span> {</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">def</span> f: Int = <span class="hljs-number">4</span> ; <span class="hljs-keyword">def</span> g: Int }
+<span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">D</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">B</span> <span class="hljs-keyword">with</span> <span class="hljs-title">C</span> {</span> <span class="hljs-keyword">def</span> h: Int }
+</code></pre>
+<p>Then trait <code>D</code> has a directly defined abstract member <code>h</code>. It
+inherits member <code>f</code> from trait <code>C</code> and member <code>g</code> from
+trait <code>B</code>.</p>
+<h3 id="overriding">Overriding</h3>
+<!-- TODO: Explain that classes cannot override each other -->
+
+<p>A member $M$ of class $C$ that <a href="#class-members">matches</a> 
+a non-private member $M&#39;$ of a
+base class of $C$ is said to <em>override</em> that member.  In this case
+the binding of the overriding member $M$ must <a href="03-types.html#conformance">subsume</a>
+the binding of the overridden member $M&#39;$.
+Furthermore, the following restrictions on modifiers apply to $M$ and
+$M&#39;$:</p>
+<ul>
+<li>$M&#39;$ must not be labeled <code>final</code>.</li>
+<li>$M$ must not be <a href="#modifiers"><code>private</code></a>.</li>
+<li>If $M$ is labeled <code>private[$C$]</code> for some enclosing class or package $C$,
+then $M&#39;$ must be labeled <code>private[$C&#39;$]</code> for some class or package $C&#39;$ where
+$C&#39;$ equals $C$ or $C&#39;$ is contained in $C$.<!-- TODO: check whether this is accurate --></li>
+<li>If $M$ is labeled <code>protected</code>, then $M&#39;$ must also be
+labeled <code>protected</code>.</li>
+<li>If $M&#39;$ is not an abstract member, then $M$ must be labeled <code>override</code>.
+Furthermore, one of two possibilities must hold:<ul>
+<li>either $M$ is defined in a subclass of the class where is $M&#39;$ is defined, </li>
+<li>or both $M$ and $M&#39;$ override a third member $M&#39;&#39;$ which is defined
+in a base class of both the classes containing $M$ and $M&#39;$ </li>
+</ul>
+</li>
+<li>If $M&#39;$ is <a href="#modifiers">incomplete</a> in $C$ then $M$ must be
+labeled <code>abstract override</code>.</li>
+<li>If $M$ and $M&#39;$ are both concrete value definitions, then either none
+of them is marked <code>lazy</code> or both must be marked <code>lazy</code>.</li>
+</ul>
+<p>A stable member can only be overridden by a stable member.
+For example, this is not allowed:</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">X</span> {</span> <span class="hljs-keyword">val</span> stable = <span class="hljs-number">1</span>}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Y</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">X</span> {</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">var</span> stable = <span class="hljs-number">1</span> } <span class="hljs-comment">// error</span>
+</code></pre>
+<p>Another restriction applies to abstract type members: An abstract type
+member with a <a href="03-types.html#volatile-types">volatile type</a> as its upper
+bound may not override an abstract type member which does not have a
+volatile upper bound.</p>
+<p>A special rule concerns parameterless methods. If a parameterless
+method defined as <code>def $f$: $T$ = ...</code> or <code>def $f$ = ...</code> overrides a method of
+type $()T&#39;$ which has an empty parameter list, then $f$ is also
+assumed to have an empty parameter list.</p>
+<p>An overriding method inherits all default arguments from the definition
+in the superclass. By specifying default arguments in the overriding method
+it is possible to add new defaults (if the corresponding parameter in the
+superclass does not have a default) or to override the defaults of the
+superclass (otherwise).</p>
+<h3 id="example">Example</h3>
+<p>Consider the definitions:</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Root</span> {</span> <span class="hljs-keyword">type</span> T &lt;: Root }
+<span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">A</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Root</span> {</span> <span class="hljs-keyword">type</span> T &lt;: A }
+<span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">B</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Root</span> {</span> <span class="hljs-keyword">type</span> T &lt;: B }
+<span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">C</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">A</span> <span class="hljs-keyword">with</span> <span class="hljs-title">B</span></span>
+</code></pre>
+<p>Then the class definition <code>C</code> is not well-formed because the
+binding of <code>T</code> in <code>C</code> is
+<code>type T &lt;: B</code>,
+which fails to subsume the binding <code>type T &lt;: A</code> of <code>T</code>
+in type <code>A</code>. The problem can be solved by adding an overriding
+definition of type <code>T</code> in class <code>C</code>:</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">A</span> <span class="hljs-keyword">with</span> <span class="hljs-title">B</span> {</span> <span class="hljs-keyword">type</span> T &lt;: C }
+</code></pre>
+<h3 id="inheritance-closure">Inheritance Closure</h3>
+<p>Let $C$ be a class type. The <em>inheritance closure</em> of $C$ is the
+smallest set $\mathscr{S}$ of types such that</p>
+<ul>
+<li>If $T$ is in $\mathscr{S}$, then every type $T&#39;$ which forms syntactically
+a part of $T$ is also in $\mathscr{S}$.</li>
+<li>If $T$ is a class type in $\mathscr{S}$, then all <a href="#templates">parents</a>
+of $T$ are also in $\mathscr{S}$.</li>
+</ul>
+<p>It is a static error if the inheritance closure of a class type
+consists of an infinite number of types. (This restriction is
+necessary to make subtyping decidable[^kennedy]).</p>
+<p>[^kennedy]: Kennedy, Pierce. <a href="http://research.microsoft.com/pubs/64041/fool2007.pdf" target="_blank">On Decidability of Nominal Subtyping with Variance.</a> in FOOL 2007</p>
+<h3 id="early-definitions">Early Definitions</h3>
+<pre><code class="lang-ebnf">EarlyDefs         ::= `{&#39; [EarlyDef {semi EarlyDef}] `}&#39; `with&#39;
+EarlyDef          ::=  {Annotation} {Modifier} PatVarDef
+</code></pre>
+<p>A template may start with an <em>early field definition</em> clause,
+which serves to define certain field values before the supertype
+constructor is called. In a template</p>
+<pre><code class="lang-scala">{ <span class="hljs-keyword">val</span> $p_1$: $T_1$ = $e_1$
+  ...
+  <span class="hljs-keyword">val</span> $p_n$: $T_n$ = $e_n$
+} <span class="hljs-keyword">with</span> $sc$ <span class="hljs-keyword">with</span> $mt_1$ <span class="hljs-keyword">with</span> $mt_n$ { $\mathit{stats}$ }
+</code></pre>
+<p>The initial pattern definitions of $p<em>1 , \ldots , p_n$ are called
+_early definitions</em>. They define fields 
+which form part of the template. Every early definition must define
+at least one variable. </p>
+<p>An early definition is type-checked and evaluated in the scope which
+is in effect just before the template being defined, augmented by any
+type parameters of the enclosing class and by any early definitions
+preceding the one being defined. In particular, any reference to
+<code>this</code> in the right-hand side of an early definition refers
+to the identity of <code>this</code> just outside the template. Consequently, it
+is impossible that an early definition refers to the object being
+constructed by the template, or refers to one of its fields and
+methods, except for any other preceding early definition in the same
+section. Furthermore, references to preceding early definitions
+always refer to the value that&#39;s defined there, and do not take into account
+overriding definitions. In other words, a block of early definitions
+is evaluated exactly as if it was a local bock containing a number of value
+definitions.</p>
+<p>Early definitions are evaluated in the order they are being defined
+before the superclass constructor of the template is called.</p>
+<h6 id="example">Example</h6>
+<p>Early definitions are particularly useful for
+traits, which do not have normal constructor parameters. Example:</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Greeting</span> {</span>
+  <span class="hljs-keyword">val</span> name: String
+  <span class="hljs-keyword">val</span> msg = <span class="hljs-string">"How are you, "</span>+name
+}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> <span class="hljs-keyword">extends</span> {</span>
+  <span class="hljs-keyword">val</span> name = <span class="hljs-string">"Bob"</span>
+} <span class="hljs-keyword">with</span> Greeting {
+  println(msg)
+}
+</code></pre>
+<p>In the code above, the field <code>name</code> is initialized before the
+constructor of <code>Greeting</code> is called. Therefore, field <code>msg</code> in
+class <code>Greeting</code> is properly initialized to <code>&quot;How are you, Bob&quot;</code>.</p>
+<p>If <code>name</code> had been initialized instead in <code>C</code>&#39;s normal class
+body, it would be initialized after the constructor of
+<code>Greeting</code>. In that case, <code>msg</code> would be initialized to
+<code>&quot;How are you, &lt;null&gt;&quot;</code>.</p>
+<h2 id="modifiers">Modifiers</h2>
+<pre><code class="lang-ebnf">Modifier          ::=  LocalModifier 
+                    |  AccessModifier
+                    |  `override&#39;
+LocalModifier     ::=  `abstract&#39;
+                    |  `final&#39;
+                    |  `sealed&#39;
+                    |  `implicit&#39;
+                    |  `lazy&#39;
+AccessModifier    ::=  (`private&#39; | `protected&#39;) [AccessQualifier]
+AccessQualifier   ::=  `[&#39; (id | `this&#39;) `]&#39;
+</code></pre>
+<p>Member definitions may be preceded by modifiers which affect the
+accessibility and usage of the identifiers bound by them.  If several
+modifiers are given, their order does not matter, but the same
+modifier may not occur more than once.  Modifiers preceding a repeated
+definition apply to all constituent definitions.  The rules governing
+the validity and meaning of a modifier are as follows.</p>
+<h3 id="-private-"><code>private</code></h3>
+<p>The <code>private</code> modifier can be used with any definition or
+declaration in a template.  Such members can be accessed only from
+within the directly enclosing template and its companion module or
+<a href="#object-definitions">companion class</a>. They
+are not inherited by subclasses and they may not override definitions
+in parent classes.</p>
+<p>The modifier can be <em>qualified</em> with an identifier $C$ (e.g.
+<code>private[$C$]</code>) that must denote a class or package
+enclosing the definition.  Members labeled with such a modifier are
+accessible respectively only from code inside the package $C$ or only
+from code inside the class $C$ and its
+<a href="#object-definitions">companion module</a>.</p>
+<p>An different form of qualification is <code>private[this]</code>. A member
+$M$ marked with this modifier is called <em>object-protected</em>; it can be accessed only from within
+the object in which it is defined. That is, a selection $p.M$ is only
+legal if the prefix is <code>this</code> or <code>$O$.this</code>, for some
+class $O$ enclosing the reference. In addition, the restrictions for
+unqualified <code>private</code> apply.</p>
+<p>Members marked private without a qualifier are called <em>class-private</em>,
+whereas members labeled with <code>private[this]</code>
+are called <em>object-private</em>.  A member <em>is private</em> if it is
+either class-private or object-private, but not if it is marked
+<code>private[$C$]</code> where $C$ is an identifier; in the latter
+case the member is called <em>qualified private</em>.</p>
+<p>Class-private or object-private members may not be abstract, and may
+not have <code>protected</code> or <code>override</code> modifiers.</p>
+<h4 id="-protected-"><code>protected</code></h4>
+<p>The <code>protected</code> modifier applies to class member definitions.
+Protected members of a class can be accessed from within</p>
+<ul>
+<li>the template of the defining class,</li>
+<li>all templates that have the defining class as a base class,</li>
+<li>the companion module of any of those classes.</li>
+</ul>
+<p>A <code>protected</code> modifier can be qualified with an
+identifier $C$ (e.g.  <code>protected[$C$]</code>) that must denote a
+class or package enclosing the definition.  Members labeled with such
+a modifier are also accessible respectively from all code inside the
+package $C$ or from all code inside the class $C$ and its
+<a href="#object-definitions">companion module</a>.</p>
+<p>A protected identifier $x$ may be used as a member name in a selection
+<code>$r$.$x$</code> only if one of the following applies:</p>
+<ul>
+<li>The access is within the template defining the member, or, if
+a qualification $C$ is given, inside the package $C$,
+or the class $C$, or its companion module, or</li>
+<li>$r$ is one of the reserved words <code>this</code> and
+<code>super</code>, or</li>
+<li>$r$&#39;s type conforms to a type-instance of the
+class which contains the access.</li>
+</ul>
+<p>A different form of qualification is <code>protected[this]</code>. A member
+$M$ marked with this modifier is called <em>object-protected</em>; it can be accessed only from within
+the object in which it is defined. That is, a selection $p.M$ is only
+legal if the prefix is <code>this</code> or <code>$O$.this</code>, for some
+class $O$ enclosing the reference. In addition, the restrictions for
+unqualified <code>protected</code> apply.</p>
+<h4 id="-override-"><code>override</code></h4>
+<p>The <code>override</code> modifier applies to class member definitions or declarations.
+It is mandatory for member definitions or declarations that override some
+other concrete member definition in a parent class. If an <code>override</code>
+modifier is given, there must be at least one overridden member
+definition or declaration (either concrete or abstract).</p>
+<h4 id="-abstract-override-"><code>abstract override</code></h4>
+<p>The <code>override</code> modifier has an additional significance when
+combined with the <code>abstract</code> modifier.  That modifier combination
+is only allowed for value members of traits.</p>
+<p>We call a member $M$ of a template <em>incomplete</em> if it is either
+abstract (i.e. defined by a declaration), or it is labeled
+<code>abstract</code> and <code>override</code> and
+every member overridden by $M$ is again incomplete.</p>
+<p>Note that the <code>abstract override</code> modifier combination does not
+influence the concept whether a member is concrete or abstract. A
+member is <em>abstract</em> if only a declaration is given for it;
+it is <em>concrete</em> if a full definition is given.</p>
+<h4 id="-abstract-"><code>abstract</code></h4>
+<p>The <code>abstract</code> modifier is used in class definitions. It is
+redundant for traits, and mandatory for all other classes which have
+incomplete members.  Abstract classes cannot be
+<a href="06-expressions.html#instance-creation-expressions">instantiated</a> with a constructor invocation
+unless followed by mixins and/or a refinement which override all
+incomplete members of the class. Only abstract classes and traits can have
+abstract term members.</p>
+<p>The <code>abstract</code> modifier can also be used in conjunction with
+<code>override</code> for class member definitions. In that case the
+previous discussion applies.</p>
+<h4 id="-final-"><code>final</code></h4>
+<p>The <code>final</code> modifier applies to class member definitions and to
+class definitions. A <code>final</code> class member definition may not be
+overridden in subclasses. A <code>final</code> class may not be inherited by
+a template. <code>final</code> is redundant for object definitions.  Members
+of final classes or objects are implicitly also final, so the
+<code>final</code> modifier is generally redundant for them, too. Note, however, that
+<a href="04-basic-declarations-and-definitions.html#value-declarations-and-definitions">constant value definitions</a> do require
+an explicit <code>final</code> modifier, even if they are defined in a final class or
+object. <code>final</code> may not be applied to incomplete members, and it may not be
+combined in one modifier list with <code>sealed</code>.</p>
+<h4 id="-sealed-"><code>sealed</code></h4>
+<p>The <code>sealed</code> modifier applies to class definitions. A
+<code>sealed</code> class may not be directly inherited, except if the inheriting
+template is defined in the same source file as the inherited class.
+However, subclasses of a sealed class can be inherited anywhere.</p>
+<h4 id="-lazy-"><code>lazy</code></h4>
+<p>The <code>lazy</code> modifier applies to value definitions. A <code>lazy</code>
+value is initialized the first time it is accessed (which might never
+happen at all). Attempting to access a lazy value during its
+initialization might lead to looping behavior. If an exception is
+thrown during initialization, the value is considered uninitialized,
+and a later access will retry to evaluate its right hand side.</p>
+<h6 id="example">Example</h6>
+<p>The following code illustrates the use of qualified private:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> outerpkg.innerpkg
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Outer</span> {</span>
+  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Inner</span> {</span>
+    <span class="hljs-keyword">private</span>[Outer] <span class="hljs-keyword">def</span> f()
+    <span class="hljs-keyword">private</span>[innerpkg] <span class="hljs-keyword">def</span> g()
+    <span class="hljs-keyword">private</span>[outerpkg] <span class="hljs-keyword">def</span> h()
+  }
+}
+</code></pre>
+<p>Here, accesses to the method <code>f</code> can appear anywhere within
+<code>OuterClass</code>, but not outside it. Accesses to method
+<code>g</code> can appear anywhere within the package
+<code>outerpkg.innerpkg</code>, as would be the case for
+package-private methods in Java. Finally, accesses to method
+<code>h</code> can appear anywhere within package <code>outerpkg</code>,
+including packages contained in it.</p>
+<h6 id="example">Example</h6>
+<p>A useful idiom to prevent clients of a class from
+constructing new instances of that class is to declare the class
+<code>abstract</code> and <code>sealed</code>:</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">m</span> {</span>
+  <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">sealed</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> <span class="hljs-params">(x: Int)</span> {</span>
+    <span class="hljs-keyword">def</span> nextC = <span class="hljs-keyword">new</span> C(x + <span class="hljs-number">1</span>) {}
+  }
+  <span class="hljs-keyword">val</span> empty = <span class="hljs-keyword">new</span> C(<span class="hljs-number">0</span>) {}
+}
+</code></pre>
+<p>For instance, in the code above clients can create instances of class
+<code>m.C</code> only by calling the <code>nextC</code> method of an existing <code>m.C</code>
+object; it is not possible for clients to create objects of class
+<code>m.C</code> directly. Indeed the following two lines are both in error:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">new</span> m.C(<span class="hljs-number">0</span>)    <span class="hljs-comment">// **** error: C is abstract, so it cannot be instantiated.</span>
+<span class="hljs-keyword">new</span> m.C(<span class="hljs-number">0</span>) {} <span class="hljs-comment">// **** error: illegal inheritance from sealed class.</span>
+</code></pre>
+<p>A similar access restriction can be achieved by marking the primary
+constructor <code>private</code> (<a href="#example-private-constructor">example</a>).</p>
+<h2 id="class-definitions">Class Definitions</h2>
+<pre><code class="lang-ebnf">TmplDef           ::=  `class&#39; ClassDef 
+ClassDef          ::=  id [TypeParamClause] {Annotation} 
+                       [AccessModifier] ClassParamClauses ClassTemplateOpt 
+ClassParamClauses ::=  {ClassParamClause} 
+                       [[nl] `(&#39; implicit ClassParams `)&#39;]
+ClassParamClause  ::=  [nl] `(&#39; [ClassParams] &#39;)&#39;
+ClassParams       ::=  ClassParam {`,&#39; ClassParam}
+ClassParam        ::=  {Annotation} {Modifier} [(`val&#39; | `var&#39;)]
+                       id [`:&#39; ParamType] [`=&#39; Expr]
+ClassTemplateOpt  ::=  `extends&#39; ClassTemplate | [[`extends&#39;] TemplateBody]
+</code></pre>
+<p>The most general form of class definition is </p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">class</span> $<span class="hljs-title">c</span>$[$\<span class="hljs-title">mathit</span>{</span>tps}\,$] $as$ $m$($\mathit{ps}_1$)$\ldots$($\mathit{ps}_n$) <span class="hljs-keyword">extends</span> $t$    $\gap(n \geq <span class="hljs-number">0</span>)$.
+</code></pre>
+<p>Here,</p>
+<ul>
+<li>$c$ is the name of the class to be defined.</li>
+<li>$\mathit{tps}$ is a non-empty list of type parameters of the class
+being defined.  The scope of a type parameter is the whole class
+definition including the type parameter section itself.  It is
+illegal to define two type parameters with the same name.  The type
+parameter section <code>[$\mathit{tps}\,$]</code> may be omitted. A class with a type
+parameter section is called <em>polymorphic</em>, otherwise it is called
+<em>monomorphic</em>.</li>
+<li>$as$ is a possibly empty sequence of 
+<a href="11-user-defined-annotations.html#user-defined-annotations">annotations</a>.
+If any annotations are given, they apply to the primary constructor of the 
+class.</li>
+<li>$m$ is an <a href="#modifiers">access modifier</a> such as
+<code>private</code> or <code>protected</code>, possibly with a qualification.
+If such an access modifier is given it applies to the primary constructor of the class.</li>
+<li><p>$(\mathit{ps}<em>1)\ldots(\mathit{ps}_n)$ are formal value parameter clauses for
+the _primary constructor</em> of the class. The scope of a formal value parameter includes
+all subsequent parameter sections and the template $t$. However, a formal 
+value parameter may not form part of the types of any of the parent classes or members of the class template $t$.
+It is illegal to define two formal value parameters with the same name.</p>
+<p>If no formal parameter sections are given, an empty parameter section <code>()</code> is assumed.</p>
+<p>If a formal parameter declaration $x: T$ is preceded by a <code>val</code>
+or <code>var</code> keyword, an accessor (getter) <a href="04-basic-declarations-and-definitions.html#variable-declarations-and-definitions">definition</a>
+for this parameter is implicitly added to the class.</p>
+<p>The getter introduces a value member $x$ of class $c$ that is defined as an alias of the parameter.
+If the introducing keyword is <code>var</code>, a setter accessor <a href="04-basic-declarations-and-definitions.html#variable-declarations-and-definitions"><code>$x$_=</code></a> is also implicitly added to the class.
+In invocation of that setter  <code>$x$_=($e$)</code> changes the value of the parameter to the result of evaluating $e$.</p>
+<p>The formal parameter declaration may contain modifiers, which then carry over to the accessor definition(s).
+When access modifiers are given for a parameter, but no <code>val</code> or <code>var</code> keyword, <code>val</code> is assumed.
+A formal parameter prefixed by <code>val</code> or <code>var</code> may not at the same time be a <a href="04-basic-declarations-and-definitions.html#by-name-parameters">call-by-name parameter</a>.</p>
+</li>
+<li><p>$t$ is a <a href="#templates">template</a> of the form</p>
+<pre><code>$sc$ with $mt_1$ with $\ldots$ with $mt_m$ { $\mathit{stats}$ } // $m \geq 0$
+</code></pre><p>which defines the base classes, behavior and initial state of objects of
+the class. The extends clause 
+<code>extends $sc$ with $mt_1$ with $\ldots$ with $mt_m$</code> 
+can be omitted, in which case
+<code>extends scala.AnyRef</code> is assumed.  The class body
+<code>{ $\mathit{stats}$ }</code> may also be omitted, in which case the empty body
+<code>{}</code> is assumed.</p>
+</li>
+</ul>
+<p>This class definition defines a type <code>$c$[$\mathit{tps}\,$]</code> and a constructor
+which when applied to parameters conforming to types $\mathit{ps}$
+initializes instances of type <code>$c$[$\mathit{tps}\,$]</code> by evaluating the template
+$t$.</p>
+<h3 id="example">Example</h3>
+<p>The following example illustrates <code>val</code> and <code>var</code> parameters of a class <code>C</code>:</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span><span class="hljs-params">(x: Int, val y: String, var z: List[String])</span></span>
+<span class="hljs-keyword">val</span> c = <span class="hljs-keyword">new</span> C(<span class="hljs-number">1</span>, <span class="hljs-string">"abc"</span>, List())
+c.z = c.y :: c.z
+</code></pre>
+<p>The following class can be created only from its companion module.</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Sensitive</span> {</span>
+  <span class="hljs-keyword">def</span> makeSensitive(credentials: Certificate): Sensitive =
+    <span class="hljs-keyword">if</span> (credentials == Admin) <span class="hljs-keyword">new</span> Sensitive()
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> SecurityViolationException
+}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Sensitive</span> <span class="hljs-title">private</span> <span class="hljs-params">()</span> {</span>
+  ...
+}
+</code></pre>
+<h3 id="constructor-definitions">Constructor Definitions</h3>
+<pre><code class="lang-ebnf">FunDef         ::= `this&#39; ParamClause ParamClauses 
+                   (`=&#39; ConstrExpr | [nl] ConstrBlock)
+ConstrExpr     ::= SelfInvocation
+                |  ConstrBlock
+ConstrBlock    ::= `{&#39; SelfInvocation {semi BlockStat} `}&#39;
+SelfInvocation ::= `this&#39; ArgumentExprs {ArgumentExprs}
+</code></pre>
+<p>A class may have additional constructors besides the primary
+constructor.  These are defined by constructor definitions of the form
+<code>def this($\mathit{ps}_1$)$\ldots$($\mathit{ps}_n$) = $e$</code>.  Such a
+definition introduces an additional constructor for the enclosing
+class, with parameters as given in the formal parameter lists $\mathit{ps}_1
+, \ldots , \mathit{ps}_n$, and whose evaluation is defined by the constructor
+expression $e$.  The scope of each formal parameter is the subsequent
+parameter sections and the constructor
+expression $e$.  A constructor expression is either a self constructor
+invocation <code>this($\mathit{args}_1$)$\ldots$($\mathit{args}_n$)</code> or a block
+which begins with a self constructor invocation. The self constructor
+invocation must construct a generic instance of the class. I.e. if the
+class in question has name $C$ and type parameters
+<code>[$\mathit{tps}\,$]</code>, then a self constructor invocation must
+generate an instance of <code>$C$[$\mathit{tps}\,$]</code>; it is not permitted
+to instantiate formal type parameters.</p>
+<p>The signature and the self constructor invocation of a constructor
+definition are type-checked and evaluated in the scope which is in
+effect at the point of the enclosing class definition, augmented by
+any type parameters of the enclosing class and by any 
+<a href="#early-definitions">early definitions</a> of the enclosing template.
+The rest of the
+constructor expression is type-checked and evaluated as a function
+body in the current class.</p>
+<p>If there are auxiliary constructors of a class $C$, they form together
+with $C$&#39;s primary <a href="#class-definitions">constructor</a>
+an overloaded constructor
+definition. The usual rules for 
+<a href="06-expressions.html#overloading-resolution">overloading resolution</a>
+apply for constructor invocations of $C$,
+including for the self constructor invocations in the constructor
+expressions themselves. However, unlike other methods, constructors
+are never inherited.  To prevent infinite cycles of constructor
+invocations, there is the restriction that every self constructor
+invocation must refer to a constructor definition which precedes it
+(i.e. it must refer to either a preceding auxiliary constructor or the
+primary constructor of the class).  </p>
+<h6 id="example">Example</h6>
+<p>Consider the class definition</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LinkedList</span>[<span class="hljs-title">A</span>]<span class="hljs-params">()</span> {</span>
+  <span class="hljs-keyword">var</span> head = _
+  <span class="hljs-keyword">var</span> tail = <span class="hljs-keyword">null</span>
+  <span class="hljs-keyword">def</span> isEmpty = tail != <span class="hljs-keyword">null</span>
+  <span class="hljs-keyword">def</span> <span class="hljs-keyword">this</span>(head: A) = { <span class="hljs-keyword">this</span>(); <span class="hljs-keyword">this</span>.head = head }
+  <span class="hljs-keyword">def</span> <span class="hljs-keyword">this</span>(head: A, tail: List[A]) = { <span class="hljs-keyword">this</span>(head); <span class="hljs-keyword">this</span>.tail = tail }
+}
+</code></pre>
+<p>This defines a class <code>LinkedList</code> with three constructors.  The
+second constructor constructs an singleton list, while the
+third one constructs a list with a given head and tail.</p>
+<h2 id="case-classes">Case Classes</h2>
+<pre><code class="lang-ebnf">TmplDef  ::=  `case&#39; `class&#39; ClassDef
+</code></pre>
+<p>If a class definition is prefixed with <code>case</code>, the class is said
+to be a <em>case class</em>.  </p>
+<p>The formal parameters in the first parameter section of a case class
+are called <em>elements</em>; they are treated
+specially. First, the value of such a parameter can be extracted as a
+field of a constructor pattern. Second, a <code>val</code> prefix is
+implicitly added to such a parameter, unless the parameter carries
+already a <code>val</code> or <code>var</code> modifier. Hence, an accessor
+definition for the parameter is <a href="#class-definitions">generated</a>.</p>
+<p>A case class definition of <code>$c$[$\mathit{tps}\,$]($\mathit{ps}_1\,$)$\ldots$($\mathit{ps}_n$)</code> with type
+parameters $\mathit{tps}$ and value parameters $\mathit{ps}$ implicitly
+generates an <a href="08-pattern-matching.html#extractor-patterns">extractor object</a> which is
+defined as follows:</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">object</span> $<span class="hljs-title">c</span>$ {</span>
+  <span class="hljs-keyword">def</span> apply[$\mathit{tps}\,$]($\mathit{ps}_1\,$)$\ldots$($\mathit{ps}_n$): $c$[$\mathit{tps}\,$] = <span class="hljs-keyword">new</span> $c$[$\mathit{Ts}\,$]($\mathit{xs}_1\,$)$\ldots$($\mathit{xs}_n$)
+  <span class="hljs-keyword">def</span> unapply[$\mathit{tps}\,$]($x$: $c$[$\mathit{tps}\,$]) =
+    <span class="hljs-keyword">if</span> (x eq <span class="hljs-keyword">null</span>) scala.None
+    <span class="hljs-keyword">else</span> scala.Some($x.\mathit{xs}_{<span class="hljs-number">11</span>}, \ldots , x.\mathit{xs}_{<span class="hljs-number">1</span>k}$)
+}
+</code></pre>
+<p>Here, $\mathit{Ts}$ stands for the vector of types defined in the type
+parameter section $\mathit{tps}$,
+each $\mathit{xs}<em>i$ denotes the parameter names of the parameter
+section $\mathit{ps}_i$, and
+$\mathit{xs}</em>{11}, \ldots , \mathit{xs}_{1k}$ denote the names of all parameters
+in the first parameter section $\mathit{xs}_1$.
+If a type parameter section is missing in the
+class, it is also missing in the <code>apply</code> and
+<code>unapply</code> methods.
+The definition of <code>apply</code> is omitted if class $c$ is
+<code>abstract</code>.</p>
+<p>If the case class definition contains an empty value parameter list, the
+<code>unapply</code> method returns a <code>Boolean</code> instead of an <code>Option</code> type and
+is defined as follows:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">def</span> unapply[$\mathit{tps}\,$]($x$: $c$[$\mathit{tps}\,$]) = x ne <span class="hljs-keyword">null</span>
+</code></pre>
+<p>The name of the <code>unapply</code> method is changed to <code>unapplySeq</code> if the first
+parameter section $\mathit{ps}_1$ of $c$ ends in a 
+<a href="04-basic-declarations-and-definitions.html#repeated-parameters">repeated parameter</a>.
+If a companion object $c$ exists already, no new object is created,
+but the <code>apply</code> and <code>unapply</code> methods are added to the existing
+object instead.</p>
+<p>A method named <code>copy</code> is implicitly added to every case class unless the
+class already has a member (directly defined or inherited) with that name, or the
+class has a repeated parameter. The method is defined as follows:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">def</span> copy[$\mathit{tps}\,$]($\mathit{ps}<span class="hljs-string">'_1\,$)$\ldots$($\mathit{ps}'</span>_n$): $c$[$\mathit{tps}\,$] = <span class="hljs-keyword">new</span> $c$[$\mathit{Ts}\,$]($\mathit{xs}_1\,$)$\ldots$($\mathit{xs}_n$)
+</code></pre>
+<p>Again, <code>$\mathit{Ts}$</code> stands for the vector of types defined in the type parameter section <code>$\mathit{tps}$</code>
+and each <code>$\xs_i$</code> denotes the parameter names of the parameter section <code>$\ps&#39;_i$</code>. The value
+parameters <code>$\ps&#39;_{1,j}$</code> of first parameter list have the form <code>$x_{1,j}$:$T_{1,j}$=this.$x_{1,j}$</code>,
+the other parameters <code>$\ps&#39;_{i,j}$</code> of the <code>copy</code> method are defined as <code>$x_{i,j}$:$T_{i,j}$</code>.
+In all cases <code>$x_{i,j}$</code> and <code>$T_{i,j}$</code> refer to the name and type of the corresponding class parameter
+<code>$\mathit{ps}_{i,j}$</code>.</p>
+<p>Every case class implicitly overrides some method definitions of class
+<a href="12-the-scala-standard-library.html#root-classes"><code>scala.AnyRef</code></a> unless a definition of the same
+method is already given in the case class itself or a concrete
+definition of the same method is given in some base class of the case
+class different from <code>AnyRef</code>. In particular:</p>
+<ul>
+<li>Method <code>equals: (Any)Boolean</code> is structural equality, where two
+instances are equal if they both belong to the case class in question and they
+have equal (with respect to <code>equals</code>) constructor arguments (restricted to the class&#39;s <em>elements</em>, i.e., the first parameter section).</li>
+<li>Method <code>hashCode: Int</code> computes a hash-code. If the hashCode methods
+of the data structure members map equal (with respect to equals)
+values to equal hash-codes, then the case class hashCode method does
+too.</li>
+<li>Method <code>toString: String</code> returns a string representation which
+contains the name of the class and its elements.</li>
+</ul>
+<h6 id="example">Example</h6>
+<p>Here is the definition of abstract syntax for lambda calculus:</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Expr</span></span>
+<span class="hljs-class"><span class="hljs-keyword">case</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Var</span>   <span class="hljs-params">(x: String)</span>          <span class="hljs-keyword">extends</span> <span class="hljs-title">Expr</span></span>
+<span class="hljs-class"><span class="hljs-keyword">case</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Apply</span> <span class="hljs-params">(f: Expr, e: Expr)</span>   <span class="hljs-keyword">extends</span> <span class="hljs-title">Expr</span></span>
+<span class="hljs-class"><span class="hljs-keyword">case</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Lambda</span><span class="hljs-params">(x: String, e: Expr)</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Expr</span></span>
+</code></pre>
+<p>This defines a class <code>Expr</code> with case classes
+<code>Var</code>, <code>Apply</code> and <code>Lambda</code>. A call-by-value evaluator
+for lambda expressions could then be written as follows.</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">type</span> Env = String =&gt; Value
+<span class="hljs-class"><span class="hljs-keyword">case</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Value</span><span class="hljs-params">(e: Expr, env: Env)</span></span>
+
+<span class="hljs-keyword">def</span> eval(e: Expr, env: Env): Value = e <span class="hljs-keyword">match</span> {
+  <span class="hljs-keyword">case</span> Var (x) =&gt;
+    env(x)
+  <span class="hljs-keyword">case</span> Apply(f, g) =&gt;
+    <span class="hljs-keyword">val</span> Value(Lambda (x, e1), env1) = eval(f, env)
+    <span class="hljs-keyword">val</span> v = eval(g, env)
+    eval (e1, (y =&gt; <span class="hljs-keyword">if</span> (y == x) v <span class="hljs-keyword">else</span> env1(y)))
+  <span class="hljs-keyword">case</span> Lambda(_, _) =&gt;
+    Value(e, env)
+}
+</code></pre>
+<p>It is possible to define further case classes that extend type
+<code>Expr</code> in other parts of the program, for instance</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">case</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Number</span><span class="hljs-params">(x: Int)</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Expr</span></span>
+</code></pre>
+<p>This form of extensibility can be excluded by declaring the base class
+<code>Expr</code> <code>sealed</code>; in this case, all classes that
+directly extend <code>Expr</code> must be in the same source file as
+<code>Expr</code>.</p>
+<h3 id="traits">Traits</h3>
+<pre><code class="lang-ebnf">TmplDef          ::=  `trait&#39; TraitDef
+TraitDef         ::=  id [TypeParamClause] TraitTemplateOpt
+TraitTemplateOpt ::=  `extends&#39; TraitTemplate | [[`extends&#39;] TemplateBody]
+</code></pre>
+<p>A trait is a class that is meant to be added to some other class
+as a mixin. Unlike normal classes, traits cannot have
+constructor parameters. Furthermore, no constructor arguments are
+passed to the superclass of the trait. This is not necessary as traits are
+initialized after the superclass is initialized.</p>
+<p>Assume a trait $D$ defines some aspect of an instance $x$ of type $C$ (i.e. $D$ is a base class of $C$).
+Then the <em>actual supertype</em> of $D$ in $x$ is the compound type consisting of all the
+base classes in $\mathcal{L}(C)$ that succeed $D$.  The actual supertype gives
+the context for resolving a <a href="06-expressions.html#this-and-super"><code>super</code> reference</a> in a trait.
+Note that the actual supertype depends on the type to which the trait is added in a mixin composition;
+it is not statically known at the time the trait is defined.</p>
+<p>If $D$ is not a trait, then its actual supertype is simply its
+least proper supertype (which is statically known).</p>
+<h3 id="example">Example</h3>
+<p>The following trait defines the property
+of being comparable to objects of some type. It contains an abstract
+method <code>&lt;</code> and default implementations of the other
+comparison operators <code>&lt;=</code>, <code>&gt;</code>, and
+<code>&gt;=</code>.</p>
+<pre><code class="lang-scala">trait Comparable[T &lt;: Comparable[T]] { self: T =&gt;
+  def &lt; (that: T): Boolean
+  def &lt;=(that: T): Boolean = this &lt; that || this == that
+  def &gt; (that: T): Boolean = that &lt; this
+  def &gt;=(that: T): Boolean = that &lt;= this
+}
+</code></pre>
+<h6 id="example">Example</h6>
+<p>Consider an abstract class <code>Table</code> that implements maps
+from a type of keys <code>A</code> to a type of values <code>B</code>. The class
+has a method <code>set</code> to enter a new key / value pair into the table,
+and a method <code>get</code> that returns an optional value matching a
+given key. Finally, there is a method <code>apply</code> which is like
+<code>get</code>, except that it returns a given default value if the table
+is undefined for the given key. This class is implemented as follows.</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Table</span>[<span class="hljs-title">A</span>, <span class="hljs-title">B</span>]<span class="hljs-params">(defaultValue: B)</span> {</span>
+  <span class="hljs-keyword">def</span> get(key: A): Option[B]
+  <span class="hljs-keyword">def</span> set(key: A, value: B)
+  <span class="hljs-keyword">def</span> apply(key: A) = get(key) <span class="hljs-keyword">match</span> {
+    <span class="hljs-keyword">case</span> Some(value) =&gt; value
+    <span class="hljs-keyword">case</span> None =&gt; defaultValue
+  }
+}
+</code></pre>
+<p>Here is a concrete implementation of the <code>Table</code> class.</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListTable</span>[<span class="hljs-title">A</span>, <span class="hljs-title">B</span>]<span class="hljs-params">(defaultValue: B)</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Table</span>[<span class="hljs-title">A</span>, <span class="hljs-title">B</span>]<span class="hljs-params">(defaultValue)</span> {</span>
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> elems: List[(A, B)]
+  <span class="hljs-keyword">def</span> get(key: A) = elems.find(._1.==(key)).map(._2)
+  <span class="hljs-keyword">def</span> set(key: A, value: B) = { elems = (key, value) :: elems }
+}
+</code></pre>
+<p>Here is a trait that prevents concurrent access to the
+<code>get</code> and <code>set</code> operations of its parent class:</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">SynchronizedTable</span>[<span class="hljs-title">A</span>, <span class="hljs-title">B</span>] <span class="hljs-keyword">extends</span> <span class="hljs-title">Table</span>[<span class="hljs-title">A</span>, <span class="hljs-title">B</span>] {</span>
+  <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">def</span> get(key: A): B =
+    synchronized { <span class="hljs-keyword">super</span>.get(key) }
+  <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">def</span> set((key: A, value: B) =
+    synchronized { <span class="hljs-keyword">super</span>.set(key, value) }
+}
+</code></pre>
+<p>Note that <code>SynchronizedTable</code> does not pass an argument to
+its superclass, <code>Table</code>, even  though <code>Table</code> is defined with a
+formal parameter. Note also that the <code>super</code> calls
+in <code>SynchronizedTable</code>&#39;s <code>get</code> and <code>set</code> methods
+statically refer to abstract methods in class <code>Table</code>. This is
+legal, as long as the calling method is labeled
+<a href="#modifiers"><code>abstract override</code></a>.</p>
+<p>Finally, the following mixin composition creates a synchronized list
+table with strings as keys and integers as values and with a default
+value <code>0</code>:</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">MyTable</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ListTable</span>[<span class="hljs-title">String</span>, <span class="hljs-title">Int</span>]<span class="hljs-params">(0)</span> <span class="hljs-keyword">with</span> <span class="hljs-title">SynchronizedTable</span></span>
+</code></pre>
+<p>The object <code>MyTable</code> inherits its <code>get</code> and <code>set</code>
+method from <code>SynchronizedTable</code>.  The <code>super</code> calls in these
+methods are re-bound to refer to the corresponding implementations in
+<code>ListTable</code>, which is the actual supertype of <code>SynchronizedTable</code>
+in <code>MyTable</code>.</p>
+<h2 id="object-definitions">Object Definitions</h2>
+<pre><code class="lang-ebnf">ObjectDef       ::=  id ClassTemplate
+</code></pre>
+<p>An object definition defines a single object of a new class. Its 
+most general form is
+<code>object $m$ extends $t$</code>. Here,
+$m$ is the name of the object to be defined, and 
+$t$ is a <a href="#templates">template</a> of the form</p>
+<pre><code class="lang-scala">$sc$ <span class="hljs-keyword">with</span> $mt_1$ <span class="hljs-keyword">with</span> $\ldots$ <span class="hljs-keyword">with</span> $mt_n$ { $\mathit{stats}$ }
+</code></pre>
+<p>which defines the base classes, behavior and initial state of $m$.
+The extends clause <code>extends $sc$ with $mt_1$ with $\ldots$ with $mt_n$</code> 
+can be omitted, in which case
+<code>extends scala.AnyRef</code> is assumed.  The class body
+<code>{ $\mathit{stats}$ }</code> may also be omitted, in which case the empty body
+<code>{}</code> is assumed.</p>
+<p>The object definition defines a single object (or: <em>module</em>)
+conforming to the template $t$.  It is roughly equivalent to the
+following definition of a lazy value:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">lazy</span> <span class="hljs-keyword">val</span> $m$ = <span class="hljs-keyword">new</span> $sc$ <span class="hljs-keyword">with</span> $mt_1$ <span class="hljs-keyword">with</span> $\ldots$ <span class="hljs-keyword">with</span> $mt_n$ { <span class="hljs-keyword">this</span>: $m.<span class="hljs-keyword">type</span>$ =&gt; $\mathit{stats}$ }
+</code></pre>
+<p>Note that the value defined by an object definition is instantiated
+lazily.  The <code>new $m$\$cls</code> constructor is evaluated
+not at the point of the object definition, but is instead evaluated
+the first time $m$ is dereferenced during execution of the program
+(which might be never at all). An attempt to dereference $m$ again in
+the course of evaluation of the constructor leads to a infinite loop
+or run-time error.<br>Other threads trying to dereference $m$ while the
+constructor is being evaluated block until evaluation is complete.</p>
+<p>The expansion given above is not accurate for top-level objects. It
+cannot be because variable and method definition cannot appear on the
+top-level outside of a <a href="09-top-level-definitions.html#package-objects">package object</a>. Instead,
+top-level objects are translated to static fields.</p>
+<h6 id="example">Example</h6>
+<p>Classes in Scala do not have static members; however, an equivalent
+effect can be achieved by an accompanying object definition
+E.g.</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> {</span>
+  <span class="hljs-keyword">val</span> x: Double
+  <span class="hljs-keyword">val</span> y: Double
+  <span class="hljs-keyword">def</span> isOrigin = (x == <span class="hljs-number">0.0</span> &amp;&amp; y == <span class="hljs-number">0.0</span>)
+}
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Point</span> {</span>
+  <span class="hljs-keyword">val</span> origin = <span class="hljs-keyword">new</span> Point() { <span class="hljs-keyword">val</span> x = <span class="hljs-number">0.0</span>; <span class="hljs-keyword">val</span> y = <span class="hljs-number">0.0</span> }
+}
+</code></pre>
+<p>This defines a class <code>Point</code> and an object <code>Point</code> which
+contains <code>origin</code> as a member.  Note that the double use of the
+name <code>Point</code> is legal, since the class definition defines the
+name <code>Point</code> in the type name space, whereas the object
+definition defines a name in the term namespace.</p>
+<p>This technique is applied by the Scala compiler when interpreting a
+Java class with static members. Such a class $C$ is conceptually seen
+as a pair of a Scala class that contains all instance members of $C$
+and a Scala object that contains all static members of $C$.</p>
+<p>Generally, a <em>companion module</em> of a class is an object which has
+the same name as the class and is defined in the same scope and
+compilation unit. Conversely, the class is called the <em>companion class</em>
+of the module.</p>
+<p>Very much like a concrete class definition, an object definition may
+still contain declarations of abstract type members, but not of
+abstract term members.</p>
+
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./04-basic-declarations-and-definitions.html" class="navigation navigation-prev"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./06-expressions.html" class="navigation navigation-next"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+        <link rel="stylesheet" href="gitbook/style.css">
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/mode-javascript.js"></script>
+        <script src="gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+        <script src="gitbook/app.js"></script>
+        
+    </body>
+</html>

@@ -1,0 +1,1063 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head prefix="og: http://ogp.me/ns# book: http://ogp.me/ns/book#">
+        
+        <meta charset="UTF-8">
+        <title>Basic Declarations &amp; Definitions | The Scala Language Specification 2.11</title>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="iainmcgin">
+        <meta name="description" content="Scala is a Java-like programming language which unifies
+object-oriented and functional programming.  It is a pure
+object-oriented language in the sense that every value is an
+object. Types and behavior of objects are described by
+classes. Classes can be composed using mixin composition.  Scala is
+designed to work seamlessly with less pure but mainstream
+object-oriented languages like Java.">
+        <meta name="keywords" content="gitbook,github" >
+        <meta name="generator" content="www.gitbook.io">
+
+        
+        <link rel="next" href="./05-classes-and-objects.html" />
+        
+        
+        <link rel="prev" href="./03-types.html" />
+        
+
+        <meta property="og:title" content="Basic Declarations &amp; Definitions | The Scala Language Specification 2.11">
+        <meta property="og:site_name" content="The Scala Language Specification 2.11">
+        <meta property="og:type" content="book">
+        <meta property="og:locale" content="en_US">
+
+        <meta property="book:author" content="https://github.com/iainmcgin">
+        <meta property="book:tag" content="GitBook">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+          <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            tex2jax: {
+              inlineMath: [['$','$'], ['\\(','\\)']],
+              skipTags: ['script', 'noscript', 'style', 'textarea'],
+              processEscapes: true
+            }
+          });
+          </script>
+          <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+          <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+          <!--
+          <script type="text/javascript">
+            // clear content of H3 nodes that start with "Example:"
+            // the content is only there to determine ID of the H3 element (redcarpet doesn't let us set css id)
+            $( document ).ready(function(){ $("h3[id*='example']").text("") })
+          </script>
+          -->
+        
+    </head>
+    <body>
+        
+    <div class="book" data-github="iainmcgin/scala" data-level="4" data-basepath="." data-revision="1397801841390">
+    <div class="book-header">
+    <!-- Actions Left -->
+    
+    <a href="https://github.com/iainmcgin/scala" target="_blank" class="btn pull-left"><i class="fa fa-github-alt"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-summary"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search"><i class="fa fa-search"></i></a>
+
+    <!-- Actions Right -->
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="google-plus"><i class="fa fa-google-plus"></i></a>
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="facebook"><i class="fa fa-facebook"></i></a>
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="twitter"><i class="fa fa-twitter"></i></a>
+
+    
+    <a href="https://github.com/iainmcgin/scala/stargazers" target="_blank" class="btn pull-right count-star"><i class="fa fa-star-o"></i> Star (<span>-</span>)</a>
+    <a href="https://github.com/iainmcgin/scala/watchers" target="_blank" class="btn pull-right count-watch"><i class="fa fa-eye"></i> Watch (<span>-</span>)</a>
+    
+
+    <!-- Title -->
+    <h1><a href="./" >The Scala Language Specification 2.11</a></h1>
+</div>
+
+    <div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        <li>
+            <a href="https://github.com/iainmcgin" target="blank">About the author</a>
+        </li>
+        <li>
+            <a href="https://github.com/iainmcgin/scala/issues" target="blank">Questions and Issues</a>
+        </li>
+        <li>
+            <a href="https://github.com/iainmcgin/scala/edit/master/04-basic-declarations-and-definitions.md" target="blank">Edit and Contribute</a>
+        </li>
+        <li class="divider"></li>
+        
+        <li data-level="0" data-path="index.html">
+            <a href="./"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+            <li  data-level="1" data-path="01-lexical-syntax.html">
+                
+                <a href="./01-lexical-syntax.html">
+                    <i class="fa fa-check"></i> <b>1.</b> Lexical Syntax
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="2" data-path="02-identifiers-names-and-scopes.html">
+                
+                <a href="./02-identifiers-names-and-scopes.html">
+                    <i class="fa fa-check"></i> <b>2.</b> Identifiers, Names &amp; Scopes
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="3" data-path="03-types.html">
+                
+                <a href="./03-types.html">
+                    <i class="fa fa-check"></i> <b>3.</b> Types
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="4" data-path="04-basic-declarations-and-definitions.html">
+                
+                <a href="./04-basic-declarations-and-definitions.html">
+                    <i class="fa fa-check"></i> <b>4.</b> Basic Declarations &amp; Definitions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="5" data-path="05-classes-and-objects.html">
+                
+                <a href="./05-classes-and-objects.html">
+                    <i class="fa fa-check"></i> <b>5.</b> Classes and Objects
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="6" data-path="06-expressions.html">
+                
+                <a href="./06-expressions.html">
+                    <i class="fa fa-check"></i> <b>6.</b> Expressions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="7" data-path="07-implicit-parameters-and-views.html">
+                
+                <a href="./07-implicit-parameters-and-views.html">
+                    <i class="fa fa-check"></i> <b>7.</b> Implicit Patterns &amp; Views
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="8" data-path="08-pattern-matching.html">
+                
+                <a href="./08-pattern-matching.html">
+                    <i class="fa fa-check"></i> <b>8.</b> Pattern Matching
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="9" data-path="09-top-level-definitions.html">
+                
+                <a href="./09-top-level-definitions.html">
+                    <i class="fa fa-check"></i> <b>9.</b> Top Level Definitions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="10" data-path="10-xml-expressions-and-patterns.html">
+                
+                <a href="./10-xml-expressions-and-patterns.html">
+                    <i class="fa fa-check"></i> <b>10.</b> XML Expressions &amp; Patterns
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="11" data-path="11-user-defined-annotations.html">
+                
+                <a href="./11-user-defined-annotations.html">
+                    <i class="fa fa-check"></i> <b>11.</b> Top Level Definitions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="12" data-path="12-the-scala-standard-library.html">
+                
+                <a href="./12-the-scala-standard-library.html">
+                    <i class="fa fa-check"></i> <b>12.</b> The Scala Standard Library
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="13" data-path="13-syntax-summary.html">
+                
+                <a href="./13-syntax-summary.html">
+                    <i class="fa fa-check"></i> <b>13.</b> Syntax Summary
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="14" data-path="14-references.html">
+                
+                <a href="./14-references.html">
+                    <i class="fa fa-check"></i> <b>14.</b> References
+                </a>
+                
+                
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 64.28571428571429%;min-width: 57.142857142857146%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="./index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="./01-lexical-syntax.html" title="Lexical Syntax" class="chapter done new-chapter" data-progress="1" style="left: 7.142857142857143%;"></a>
+    
+        <a href="./10-xml-expressions-and-patterns.html" title="XML Expressions &amp; Patterns" class="chapter done " data-progress="10" style="left: 14.285714285714286%;"></a>
+    
+        <a href="./11-user-defined-annotations.html" title="Top Level Definitions" class="chapter done " data-progress="11" style="left: 21.428571428571427%;"></a>
+    
+        <a href="./12-the-scala-standard-library.html" title="The Scala Standard Library" class="chapter done " data-progress="12" style="left: 28.571428571428573%;"></a>
+    
+        <a href="./13-syntax-summary.html" title="Syntax Summary" class="chapter done " data-progress="13" style="left: 35.714285714285715%;"></a>
+    
+        <a href="./14-references.html" title="References" class="chapter done " data-progress="14" style="left: 42.857142857142854%;"></a>
+    
+        <a href="./02-identifiers-names-and-scopes.html" title="Identifiers, Names &amp; Scopes" class="chapter done new-chapter" data-progress="2" style="left: 50%;"></a>
+    
+        <a href="./03-types.html" title="Types" class="chapter done new-chapter" data-progress="3" style="left: 57.142857142857146%;"></a>
+    
+        <a href="./04-basic-declarations-and-definitions.html" title="Basic Declarations &amp; Definitions" class="chapter done new-chapter" data-progress="4" style="left: 64.28571428571429%;"></a>
+    
+        <a href="./05-classes-and-objects.html" title="Classes and Objects" class="chapter  new-chapter" data-progress="5" style="left: 71.42857142857143%;"></a>
+    
+        <a href="./06-expressions.html" title="Expressions" class="chapter  new-chapter" data-progress="6" style="left: 78.57142857142857%;"></a>
+    
+        <a href="./07-implicit-parameters-and-views.html" title="Implicit Patterns &amp; Views" class="chapter  new-chapter" data-progress="7" style="left: 85.71428571428571%;"></a>
+    
+        <a href="./08-pattern-matching.html" title="Pattern Matching" class="chapter  new-chapter" data-progress="8" style="left: 92.85714285714286%;"></a>
+    
+        <a href="./09-top-level-definitions.html" title="Top Level Definitions" class="chapter  new-chapter" data-progress="9" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_4">
+                    
+                        <h1 id="4-basic-declarations-and-definitions">4. Basic Declarations and Definitions</h1>
+<pre><code class="lang-ebnf">Dcl         ::=  ‘val’ ValDcl
+              |  ‘var’ VarDcl
+              |  ‘def’ FunDcl
+              |  ‘type’ {nl} TypeDcl
+PatVarDef   ::=  ‘val’ PatDef
+              |  ‘var’ VarDef
+Def         ::=  PatVarDef
+              |  ‘def’ FunDef
+              |  ‘type’ {nl} TypeDef
+              |  TmplDef
+</code></pre>
+<p>A <em>declaration</em> introduces names and assigns them types. It can
+form part of a <a href="05-classes-and-objects.html#templates">class definition</a> or of a
+refinement in a <a href="03-types.html#compound-types">compound type</a>.</p>
+<p>A <em>definition</em> introduces names that denote terms or types. It can
+form part of an object or class definition or it can be local to a
+block.  Both declarations and definitions produce <em>bindings</em> that
+associate type names with type definitions or bounds, and that
+associate term names with types.</p>
+<p>The scope of a name introduced by a declaration or definition is the
+whole statement sequence containing the binding.  However, there is a
+restriction on forward references in blocks: In a statement sequence
+$s_1 \ldots s_n$ making up a block, if a simple name in $s_i$ refers
+to an entity defined by $s_j$ where $j \geq i$, then for all $s_k$
+between and including $s_i$ and $s_j$,</p>
+<ul>
+<li>$s_k$ cannot be a variable definition.</li>
+<li>If $s_k$ is a value definition, it must be lazy.</li>
+</ul>
+<!--
+Every basic definition may introduce several defined names, separated
+by commas. These are expanded according to the following scheme:
+\bda{lcl}
+\VAL;x, y: T = e && \VAL; x: T = e \\
+                 && \VAL; y: T = x \\[0.5em]
+
+\LET;x, y: T = e && \LET; x: T = e \\
+                 && \VAL; y: T = x \\[0.5em]
+
+\DEF;x, y (ps): T = e &\tab\mbox{expands to}\tab& \DEF; x(ps): T = e \\
+                      && \DEF; y(ps): T = x(ps)\\[0.5em]
+
+\VAR;x, y: T := e && \VAR;x: T := e\\
+                  && \VAR;y: T := x\\[0.5em]
+
+\TYPE;t,u = T && \TYPE; t = T\\
+              && \TYPE; u = t\\[0.5em]
+\eda
+
+All definitions have a ``repeated form`` where the initial
+definition keyword is followed by several constituent definitions
+which are separated by commas.  A repeated definition is
+always interpreted as a sequence formed from the
+constituent definitions. E.g. the function definition
+`def f(x) = x, g(y) = y` expands to
+`def f(x) = x; def g(y) = y` and
+the type definition
+`type T, U <: B` expands to
+`type T; type U <: B`.
+}
+\comment{
+If an element in such a sequence introduces only the defined name,
+possibly with some type or value parameters, but leaves out any
+additional parts in the definition, then those parts are implicitly
+copied from the next subsequent sequence element which consists of
+more than just a defined name and parameters. Examples:
+
+
+- []
+The variable declaration `var x, y: Int`
+expands to `var x: Int; var y: Int`.
+- []
+The value definition `val x, y: Int = 1`
+expands to `val x: Int = 1; val y: Int = 1`.
+- []
+The class definition `case class X(), Y(n: Int) extends Z` expands to
+`case class X extends Z; case class Y(n: Int) extends Z`.
+- The object definition `case object Red, Green, Blue extends Color`~
+expands to
+```
+case object Red extends Color
+case object Green extends Color
+case object Blue extends Color .
+```
+-->
+
+
+
+<h2 id="value-declarations-and-definitions">Value Declarations and Definitions</h2>
+<pre><code class="lang-ebnf">Dcl          ::=  ‘val’ ValDcl
+ValDcl       ::=  ids ‘:’ Type
+PatVarDef    ::=  ‘val’ PatDef 
+PatDef       ::=  Pattern2 {‘,’ Pattern2} [‘:’ Type] ‘=’ Expr
+ids          ::=  id {‘,’ id}
+</code></pre>
+<p>A value declaration <code>val $x$: $T$</code> introduces $x$ as a name of a value of
+type $T$.  </p>
+<p>A value definition <code>val $x$: $T$ = $e$</code> defines $x$ as a
+name of the value that results from the evaluation of $e$. 
+If the value definition is not recursive, the type
+$T$ may be omitted, in which case the <a href="06-expressions.html#expression-typing">packed type</a> of
+expression $e$ is assumed.  If a type $T$ is given, then $e$ is expected to 
+conform to it.</p>
+<p>Evaluation of the value definition implies evaluation of its
+right-hand side $e$, unless it has the modifier <code>lazy</code>.  The
+effect of the value definition is to bind $x$ to the value of $e$
+converted to type $T$. A <code>lazy</code> value definition evaluates
+its right hand side $e$ the first time the value is accessed.</p>
+<p>A <em>constant value definition</em> is of the form</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">final</span> <span class="hljs-keyword">val</span> x = e
+</code></pre>
+<p>where <code>e</code> is a <a href="06-expressions.html#constant-expressions">constant expression</a>.
+The <code>final</code> modifier must be
+present and no type annotation may be given. References to the
+constant value <code>x</code> are themselves treated as constant expressions; in the
+generated code they are replaced by the definition&#39;s right-hand side <code>e</code>.</p>
+<p>Value definitions can alternatively have a <a href="08-pattern-matching.html#patterns">pattern</a>
+as left-hand side.  If $p$ is some pattern other
+than a simple name or a name followed by a colon and a type, then the
+value definition <code>val $p$ = $e$</code> is expanded as follows:</p>
+<ol>
+<li>If the pattern $p$ has bound variables $x_1 , \ldots , x_n$, where $n &gt; 1$:</li>
+</ol>
+<pre><code class="lang-scala"><span class="hljs-keyword">val</span> $\$ x$ = $e$ <span class="hljs-keyword">match</span> {<span class="hljs-keyword">case</span> $p$ =&gt; ($x_1 , \ldots , x_n$)}
+<span class="hljs-keyword">val</span> $x_1$ = $\$ x$._1
+$\ldots$
+<span class="hljs-keyword">val</span> $x_n$ = $\$ x$._n  .
+</code></pre>
+<p>Here, $\$ x$ is a fresh name.  </p>
+<ol>
+<li>If $p$ has a unique bound variable $x$:</li>
+</ol>
+<pre><code class="lang-scala"><span class="hljs-keyword">val</span> $x$ = $e$ <span class="hljs-keyword">match</span> { <span class="hljs-keyword">case</span> $p$ =&gt; $x$ }
+</code></pre>
+<ol>
+<li>If $p$ has no bound variables:</li>
+</ol>
+<pre><code class="lang-scala">$e$ <span class="hljs-keyword">match</span> { <span class="hljs-keyword">case</span> $p$ =&gt; ()}
+</code></pre>
+<h6 id="example">Example</h6>
+<p>The following are examples of value definitions</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">val</span> pi = <span class="hljs-number">3.1415</span>
+<span class="hljs-keyword">val</span> pi: Double = <span class="hljs-number">3.1415</span>   <span class="hljs-comment">// equivalent to first definition</span>
+<span class="hljs-keyword">val</span> Some(x) = f()         <span class="hljs-comment">// a pattern definition</span>
+<span class="hljs-keyword">val</span> x :: xs = mylist      <span class="hljs-comment">// an infix pattern definition</span>
+</code></pre>
+<p>The last two definitions have the following expansions.</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">val</span> x = f() <span class="hljs-keyword">match</span> { <span class="hljs-keyword">case</span> Some(x) =&gt; x }
+
+<span class="hljs-keyword">val</span> x$\$$ = mylist <span class="hljs-keyword">match</span> { <span class="hljs-keyword">case</span> x :: xs =&gt; (x, xs) }
+<span class="hljs-keyword">val</span> x = x$\$$._1
+<span class="hljs-keyword">val</span> xs = x$\$$._2
+</code></pre>
+<p>The name of any declared or defined value may not end in <code>_=</code>.</p>
+<p>A value declaration <code>val $x_1 , \ldots , x_n$: $T$</code> is a shorthand for the 
+sequence of value declarations <code>val $x_1$: $T$; ...; val $x_n$: $T$</code>.
+A value definition <code>val $p_1 , \ldots , p_n$ = $e$</code> is a shorthand for the 
+sequence of value definitions <code>val $p_1$ = $e$; ...; val $p_n$ = $e$</code>.
+A value definition <code>val $p_1 , \ldots , p_n: T$ = $e$</code> is a shorthand for the 
+sequence of value definitions <code>val $p_1: T$ = $e$; ...; val $p_n: T$ = $e$</code>.</p>
+<h2 id="variable-declarations-and-definitions">Variable Declarations and Definitions</h2>
+<pre><code class="lang-ebnf">Dcl            ::=  ‘var’ VarDcl
+PatVarDef      ::=  ‘var’ VarDef
+VarDcl         ::=  ids ‘:’ Type
+VarDef         ::=  PatDef
+                 |  ids ‘:’ Type ‘=’ ‘_’
+</code></pre>
+<p>A variable declaration <code>var $x$: $T$</code> is equivalent to the declarations
+of both a <em>getter function</em> $x$ <em>and</em> a <em>setter function</em> <code>$x$_=</code>:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">def</span> $x$: $T$ 
+<span class="hljs-keyword">def</span> $x$_= ($y$: $T$): Unit
+</code></pre>
+<p>An implementation of a class may <em>define</em> a declared variable
+using a variable definition, or by defining the corresponding setter and getter methods.</p>
+<p>A variable definition <code>var $x$: $T$ = $e$</code> introduces a
+mutable variable with type $T$ and initial value as given by the
+expression $e$. The type $T$ can be omitted, in which case the type of
+$e$ is assumed. If $T$ is given, then $e$ is expected to 
+<a href="06-expressions.html#expression-typing">conform to it</a>.</p>
+<p>Variable definitions can alternatively have a <a href="08-pattern-matching.html#patterns">pattern</a>
+as left-hand side.  A variable definition
+ <code>var $p$ = $e$</code> where $p$ is a pattern other
+than a simple name or a name followed by a colon and a type is expanded in the same way 
+as a <a href="#value-declarations-and-definitions">value definition</a>
+<code>val $p$ = $e$</code>, except that
+the free names in $p$ are introduced as mutable variables, not values.</p>
+<p>The name of any declared or defined variable may not end in <code>_=</code>.</p>
+<p>A variable definition <code>var $x$: $T$ = _</code> can appear only as a member of a template.
+It introduces a mutable field with type $T$ and a default initial value.
+The default value depends on the type $T$ as follows:</p>
+<table>
+<thead>
+<tr>
+<th>default</th>
+<th>type $T$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td><code>Int</code> or one of its subrange types</td>
+</tr>
+<tr>
+<td><code>0L</code></td>
+<td><code>Long</code></td>
+</tr>
+<tr>
+<td><code>0.0f</code></td>
+<td><code>Float</code></td>
+</tr>
+<tr>
+<td><code>0.0d</code></td>
+<td><code>Double</code></td>
+</tr>
+<tr>
+<td><code>false</code></td>
+<td><code>Boolean</code></td>
+</tr>
+<tr>
+<td><code>()</code></td>
+<td><code>Unit</code></td>
+</tr>
+<tr>
+<td><code>null</code></td>
+<td>all other types</td>
+</tr>
+</tbody>
+</table>
+<p>When they occur as members of a template, both forms of variable
+definition also introduce a getter function $x$ which returns the
+value currently assigned to the variable, as well as a setter function
+<code>$x$_=</code> which changes the value currently assigned to the variable.
+The functions have the same signatures as for a variable declaration.
+The template then has these getter and setter functions as
+members, whereas the original variable cannot be accessed directly as
+a template member.</p>
+<h6 id="example">Example</h6>
+<p>The following example shows how <em>properties</em> can be
+simulated in Scala. It defines a class <code>TimeOfDayVar</code> of time
+values with updatable integer fields representing hours, minutes, and
+seconds. Its implementation contains tests that allow only legal
+values to be assigned to these fields. The user code, on the other
+hand, accesses these fields just like normal variables.</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TimeOfDayVar</span> {</span>
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> h: Int = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> m: Int = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> s: Int = <span class="hljs-number">0</span>
+
+  <span class="hljs-keyword">def</span> hours              =  h
+  <span class="hljs-keyword">def</span> hours_= (h: Int)   =  <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> &lt;= h &amp;&amp; h &lt; <span class="hljs-number">24</span>) <span class="hljs-keyword">this</span>.h = h
+                            <span class="hljs-keyword">else</span> <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> DateError()
+
+  <span class="hljs-keyword">def</span> minutes            =  m
+  <span class="hljs-keyword">def</span> minutes_= (m: Int) =  <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> &lt;= m &amp;&amp; m &lt; <span class="hljs-number">60</span>) <span class="hljs-keyword">this</span>.m = m
+                            <span class="hljs-keyword">else</span> <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> DateError()
+
+  <span class="hljs-keyword">def</span> seconds            =  s
+  <span class="hljs-keyword">def</span> seconds_= (s: Int) =  <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> &lt;= s &amp;&amp; s &lt; <span class="hljs-number">60</span>) <span class="hljs-keyword">this</span>.s = s
+                            <span class="hljs-keyword">else</span> <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> DateError()
+}
+<span class="hljs-keyword">val</span> d = <span class="hljs-keyword">new</span> TimeOfDayVar
+d.hours = <span class="hljs-number">8</span>; d.minutes = <span class="hljs-number">30</span>; d.seconds = <span class="hljs-number">0</span>
+d.hours = <span class="hljs-number">25</span>                  <span class="hljs-comment">// throws a DateError exception</span>
+</code></pre>
+<p>A variable declaration <code>var $x_1 , \ldots , x_n$: $T$</code> is a shorthand for the 
+sequence of variable declarations <code>var $x_1$: $T$; ...; var $x_n$: $T$</code>.
+A variable definition <code>var $x_1 , \ldots , x_n$ = $e$</code> is a shorthand for the 
+sequence of variable definitions <code>var $x_1$ = $e$; ...; var $x_n$ = $e$</code>.
+A variable definition <code>var $x_1 , \ldots , x_n: T$ = $e$</code> is a shorthand for 
+the sequence of variable definitions 
+<code>var $x_1: T$ = $e$; ...; var $x_n: T$ = $e$</code>.</p>
+<h2 id="type-declarations-and-type-aliases">Type Declarations and Type Aliases</h2>
+<!-- TODO: Higher-kinded tdecls should have a separate section -->
+
+<pre><code class="lang-ebnf">Dcl        ::=  ‘type’ {nl} TypeDcl
+TypeDcl    ::=  id [TypeParamClause] [‘&gt;:’ Type] [‘&lt;:’ Type]
+Def        ::=  type {nl} TypeDef
+TypeDef    ::=  id [TypeParamClause] ‘=’ Type
+</code></pre>
+<p>A <em>type declaration</em> <code>type $t$[$\mathit{tps}\,$] &gt;: $L$ &lt;: $U$</code> declares
+$t$ to be an abstract type with lower bound type $L$ and upper bound
+type $U$. If the type parameter clause <code>[$\mathit{tps}\,$]</code> is omitted, $t$ abstracts over a first-order type, otherwise $t$ stands for a type constructor that accepts type arguments as described by the type parameter clause.</p>
+<p>If a type declaration appears as a member declaration of a
+type, implementations of the type may implement $t$ with any type $T$
+for which $L &lt;: T &lt;: U$. It is a compile-time error if
+$L$ does not conform to $U$.  Either or both bounds may be omitted.
+If the lower bound $L$ is absent, the bottom type
+<code>scala.Nothing</code> is assumed.  If the upper bound $U$ is absent,
+the top type <code>scala.Any</code> is assumed.</p>
+<p>A type constructor declaration imposes additional restrictions on the
+concrete types for which $t$ may stand. Besides the bounds $L$ and
+$U$, the type parameter clause may impose higher-order bounds and
+variances, as governed by the <a href="03-types.html#conformance">conformance of type constructors</a>.</p>
+<p>The scope of a type parameter extends over the bounds <code>&gt;: $L$ &lt;: $U$</code> and the type parameter clause $\mathit{tps}$ itself. A
+higher-order type parameter clause (of an abstract type constructor
+$tc$) has the same kind of scope, restricted to the declaration of the
+type parameter $tc$.</p>
+<p>To illustrate nested scoping, these declarations are all equivalent: <code>type t[m[x] &lt;: Bound[x], Bound[x]]</code>, <code>type t[m[x] &lt;: Bound[x], Bound[y]]</code> and <code>type t[m[x] &lt;: Bound[x], Bound[_]]</code>, as the scope of, e.g., the type parameter of $m$ is limited to the declaration of $m$. In all of them, $t$ is an abstract type member that abstracts over two type constructors: $m$ stands for a type constructor that takes one type parameter and that must be a subtype of $Bound$, $t$&#39;s second type constructor parameter. <code>t[MutableList, Iterable]</code> is a valid use of $t$.</p>
+<p>A <em>type alias</em> <code>type $t$ = $T$</code> defines $t$ to be an alias
+name for the type $T$.  The left hand side of a type alias may
+have a type parameter clause, e.g. <code>type $t$[$\mathit{tps}\,$] = $T$</code>.  The scope
+of a type parameter extends over the right hand side $T$ and the
+type parameter clause $\mathit{tps}$ itself.  </p>
+<p>The scope rules for <a href="#basic-declarations-and-definitions">definitions</a> 
+and <a href="#function-declarations-and-definitions">type parameters</a>
+make it possible that a type name appears in its
+own bound or in its right-hand side.  However, it is a static error if
+a type alias refers recursively to the defined type constructor itself.<br>That is, the type $T$ in a type alias <code>type $t$[$\mathit{tps}\,$] = $T$</code> may not 
+refer directly or indirectly to the name $t$.  It is also an error if
+an abstract type is directly or indirectly its own upper or lower bound.</p>
+<h6 id="example">Example</h6>
+<p>The following are legal type declarations and definitions:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">type</span> IntList = List[Integer]
+<span class="hljs-keyword">type</span> T &lt;: Comparable[T]
+<span class="hljs-keyword">type</span> Two[A] = Tuple2[A, A]
+<span class="hljs-keyword">type</span> MyCollection[+X] &lt;: Iterable[X]
+</code></pre>
+<p>The following are illegal:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">type</span> Abs = Comparable[Abs]      <span class="hljs-comment">// recursive type alias</span>
+
+<span class="hljs-keyword">type</span> S &lt;: T                     <span class="hljs-comment">// S, T are bounded by themselves.</span>
+<span class="hljs-keyword">type</span> T &lt;: S
+
+<span class="hljs-keyword">type</span> T &gt;: Comparable[T.That]    <span class="hljs-comment">// Cannot select from T.</span>
+                                <span class="hljs-comment">// T is a type, not a value</span>
+<span class="hljs-keyword">type</span> MyCollection &lt;: Iterable   <span class="hljs-comment">// Type constructor members must explicitly</span>
+                                <span class="hljs-comment">// state their type parameters.</span>
+</code></pre>
+<p>If a type alias <code>type $t$[$\mathit{tps}\,$] = $S$</code> refers to a class type
+$S$, the name $t$ can also be used as a constructor for
+objects of type $S$.</p>
+<h6 id="example">Example</h6>
+<p>The <code>Predef</code> object contains a definition which establishes <code>Pair</code>
+as an alias of the parameterized class <code>Tuple2</code>:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">type</span> Pair[+A, +B] = Tuple2[A, B]
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Pair</span> {</span>
+  <span class="hljs-keyword">def</span> apply[A, B](x: A, y: B) = Tuple2(x, y)
+  <span class="hljs-keyword">def</span> unapply[A, B](x: Tuple2[A, B]): Option[Tuple2[A, B]] = Some(x)
+}
+</code></pre>
+<p>As a consequence, for any two types $S$ and $T$, the type
+<code>Pair[$S$, $T\,$]</code> is equivalent to the type <code>Tuple2[$S$, $T\,$]</code>.
+<code>Pair</code> can also be used as a constructor instead of <code>Tuple2</code>, as in:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">val</span> x: Pair[Int, String] = <span class="hljs-keyword">new</span> Pair(<span class="hljs-number">1</span>, <span class="hljs-string">"abc"</span>)
+</code></pre>
+<h2 id="type-parameters">Type Parameters</h2>
+<pre><code class="lang-ebnf">TypeParamClause  ::= ‘[’ VariantTypeParam {‘,’ VariantTypeParam} ‘]’
+VariantTypeParam ::= {Annotation} [‘+’ | ‘-’] TypeParam
+TypeParam        ::= (id | ‘_’) [TypeParamClause] [‘&gt;:’ Type] [‘&lt;:’ Type] [‘:’ Type]
+</code></pre>
+<p>Type parameters appear in type definitions, class definitions, and
+function definitions.  In this section we consider only type parameter
+definitions with lower bounds <code>&gt;: $L$</code> and upper bounds
+<code>&lt;: $U$</code> whereas a discussion of context bounds
+<code>: $U$</code> and view bounds <code>&lt;% $U$</code> 
+is deferred to <a href="07-implicit-parameters-and-views.html#context-bounds-and-view-bounds">here</a>.</p>
+<p>The most general form of a first-order type parameter is
+<code>$@a_1 \ldots @a_n$ $\pm$ $t$ &gt;: $L$ &lt;: $U$</code>.
+Here, $L$, and $U$ are lower and upper bounds that
+constrain possible type arguments for the parameter.  It is a
+compile-time error if $L$ does not conform to $U$. $\pm$ is a <em>variance</em>, i.e. an optional prefix of either <code>+</code>, or
+<code>-</code>. One or more annotations may precede the type parameter.</p>
+<!--
+The upper bound $U$ in a type parameter clauses may not be a final
+class. The lower bound may not denote a value type.
+
+TODO: Why
+-->
+
+<!--
+TODO: this is a pretty awkward description of scoping and distinctness of binders
+-->
+
+<p>The names of all type parameters must be pairwise different in their enclosing type parameter clause.  The scope of a type parameter includes in each case the whole type parameter clause. Therefore it is possible that a type parameter appears as part of its own bounds or the bounds of other type parameters in the same clause.  However, a type parameter may not be bounded directly or indirectly by itself.</p>
+<p>A type constructor parameter adds a nested type parameter clause to the type parameter. The most general form of a type constructor parameter is <code>$@a_1\ldots@a_n$ $\pm$ $t[\mathit{tps}\,]$ &gt;: $L$ &lt;: $U$</code>.  </p>
+<p>The above scoping restrictions are generalized to the case of nested type parameter clauses, which declare higher-order type parameters. Higher-order type parameters (the type parameters of a type parameter $t$) are only visible in their immediately surrounding parameter clause (possibly including clauses at a deeper nesting level) and in the bounds of $t$. Therefore, their names must only be pairwise different from the names of other visible parameters. Since the names of higher-order type parameters are thus often irrelevant, they may be denoted with a ‘_’, which is nowhere visible.</p>
+<h6 id="example">Example</h6>
+<p>Here are some well-formed type parameter clauses:</p>
+<pre><code class="lang-scala">[S, T]
+[<span class="hljs-annotation">@specialized</span> T, U]
+[Ex &lt;: Throwable]
+[A &lt;: Comparable[B], B &lt;: A]
+[A, B &gt;: A, C &gt;: A &lt;: B]
+[M[X], N[X]]
+[M[_], N[_]] <span class="hljs-comment">// equivalent to previous clause</span>
+[M[X &lt;: Bound[X]], Bound[_]]
+[M[+X] &lt;: Iterable[X]]
+</code></pre>
+<p>The following type parameter clauses are illegal:</p>
+<pre><code class="lang-scala">[A &gt;: A]                  <span class="hljs-comment">// illegal, `A' has itself as bound</span>
+[A &lt;: B, B &lt;: C, C &lt;: A]  <span class="hljs-comment">// illegal, `A' has itself as bound</span>
+[A, B, C &gt;: A &lt;: B]       <span class="hljs-comment">// illegal lower bound `A' of `C' does</span>
+                          <span class="hljs-comment">// not conform to upper bound `B'.</span>
+</code></pre>
+<h2 id="variance-annotations">Variance Annotations</h2>
+<p>Variance annotations indicate how instances of parameterized types
+vary with respect to <a href="03-types.html#conformance">subtyping</a>.  A
+‘+’ variance indicates a covariant dependency, a
+‘-’ variance indicates a contravariant dependency, and a
+missing variance indication indicates an invariant dependency.</p>
+<p>A variance annotation constrains the way the annotated type variable
+may appear in the type or class which binds the type parameter.  In a
+type definition <code>type $T$[$\mathit{tps}\,$] = $S$</code>, or a type 
+declaration <code>type $T$[$\mathit{tps}\,$] &gt;: $L$ &lt;: $U$</code> type parameters labeled
+‘+’ must only appear in covariant position whereas
+type parameters labeled ‘-’ must only appear in contravariant
+position. Analogously, for a class definition
+<code>class $C$[$\mathit{tps}\,$]($\mathit{ps}\,$) extends $T$ { $x$: $S$ =&gt; ...}</code>, 
+type parameters labeled
+‘+’ must only appear in covariant position in the
+self type $S$ and the template $T$, whereas type
+parameters labeled ‘-’ must only appear in contravariant
+position. </p>
+<p>The variance position of a type parameter in a type or template is
+defined as follows.  Let the opposite of covariance be contravariance,
+and the opposite of invariance be itself.  The top-level of the type
+or template is always in covariant position. The variance position
+changes at the following constructs.</p>
+<ul>
+<li>The variance position of a method parameter is the opposite of the 
+variance position of the enclosing parameter clause.</li>
+<li>The variance position of a type parameter is the opposite of the
+variance position of the enclosing type parameter clause.</li>
+<li>The variance position of the lower bound of a type declaration or type parameter 
+is the opposite of the variance position of the type declaration or parameter.  </li>
+<li>The type of a mutable variable is always in invariant position.</li>
+<li>The right-hand side of a type alias is always in invariant position.</li>
+<li>The prefix $S$ of a type selection <code>$S$#$T$</code> is always in invariant position.</li>
+<li>For a type argument $T$ of a type <code>$S$[$\ldots T \ldots$ ]</code>: If the
+corresponding type parameter is invariant, then $T$ is in
+invariant position.  If the corresponding type parameter is
+contravariant, the variance position of $T$ is the opposite of
+the variance position of the enclosing type <code>$S$[$\ldots T \ldots$ ]</code>.</li>
+</ul>
+<!-- TODO: handle type aliases --> 
+
+<p>References to the type parameters in 
+<a href="05-classes-and-objects.html#modifiers">object-private or object-protected values, types, variables, or methods</a> of the class are not
+checked for their variance position. In these members the type parameter may 
+appear anywhere without restricting its legal variance annotations.</p>
+<h6 id="example">Example</h6>
+<p>The following variance annotation is legal.</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">P</span>[+<span class="hljs-title">A</span>, +<span class="hljs-title">B</span>] {</span>
+  <span class="hljs-keyword">def</span> fst: A; <span class="hljs-keyword">def</span> snd: B
+}
+</code></pre>
+<p>With this variance annotation, type instances
+of $P$ subtype covariantly with respect to their arguments.
+For instance,</p>
+<pre><code class="lang-scala">P[IOException, String] &lt;: P[Throwable, AnyRef]
+</code></pre>
+<p>If the members of $P$ are mutable variables,
+the same variance annotation becomes illegal.</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Q</span>[+<span class="hljs-title">A</span>, +<span class="hljs-title">B</span>]<span class="hljs-params">(x: A, y: B)</span> {</span>
+  <span class="hljs-keyword">var</span> fst: A = x           <span class="hljs-comment">// **** error: illegal variance:</span>
+  <span class="hljs-keyword">var</span> snd: B = y           <span class="hljs-comment">// `A', `B' occur in invariant position.</span>
+}
+</code></pre>
+<p>If the mutable variables are object-private, the class definition
+becomes legal again:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">R</span>[+<span class="hljs-title">A</span>, +<span class="hljs-title">B</span>]<span class="hljs-params">(x: A, y: B)</span> {</span>
+  <span class="hljs-keyword">private</span>[<span class="hljs-keyword">this</span>] <span class="hljs-keyword">var</span> fst: A = x        <span class="hljs-comment">// OK</span>
+  <span class="hljs-keyword">private</span>[<span class="hljs-keyword">this</span>] <span class="hljs-keyword">var</span> snd: B = y        <span class="hljs-comment">// OK</span>
+}
+</code></pre>
+<h6 id="example">Example</h6>
+<p>The following variance annotation is illegal, since $a$ appears
+in contravariant position in the parameter of <code>append</code>:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Sequence</span>[+<span class="hljs-title">A</span>] {</span>
+  <span class="hljs-keyword">def</span> append(x: Sequence[A]): Sequence[A]
+                  <span class="hljs-comment">// **** error: illegal variance:</span>
+                  <span class="hljs-comment">// `A' occurs in contravariant position.</span>
+}
+</code></pre>
+<p>The problem can be avoided by generalizing the type of <code>append</code>
+by means of a lower bound:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Sequence</span>[+<span class="hljs-title">A</span>] {</span>
+  <span class="hljs-keyword">def</span> append[B &gt;: A](x: Sequence[B]): Sequence[B]
+}
+</code></pre>
+<h3 id="example">Example</h3>
+<pre><code class="lang-scala"><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OutputChannel</span>[-<span class="hljs-title">A</span>] {</span>
+  <span class="hljs-keyword">def</span> write(x: A): Unit
+}
+</code></pre>
+<p>With that annotation, we have that
+<code>OutputChannel[AnyRef]</code> conforms to <code>OutputChannel[String]</code>.
+That is, a
+channel on which one can write any object can substitute for a channel
+on which one can write only strings.</p>
+<h2 id="function-declarations-and-definitions">Function Declarations and Definitions</h2>
+<pre><code class="lang-ebnf">Dcl                ::=  ‘def’ FunDcl
+FunDcl             ::=  FunSig ‘:’ Type
+Def                ::=  ‘def’ FunDef
+FunDef             ::=  FunSig [‘:’ Type] ‘=’ Expr 
+FunSig             ::=  id [FunTypeParamClause] ParamClauses
+FunTypeParamClause ::=  ‘[’ TypeParam {‘,’ TypeParam} ‘]’ 
+ParamClauses       ::=  {ParamClause} [[nl] ‘(’ ‘implicit’ Params ‘)’]
+ParamClause        ::=  [nl] ‘(’ [Params] ‘)’} 
+Params             ::=  Param {‘,’ Param}
+Param              ::=  {Annotation} id [‘:’ ParamType] [‘=’ Expr]
+ParamType          ::=  Type 
+                     |  ‘=&gt;’ Type 
+                     |  Type ‘*’
+</code></pre>
+<p>A function declaration has the form <code>def $f\,\mathit{psig}$: $T$</code>, where
+$f$ is the function&#39;s name, $\mathit{psig}$ is its parameter
+signature and $T$ is its result type. A function definition
+<code>def $f\,\mathit{psig}$: $T$ = $e$</code> also includes a <em>function body</em> $e$,
+i.e. an expression which defines the function&#39;s result.  A parameter
+signature consists of an optional type parameter clause <code>[$\mathit{tps}\,$]</code>,
+followed by zero or more value parameter clauses
+<code>($\mathit{ps}_1$)$\ldots$($\mathit{ps}_n$)</code>.  Such a declaration or definition
+introduces a value with a (possibly polymorphic) method type whose
+parameter types and result type are as given.</p>
+<p>The type of the function body is expected to <a href="06-expressions.html#expression-typing">conform</a>
+to the function&#39;s declared
+result type, if one is given. If the function definition is not
+recursive, the result type may be omitted, in which case it is
+determined from the packed type of the function body.</p>
+<p>A type parameter clause $\mathit{tps}$ consists of one or more 
+<a href="#type-declarations-and-type-aliases">type declarations</a>, which introduce type 
+parameters, possibly with bounds.  The scope of a type parameter includes
+the whole signature, including any of the type parameter bounds as
+well as the function body, if it is present.  </p>
+<p>A value parameter clause $\mathit{ps}$ consists of zero or more formal
+parameter bindings such as <code>$x$: $T$</code> or <code>$x: T = e$</code>, which bind value
+parameters and associate them with their types. Each value parameter
+declaration may optionally define a default argument. The default argument
+expression $e$ is type-checked with an expected type $T&#39;$ obtained
+by replacing all occurences of the function&#39;s type parameters in $T$ by
+the undefined type.</p>
+<p>For every parameter $p<em>{i,j}$ with a default argument a method named
+<code>$f\$$default$\$$n</code> is generated which computes the default argument
+expression. Here, $n$ denotes the parameter&#39;s position in the method
+declaration. These methods are parametrized by the type parameter clause
+<code>[$\mathit{tps}\,$]</code> and all value parameter clauses
+`($\mathit{ps}_1$)$\ldots$($\mathit{ps}</em>{i-1}$)<code>preceeding $p_{i,j}$.
+The</code>$f\$$default$\$$n` methods are inaccessible for
+user programs.</p>
+<p>The scope of a formal value parameter name $x$ comprises all subsequent 
+parameter clauses, as well as the method return type and the function body, if
+they are given. Both type parameter names and value parameter names must
+be pairwise distinct.</p>
+<h6 id="example">Example</h6>
+<p>In the method</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">def</span> compare[T](a: T = <span class="hljs-number">0</span>)(b: T = a) = (a == b)
+</code></pre>
+<p>the default expression <code>0</code> is type-checked with an undefined expected
+type. When applying <code>compare()</code>, the default value <code>0</code> is inserted
+and <code>T</code> is instantiated to <code>Int</code>. The methods computing the default
+arguments have the form:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">def</span> compare$\$$<span class="hljs-keyword">default</span>$\$$<span class="hljs-number">1</span>[T]: Int = <span class="hljs-number">0</span>
+<span class="hljs-keyword">def</span> compare$\$$<span class="hljs-keyword">default</span>$\$$<span class="hljs-number">2</span>[T](a: T): T = a
+</code></pre>
+<h3 id="by-name-parameters">By-Name Parameters</h3>
+<pre><code class="lang-ebnf">ParamType          ::=  ‘=&gt;’ Type
+</code></pre>
+<p>The type of a value parameter may be prefixed by <code>=&gt;</code>, e.g.
+<code>$x$: =&gt; $T$</code>. The type of such a parameter is then the
+parameterless method type <code>=&gt; $T$</code>. This indicates that the
+corresponding argument is not evaluated at the point of function
+application, but instead is evaluated at each use within the
+function. That is, the argument is evaluated using <em>call-by-name</em>.</p>
+<p>The by-name modifier is disallowed for parameters of classes that
+carry a <code>val</code> or <code>var</code> prefix, including parameters of case
+classes for which a <code>val</code> prefix is implicitly generated. The
+by-name modifier is also disallowed for 
+<a href="07-implicit-parameters-and-views.html#implicit-parameters">implicit parameters</a>.</p>
+<h6 id="example">Example</h6>
+<p>The declaration</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">def</span> whileLoop (cond: =&gt; Boolean) (stat: =&gt; Unit): Unit
+</code></pre>
+<p>indicates that both parameters of <code>whileLoop</code> are evaluated using
+call-by-name.</p>
+<h3 id="repeated-parameters">Repeated Parameters</h3>
+<pre><code class="lang-ebnf">ParamType          ::=  Type ‘*’
+</code></pre>
+<p>The last value parameter of a parameter section may be suffixed by
+“<em>”, e.g. `(..., $x$:$T$</em>)<code>.  The type of such a
+_repeated_ parameter inside the method is then the sequence type</code>scala.Seq[$T$]<code>.  Methods with repeated parameters</code>$T$<em><code>take a variable number of arguments of type $T$.
+That is, if a method $m$ with type</code>($p_1:T_1 , \ldots , p_n:T_n, p_s:S$</em>)$U$<code>is applied to arguments 
+$(e_1 , \ldots , e_k)$ where $k \geq n$, then $m$ is taken in that application 
+to have type $(p_1:T_1 , \ldots , p_n:T_n, p_s:S , \ldots , p_{s&#39;}S)U$, with 
+$k - n$ occurrences of type
+$S$ where any parameter names beyond $p_s$ are fresh. The only exception to 
+this rule is if the last argument is
+marked to be a _sequence argument_ via a</code><em>*<code>type
+annotation. If $m$ above is applied to arguments</code>($e_1 , \ldots , e_n, e&#39;$: </em>*)<code>, then the type of $m$ in
+that application is taken to be</code>($p<em>1:T_1, \ldots , p_n:T_n,p</em>{s}:$scala.Seq[$S$])`.</p>
+<p>It is not allowed to define any default arguments in a parameter section
+with a repeated parameter.</p>
+<h6 id="example">Example</h6>
+<p>The following method definition computes the sum of the squares of a
+variable number of integer arguments.</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">def</span> sum(args: Int*) = {
+  <span class="hljs-keyword">var</span> result = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">for</span> (arg &lt;- args) result += arg * arg
+  result
+}
+</code></pre>
+<p>The following applications of this method yield <code>0</code>, <code>1</code>,
+<code>6</code>, in that order.</p>
+<pre><code class="lang-scala">sum()
+sum(<span class="hljs-number">1</span>)
+sum(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)
+</code></pre>
+<p>Furthermore, assume the definition:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">val</span> xs = List(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)
+</code></pre>
+<p>The following application of method <code>sum</code> is ill-formed:</p>
+<pre><code class="lang-scala">sum(xs)       <span class="hljs-comment">// ***** error: expected: Int, found: List[Int]</span>
+</code></pre>
+<p>By contrast, the following application is well formed and yields again
+the result <code>6</code>:</p>
+<pre><code class="lang-scala">sum(xs: _*)
+</code></pre>
+<h3 id="procedures">Procedures</h3>
+<pre><code class="lang-ebnf">FunDcl   ::=  FunSig
+FunDef   ::=  FunSig [nl] ‘{’ Block ‘}’
+</code></pre>
+<p>Special syntax exists for procedures, i.e. functions that return the
+<code>Unit</code> value <code>()</code>. 
+A procedure declaration is a function declaration where the result type
+is omitted. The result type is then implicitly completed to the
+<code>Unit</code> type. E.g., <code>def $f$($\mathit{ps}$)</code> is equivalent to
+<code>def $f$($\mathit{ps}$): Unit</code>.</p>
+<p>A procedure definition is a function definition where the result type
+and the equals sign are omitted; its defining expression must be a block.
+E.g., <code>def $f$($\mathit{ps}$) {$\mathit{stats}$}</code> is equivalent to
+<code>def $f$($\mathit{ps}$): Unit = {$\mathit{stats}$}</code>.</p>
+<h6 id="example">Example</h6>
+<p>Here is a declaration and a definition of a procedure named <code>write</code>:</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Writer</span> {</span>
+  <span class="hljs-keyword">def</span> write(str: String)
+}
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Terminal</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Writer</span> {</span>
+  <span class="hljs-keyword">def</span> write(str: String) { System.out.println(str) }
+}
+</code></pre>
+<p>The code above is implicitly completed to the following code:</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Writer</span> {</span>
+  <span class="hljs-keyword">def</span> write(str: String): Unit
+}
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Terminal</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Writer</span> {</span>
+  <span class="hljs-keyword">def</span> write(str: String): Unit = { System.out.println(str) }
+}
+</code></pre>
+<h3 id="method-return-type-inference">Method Return Type Inference</h3>
+<p>A class member definition $m$ that overrides some other function $m&#39;$
+in a base class of $C$ may leave out the return type, even if it is
+recursive. In this case, the return type $R&#39;$ of the overridden
+function $m&#39;$, seen as a member of $C$, is taken as the return type of
+$m$ for each recursive invocation of $m$. That way, a type $R$ for the
+right-hand side of $m$ can be determined, which is then taken as the
+return type of $m$. Note that $R$ may be different from $R&#39;$, as long
+as $R$ conforms to $R&#39;$.</p>
+<h6 id="example">Example</h6>
+<p>Assume the following definitions:</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">I</span> {</span>
+  <span class="hljs-keyword">def</span> factorial(x: Int): Int
+}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">I</span> {</span>
+  <span class="hljs-keyword">def</span> factorial(x: Int) = <span class="hljs-keyword">if</span> (x == <span class="hljs-number">0</span>) <span class="hljs-number">1</span> <span class="hljs-keyword">else</span> x * factorial(x - <span class="hljs-number">1</span>)
+}
+</code></pre>
+<p>Here, it is OK to leave out the result type of <code>factorial</code>
+in <code>C</code>, even though the method is recursive.</p>
+<!-- ## Overloaded Definitions
+\label{sec:overloaded-defs}
+\todo{change}
+
+An overloaded definition is a set of $n > 1$ value or function
+definitions in the same statement sequence that define the same name,
+binding it to types `$T_1 \commadots T_n$`, respectively.
+The individual definitions are called _alternatives_.  Overloaded
+definitions may only appear in the statement sequence of a template.
+Alternatives always need to specify the type of the defined entity
+completely.  It is an error if the types of two alternatives $T_i$ and
+$T_j$ have the same erasure (\sref{sec:erasure}).
+
+\todo{Say something about bridge methods.}
+%This must be a well-formed
+%overloaded type -->
+
+<h2 id="import-clauses">Import Clauses</h2>
+<pre><code class="lang-ebnf">Import          ::= ‘import’ ImportExpr {‘,’ ImportExpr}
+ImportExpr      ::= StableId ‘.’ (id | ‘_’ | ImportSelectors)
+ImportSelectors ::= ‘{’ {ImportSelector ‘,’} 
+                    (ImportSelector | ‘_’) ‘}’
+ImportSelector  ::= id [‘=&gt;’ id | ‘=&gt;’ ‘_’]
+</code></pre>
+<p>An import clause has the form <code>import $p$.$I$</code> where $p$ is a 
+<a href="03-types.html#paths">stable identifier</a> and $I$ is an import expression.
+The import expression determines a set of names of importable members of $p$
+which are made available without qualification.  A member $m$ of $p$ is
+<em>importable</em> if it is not <a href="05-classes-and-objects.html#modifiers">object-private</a>.
+The most general form of an import expression is a list of <em>import selectors</em></p>
+<pre><code class="lang-scala">{ $x_1$ =&gt; $y_1 , \ldots , x_n$ =&gt; $y_n$, _ }
+</code></pre>
+<p>for $n \geq 0$, where the final wildcard ‘_’ may be absent.  It
+makes available each importable member <code>$p$.$x_i$</code> under the unqualified name
+$y_i$. I.e. every import selector <code>$x_i$ =&gt; $y_i$</code> renames
+<code>$p$.$x_i$</code> to
+$y_i$.  If a final wildcard is present, all importable members $z$ of
+$p$ other than <code>$x_1 , \ldots , x_n,y_1 , \ldots , y_n$</code> are also made available
+under their own unqualified names.</p>
+<p>Import selectors work in the same way for type and term members. For
+instance, an import clause <code>import $p$.{$x$ =&gt; $y\,$}</code> renames the term
+name <code>$p$.$x$</code> to the term name $y$ and the type name <code>$p$.$x$</code>
+to the type name $y$. At least one of these two names must
+reference an importable member of $p$.</p>
+<p>If the target in an import selector is a wildcard, the import selector
+hides access to the source member. For instance, the import selector
+<code>$x$ =&gt; _</code> “renames” $x$ to the wildcard symbol (which is
+unaccessible as a name in user programs), and thereby effectively
+prevents unqualified access to $x$. This is useful if there is a
+final wildcard in the same import selector list, which imports all
+members not mentioned in previous import selectors.</p>
+<p>The scope of a binding introduced by an import-clause starts
+immediately after the import clause and extends to the end of the
+enclosing block, template, package clause, or compilation unit,
+whichever comes first.</p>
+<p>Several shorthands exist. An import selector may be just a simple name
+$x$. In this case, $x$ is imported without renaming, so the
+import selector is equivalent to <code>$x$ =&gt; $x$</code>. Furthermore, it is
+possible to replace the whole import selector list by a single
+identifier or wildcard. The import clause <code>import $p$.$x$</code> is
+equivalent to <code>import $p$.{$x\,$}</code>, i.e. it makes available without
+qualification the member $x$ of $p$. The import clause
+<code>import $p$._</code> is equivalent to
+<code>import $p$.{_}</code>, 
+i.e. it makes available without qualification all members of $p$
+(this is analogous to <code>import $p$.*</code> in Java).</p>
+<p>An import clause with multiple import expressions
+<code>import $p_1$.$I_1 , \ldots , p_n$.$I_n$</code> is interpreted as a
+sequence of import clauses 
+<code>import $p_1$.$I_1$; $\ldots$; import $p_n$.$I_n$</code>.</p>
+<h6 id="example">Example</h6>
+<p>Consider the object definition:</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">M</span> {</span>
+  <span class="hljs-keyword">def</span> z = <span class="hljs-number">0</span>, one = <span class="hljs-number">1</span>
+  <span class="hljs-keyword">def</span> add(x: Int, y: Int): Int = x + y
+}
+</code></pre>
+<p>Then the block</p>
+<pre><code class="lang-scala">{ <span class="hljs-keyword">import</span> M.{one, z =&gt; zero, _}; add(zero, one) }
+</code></pre>
+<p>is equivalent to the block</p>
+<pre><code class="lang-scala">{ M.add(M.z, M.one) }
+</code></pre>
+
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./03-types.html" class="navigation navigation-prev"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./05-classes-and-objects.html" class="navigation navigation-next"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+        <link rel="stylesheet" href="gitbook/style.css">
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/mode-javascript.js"></script>
+        <script src="gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+        <script src="gitbook/app.js"></script>
+        
+    </body>
+</html>

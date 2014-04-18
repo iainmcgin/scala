@@ -1,0 +1,449 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head prefix="og: http://ogp.me/ns# book: http://ogp.me/ns/book#">
+        
+        <meta charset="UTF-8">
+        <title>Top Level Definitions | The Scala Language Specification 2.11</title>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="iainmcgin">
+        <meta name="description" content="Scala is a Java-like programming language which unifies
+object-oriented and functional programming.  It is a pure
+object-oriented language in the sense that every value is an
+object. Types and behavior of objects are described by
+classes. Classes can be composed using mixin composition.  Scala is
+designed to work seamlessly with less pure but mainstream
+object-oriented languages like Java.">
+        <meta name="keywords" content="gitbook,github" >
+        <meta name="generator" content="www.gitbook.io">
+
+        
+        <link rel="next" href="./12-the-scala-standard-library.html" />
+        
+        
+        <link rel="prev" href="./10-xml-expressions-and-patterns.html" />
+        
+
+        <meta property="og:title" content="Top Level Definitions | The Scala Language Specification 2.11">
+        <meta property="og:site_name" content="The Scala Language Specification 2.11">
+        <meta property="og:type" content="book">
+        <meta property="og:locale" content="en_US">
+
+        <meta property="book:author" content="https://github.com/iainmcgin">
+        <meta property="book:tag" content="GitBook">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+          <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            tex2jax: {
+              inlineMath: [['$','$'], ['\\(','\\)']],
+              skipTags: ['script', 'noscript', 'style', 'textarea'],
+              processEscapes: true
+            }
+          });
+          </script>
+          <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+          <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+          <!--
+          <script type="text/javascript">
+            // clear content of H3 nodes that start with "Example:"
+            // the content is only there to determine ID of the H3 element (redcarpet doesn't let us set css id)
+            $( document ).ready(function(){ $("h3[id*='example']").text("") })
+          </script>
+          -->
+        
+    </head>
+    <body>
+        
+    <div class="book" data-github="iainmcgin/scala" data-level="11" data-basepath="." data-revision="1397801841390">
+    <div class="book-header">
+    <!-- Actions Left -->
+    
+    <a href="https://github.com/iainmcgin/scala" target="_blank" class="btn pull-left"><i class="fa fa-github-alt"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-summary"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search"><i class="fa fa-search"></i></a>
+
+    <!-- Actions Right -->
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="google-plus"><i class="fa fa-google-plus"></i></a>
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="facebook"><i class="fa fa-facebook"></i></a>
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="twitter"><i class="fa fa-twitter"></i></a>
+
+    
+    <a href="https://github.com/iainmcgin/scala/stargazers" target="_blank" class="btn pull-right count-star"><i class="fa fa-star-o"></i> Star (<span>-</span>)</a>
+    <a href="https://github.com/iainmcgin/scala/watchers" target="_blank" class="btn pull-right count-watch"><i class="fa fa-eye"></i> Watch (<span>-</span>)</a>
+    
+
+    <!-- Title -->
+    <h1><a href="./" >The Scala Language Specification 2.11</a></h1>
+</div>
+
+    <div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        <li>
+            <a href="https://github.com/iainmcgin" target="blank">About the author</a>
+        </li>
+        <li>
+            <a href="https://github.com/iainmcgin/scala/issues" target="blank">Questions and Issues</a>
+        </li>
+        <li>
+            <a href="https://github.com/iainmcgin/scala/edit/master/11-user-defined-annotations.md" target="blank">Edit and Contribute</a>
+        </li>
+        <li class="divider"></li>
+        
+        <li data-level="0" data-path="index.html">
+            <a href="./"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+            <li  data-level="1" data-path="01-lexical-syntax.html">
+                
+                <a href="./01-lexical-syntax.html">
+                    <i class="fa fa-check"></i> <b>1.</b> Lexical Syntax
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="2" data-path="02-identifiers-names-and-scopes.html">
+                
+                <a href="./02-identifiers-names-and-scopes.html">
+                    <i class="fa fa-check"></i> <b>2.</b> Identifiers, Names &amp; Scopes
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="3" data-path="03-types.html">
+                
+                <a href="./03-types.html">
+                    <i class="fa fa-check"></i> <b>3.</b> Types
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="4" data-path="04-basic-declarations-and-definitions.html">
+                
+                <a href="./04-basic-declarations-and-definitions.html">
+                    <i class="fa fa-check"></i> <b>4.</b> Basic Declarations &amp; Definitions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="5" data-path="05-classes-and-objects.html">
+                
+                <a href="./05-classes-and-objects.html">
+                    <i class="fa fa-check"></i> <b>5.</b> Classes and Objects
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="6" data-path="06-expressions.html">
+                
+                <a href="./06-expressions.html">
+                    <i class="fa fa-check"></i> <b>6.</b> Expressions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="7" data-path="07-implicit-parameters-and-views.html">
+                
+                <a href="./07-implicit-parameters-and-views.html">
+                    <i class="fa fa-check"></i> <b>7.</b> Implicit Patterns &amp; Views
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="8" data-path="08-pattern-matching.html">
+                
+                <a href="./08-pattern-matching.html">
+                    <i class="fa fa-check"></i> <b>8.</b> Pattern Matching
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="9" data-path="09-top-level-definitions.html">
+                
+                <a href="./09-top-level-definitions.html">
+                    <i class="fa fa-check"></i> <b>9.</b> Top Level Definitions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="10" data-path="10-xml-expressions-and-patterns.html">
+                
+                <a href="./10-xml-expressions-and-patterns.html">
+                    <i class="fa fa-check"></i> <b>10.</b> XML Expressions &amp; Patterns
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="11" data-path="11-user-defined-annotations.html">
+                
+                <a href="./11-user-defined-annotations.html">
+                    <i class="fa fa-check"></i> <b>11.</b> Top Level Definitions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="12" data-path="12-the-scala-standard-library.html">
+                
+                <a href="./12-the-scala-standard-library.html">
+                    <i class="fa fa-check"></i> <b>12.</b> The Scala Standard Library
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="13" data-path="13-syntax-summary.html">
+                
+                <a href="./13-syntax-summary.html">
+                    <i class="fa fa-check"></i> <b>13.</b> Syntax Summary
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="14" data-path="14-references.html">
+                
+                <a href="./14-references.html">
+                    <i class="fa fa-check"></i> <b>14.</b> References
+                </a>
+                
+                
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 21.428571428571427%;min-width: 14.285714285714286%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="./index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="./01-lexical-syntax.html" title="Lexical Syntax" class="chapter done new-chapter" data-progress="1" style="left: 7.142857142857143%;"></a>
+    
+        <a href="./10-xml-expressions-and-patterns.html" title="XML Expressions &amp; Patterns" class="chapter done " data-progress="10" style="left: 14.285714285714286%;"></a>
+    
+        <a href="./11-user-defined-annotations.html" title="Top Level Definitions" class="chapter done " data-progress="11" style="left: 21.428571428571427%;"></a>
+    
+        <a href="./12-the-scala-standard-library.html" title="The Scala Standard Library" class="chapter  " data-progress="12" style="left: 28.571428571428573%;"></a>
+    
+        <a href="./13-syntax-summary.html" title="Syntax Summary" class="chapter  " data-progress="13" style="left: 35.714285714285715%;"></a>
+    
+        <a href="./14-references.html" title="References" class="chapter  " data-progress="14" style="left: 42.857142857142854%;"></a>
+    
+        <a href="./02-identifiers-names-and-scopes.html" title="Identifiers, Names &amp; Scopes" class="chapter  new-chapter" data-progress="2" style="left: 50%;"></a>
+    
+        <a href="./03-types.html" title="Types" class="chapter  new-chapter" data-progress="3" style="left: 57.142857142857146%;"></a>
+    
+        <a href="./04-basic-declarations-and-definitions.html" title="Basic Declarations &amp; Definitions" class="chapter  new-chapter" data-progress="4" style="left: 64.28571428571429%;"></a>
+    
+        <a href="./05-classes-and-objects.html" title="Classes and Objects" class="chapter  new-chapter" data-progress="5" style="left: 71.42857142857143%;"></a>
+    
+        <a href="./06-expressions.html" title="Expressions" class="chapter  new-chapter" data-progress="6" style="left: 78.57142857142857%;"></a>
+    
+        <a href="./07-implicit-parameters-and-views.html" title="Implicit Patterns &amp; Views" class="chapter  new-chapter" data-progress="7" style="left: 85.71428571428571%;"></a>
+    
+        <a href="./08-pattern-matching.html" title="Pattern Matching" class="chapter  new-chapter" data-progress="8" style="left: 92.85714285714286%;"></a>
+    
+        <a href="./09-top-level-definitions.html" title="Top Level Definitions" class="chapter  new-chapter" data-progress="9" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_14">
+                    
+                        <h1 id="11-user-defined-annotations">11. User-Defined Annotations</h1>
+<pre><code class="lang-ebnf">  Annotation       ::=  ‘@’ SimpleType {ArgumentExprs}
+  ConstrAnnotation ::=  ‘@’ SimpleType ArgumentExprs
+</code></pre>
+<p>User-defined annotations associate meta-information with definitions.
+A simple annotation has the form <code>@$c$</code> or <code>@$c(a_1 , \ldots , a_n)$</code>.
+Here, $c$ is a constructor of a class $C$, which must conform
+to the class <code>scala.Annotation</code>. </p>
+<p>Annotations may apply to definitions or declarations, types, or
+expressions.  An annotation of a definition or declaration appears in
+front of that definition.  An annotation of a type appears after
+that type. An annotation of an expression $e$ appears after the
+expression $e$, separated by a colon. More than one annotation clause
+may apply to an entity. The order in which these annotations are given
+does not matter.</p>
+<p>Examples:</p>
+<pre><code class="lang-scala"><span class="hljs-annotation">@deprecated</span>(<span class="hljs-string">"Use D"</span>, <span class="hljs-string">"1.0"</span>) <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> {</span> ... } <span class="hljs-comment">// Class annotation</span>
+<span class="hljs-annotation">@transient</span> <span class="hljs-annotation">@volatile</span> <span class="hljs-keyword">var</span> m: Int             <span class="hljs-comment">// Variable annotation</span>
+String <span class="hljs-annotation">@local</span>                               <span class="hljs-comment">// Type annotation</span>
+(e: <span class="hljs-annotation">@unchecked</span>) <span class="hljs-keyword">match</span> { ... }               <span class="hljs-comment">// Expression annotation</span>
+</code></pre>
+<p>The meaning of annotation clauses is implementation-dependent. On the
+Java platform, the following annotations have a standard meaning.</p>
+<ul>
+<li><p><code>@transient</code> Marks a field to be non-persistent; this is
+equivalent to the <code>transient</code>
+modifier in Java.</p>
+</li>
+<li><p><code>@volatile</code> Marks a field which can change its value
+outside the control of the program; this
+is equivalent to the <code>volatile</code>
+modifier in Java.</p>
+</li>
+<li><p><code>@SerialVersionUID(&lt;longlit&gt;)</code> Attaches a serial version identifier (a
+<code>long</code> constant) to a class.
+This is equivalent to a the following field
+definition in Java:</p>
+<pre><code>private final static SerialVersionUID = &lt;longlit&gt;
+</code></pre></li>
+<li><p><code>@throws(&lt;classlit&gt;)</code> A Java compiler checks that a program contains handlers for checked exceptions
+by analyzing which checked exceptions can result from execution of a method or
+constructor. For each checked exception which is a possible result, the
+<code>throws</code>
+clause for the method or constructor must mention the class of that exception
+or one of the superclasses of the class of that exception.</p>
+</li>
+</ul>
+<h2 id="java-beans-annotations">Java Beans Annotations</h2>
+<ul>
+<li><p><code>@scala.beans.BeanProperty</code> When prefixed to a definition of some variable <code>X</code>, this
+annotation causes getter and setter methods <code>getX</code>, <code>setX</code>
+in the Java bean style to be added in the class containing the
+variable. The first letter of the variable appears capitalized after
+the <code>get</code> or <code>set</code>. When the annotation is added to the
+definition of an immutable value definition <code>X</code>, only a getter is
+generated. The construction of these methods is part of
+code-generation; therefore, these methods become visible only once a
+classfile for the containing class is generated.</p>
+</li>
+<li><p><code>@scala.beans.BooleanBeanProperty</code> This annotation is equivalent to <code>scala.reflect.BeanProperty</code>, but
+the generated getter method is named <code>isX</code> instead of <code>getX</code>.</p>
+</li>
+</ul>
+<h2 id="deprecation-annotations">Deprecation Annotations</h2>
+<ul>
+<li><p><code>@deprecated(&lt;stringlit&gt;)</code> Marks a definition as deprecated. Accesses to the
+defined entity will then cause a deprecated warning mentioning the
+message <code>&lt;stringlit&gt;</code> to be issued from the compiler.  Deprecated
+warnings are suppressed in code that belongs itself to a definition
+that is labeled deprecated.</p>
+</li>
+<li><p><code>@deprecatedName(name: &lt;symbollit&gt;)</code> Marks a formal parameter name as deprecated. Invocations of this entity
+using named parameter syntax refering to the deprecated parameter name cause a deprecation warning.</p>
+</li>
+</ul>
+<h2 id="scala-compiler-annotations">Scala Compiler Annotations</h2>
+<ul>
+<li><p><code>@unchecked</code> When applied to the selector of a <code>match</code> expression,
+this attribute suppresses any warnings about non-exhaustive pattern
+matches which would otherwise be emitted. For instance, no warnings
+would be produced for the method definition below.</p>
+<pre><code>def f(x: Option[Int]) = (x: @unchecked) match {
+case Some(y) =&gt; y
+}
+</code></pre><p>Without the <code>@unchecked</code> annotation, a Scala compiler could
+infer that the pattern match is non-exhaustive, and could produce a
+warning because <code>Option</code> is a <code>sealed</code> class.</p>
+</li>
+<li><p><code>@uncheckedStable</code> When applied a value declaration or definition, it allows the defined
+value to appear in a path, even if its type is <a href="03-types.html#volatile-types">volatile</a>.
+For instance, the following member definitions are legal:</p>
+<pre><code>type A { type T }
+type B
+@uncheckedStable val x: A with B // volatile type
+val y: x.T                       // OK since `x&#39; is still a path
+</code></pre><p>Without the <code>@uncheckedStable</code> annotation, the designator <code>x</code>
+would not be a path since its type <code>A with B</code> is volatile. Hence,
+the reference <code>x.T</code> would be malformed.</p>
+<p>When applied to value declarations or definitions that have non-volatile
+types, the annotation has no effect.</p>
+</li>
+</ul>
+<ul>
+<li><p><code>@specialized</code> When applied to the definition of a type parameter, this annotation causes
+the compiler
+to generate specialized definitions for primitive types. An optional list of
+primitive
+types may be given, in which case specialization takes into account only
+those types.
+For instance, the following code would generate specialized traits for
+<code>Unit</code>, <code>Int</code> and <code>Double</code></p>
+<pre><code>trait Function0[@specialized(Unit, Int, Double) T] {
+  def apply: T
+}
+</code></pre><p>Whenever the static type of an expression matches a specialized variant of
+a definition, the compiler will instead use the specialized version.
+See the <a href="http://docs.scala-lang.org/sips/completed/scala-specialization.html" target="_blank">specialization sid</a> for more details of the implementation.</p>
+</li>
+</ul>
+<p>Other annotations may be interpreted by platform- or
+application-dependent tools. Class <code>scala.Annotation</code> has two
+sub-traits which are used to indicate how these annotations are
+retained. Instances of an annotation class inheriting from trait
+<code>scala.ClassfileAnnotation</code> will be stored in the generated class
+files. Instances of an annotation class inheriting from trait
+<code>scala.StaticAnnotation</code> will be visible to the Scala type-checker
+in every compilation unit where the annotated symbol is accessed. An
+annotation class can inherit from both <code>scala.ClassfileAnnotation</code>
+and <code>scala.StaticAnnotation</code>. If an annotation class inherits from
+neither <code>scala.ClassfileAnnotation</code> nor
+<code>scala.StaticAnnotation</code>, its instances are visible only locally
+during the compilation run that analyzes them.</p>
+<p>Classes inheriting from <code>scala.ClassfileAnnotation</code> may be
+subject to further restrictions in order to assure that they can be
+mapped to the host environment. In particular, on both the Java and
+the .NET platforms, such classes must be toplevel; i.e. they may not
+be contained in another class or object.  Additionally, on both
+Java and .NET, all constructor arguments must be constant expressions.</p>
+
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./10-xml-expressions-and-patterns.html" class="navigation navigation-prev"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./12-the-scala-standard-library.html" class="navigation navigation-next"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+        <link rel="stylesheet" href="gitbook/style.css">
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/mode-javascript.js"></script>
+        <script src="gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+        <script src="gitbook/app.js"></script>
+        
+    </body>
+</html>

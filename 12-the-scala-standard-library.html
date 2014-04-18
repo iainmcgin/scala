@@ -1,0 +1,1049 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head prefix="og: http://ogp.me/ns# book: http://ogp.me/ns/book#">
+        
+        <meta charset="UTF-8">
+        <title>The Scala Standard Library | The Scala Language Specification 2.11</title>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="iainmcgin">
+        <meta name="description" content="Scala is a Java-like programming language which unifies
+object-oriented and functional programming.  It is a pure
+object-oriented language in the sense that every value is an
+object. Types and behavior of objects are described by
+classes. Classes can be composed using mixin composition.  Scala is
+designed to work seamlessly with less pure but mainstream
+object-oriented languages like Java.">
+        <meta name="keywords" content="gitbook,github" >
+        <meta name="generator" content="www.gitbook.io">
+
+        
+        <link rel="next" href="./13-syntax-summary.html" />
+        
+        
+        <link rel="prev" href="./11-user-defined-annotations.html" />
+        
+
+        <meta property="og:title" content="The Scala Standard Library | The Scala Language Specification 2.11">
+        <meta property="og:site_name" content="The Scala Language Specification 2.11">
+        <meta property="og:type" content="book">
+        <meta property="og:locale" content="en_US">
+
+        <meta property="book:author" content="https://github.com/iainmcgin">
+        <meta property="book:tag" content="GitBook">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+          <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            tex2jax: {
+              inlineMath: [['$','$'], ['\\(','\\)']],
+              skipTags: ['script', 'noscript', 'style', 'textarea'],
+              processEscapes: true
+            }
+          });
+          </script>
+          <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+          <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+          <!--
+          <script type="text/javascript">
+            // clear content of H3 nodes that start with "Example:"
+            // the content is only there to determine ID of the H3 element (redcarpet doesn't let us set css id)
+            $( document ).ready(function(){ $("h3[id*='example']").text("") })
+          </script>
+          -->
+        
+    </head>
+    <body>
+        
+    <div class="book" data-github="iainmcgin/scala" data-level="12" data-basepath="." data-revision="1397801841390">
+    <div class="book-header">
+    <!-- Actions Left -->
+    
+    <a href="https://github.com/iainmcgin/scala" target="_blank" class="btn pull-left"><i class="fa fa-github-alt"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-summary"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search"><i class="fa fa-search"></i></a>
+
+    <!-- Actions Right -->
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="google-plus"><i class="fa fa-google-plus"></i></a>
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="facebook"><i class="fa fa-facebook"></i></a>
+    <a href="#" target="_blank" class="btn pull-right" data-sharing="twitter"><i class="fa fa-twitter"></i></a>
+
+    
+    <a href="https://github.com/iainmcgin/scala/stargazers" target="_blank" class="btn pull-right count-star"><i class="fa fa-star-o"></i> Star (<span>-</span>)</a>
+    <a href="https://github.com/iainmcgin/scala/watchers" target="_blank" class="btn pull-right count-watch"><i class="fa fa-eye"></i> Watch (<span>-</span>)</a>
+    
+
+    <!-- Title -->
+    <h1><a href="./" >The Scala Language Specification 2.11</a></h1>
+</div>
+
+    <div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        <li>
+            <a href="https://github.com/iainmcgin" target="blank">About the author</a>
+        </li>
+        <li>
+            <a href="https://github.com/iainmcgin/scala/issues" target="blank">Questions and Issues</a>
+        </li>
+        <li>
+            <a href="https://github.com/iainmcgin/scala/edit/master/12-the-scala-standard-library.md" target="blank">Edit and Contribute</a>
+        </li>
+        <li class="divider"></li>
+        
+        <li data-level="0" data-path="index.html">
+            <a href="./"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+            <li  data-level="1" data-path="01-lexical-syntax.html">
+                
+                <a href="./01-lexical-syntax.html">
+                    <i class="fa fa-check"></i> <b>1.</b> Lexical Syntax
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="2" data-path="02-identifiers-names-and-scopes.html">
+                
+                <a href="./02-identifiers-names-and-scopes.html">
+                    <i class="fa fa-check"></i> <b>2.</b> Identifiers, Names &amp; Scopes
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="3" data-path="03-types.html">
+                
+                <a href="./03-types.html">
+                    <i class="fa fa-check"></i> <b>3.</b> Types
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="4" data-path="04-basic-declarations-and-definitions.html">
+                
+                <a href="./04-basic-declarations-and-definitions.html">
+                    <i class="fa fa-check"></i> <b>4.</b> Basic Declarations &amp; Definitions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="5" data-path="05-classes-and-objects.html">
+                
+                <a href="./05-classes-and-objects.html">
+                    <i class="fa fa-check"></i> <b>5.</b> Classes and Objects
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="6" data-path="06-expressions.html">
+                
+                <a href="./06-expressions.html">
+                    <i class="fa fa-check"></i> <b>6.</b> Expressions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="7" data-path="07-implicit-parameters-and-views.html">
+                
+                <a href="./07-implicit-parameters-and-views.html">
+                    <i class="fa fa-check"></i> <b>7.</b> Implicit Patterns &amp; Views
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="8" data-path="08-pattern-matching.html">
+                
+                <a href="./08-pattern-matching.html">
+                    <i class="fa fa-check"></i> <b>8.</b> Pattern Matching
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="9" data-path="09-top-level-definitions.html">
+                
+                <a href="./09-top-level-definitions.html">
+                    <i class="fa fa-check"></i> <b>9.</b> Top Level Definitions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="10" data-path="10-xml-expressions-and-patterns.html">
+                
+                <a href="./10-xml-expressions-and-patterns.html">
+                    <i class="fa fa-check"></i> <b>10.</b> XML Expressions &amp; Patterns
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="11" data-path="11-user-defined-annotations.html">
+                
+                <a href="./11-user-defined-annotations.html">
+                    <i class="fa fa-check"></i> <b>11.</b> Top Level Definitions
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="12" data-path="12-the-scala-standard-library.html">
+                
+                <a href="./12-the-scala-standard-library.html">
+                    <i class="fa fa-check"></i> <b>12.</b> The Scala Standard Library
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="13" data-path="13-syntax-summary.html">
+                
+                <a href="./13-syntax-summary.html">
+                    <i class="fa fa-check"></i> <b>13.</b> Syntax Summary
+                </a>
+                
+                
+            </li>
+        
+            <li  data-level="14" data-path="14-references.html">
+                
+                <a href="./14-references.html">
+                    <i class="fa fa-check"></i> <b>14.</b> References
+                </a>
+                
+                
+            </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 28.571428571428573%;min-width: 21.428571428571427%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="./index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="./01-lexical-syntax.html" title="Lexical Syntax" class="chapter done new-chapter" data-progress="1" style="left: 7.142857142857143%;"></a>
+    
+        <a href="./10-xml-expressions-and-patterns.html" title="XML Expressions &amp; Patterns" class="chapter done " data-progress="10" style="left: 14.285714285714286%;"></a>
+    
+        <a href="./11-user-defined-annotations.html" title="Top Level Definitions" class="chapter done " data-progress="11" style="left: 21.428571428571427%;"></a>
+    
+        <a href="./12-the-scala-standard-library.html" title="The Scala Standard Library" class="chapter done " data-progress="12" style="left: 28.571428571428573%;"></a>
+    
+        <a href="./13-syntax-summary.html" title="Syntax Summary" class="chapter  " data-progress="13" style="left: 35.714285714285715%;"></a>
+    
+        <a href="./14-references.html" title="References" class="chapter  " data-progress="14" style="left: 42.857142857142854%;"></a>
+    
+        <a href="./02-identifiers-names-and-scopes.html" title="Identifiers, Names &amp; Scopes" class="chapter  new-chapter" data-progress="2" style="left: 50%;"></a>
+    
+        <a href="./03-types.html" title="Types" class="chapter  new-chapter" data-progress="3" style="left: 57.142857142857146%;"></a>
+    
+        <a href="./04-basic-declarations-and-definitions.html" title="Basic Declarations &amp; Definitions" class="chapter  new-chapter" data-progress="4" style="left: 64.28571428571429%;"></a>
+    
+        <a href="./05-classes-and-objects.html" title="Classes and Objects" class="chapter  new-chapter" data-progress="5" style="left: 71.42857142857143%;"></a>
+    
+        <a href="./06-expressions.html" title="Expressions" class="chapter  new-chapter" data-progress="6" style="left: 78.57142857142857%;"></a>
+    
+        <a href="./07-implicit-parameters-and-views.html" title="Implicit Patterns &amp; Views" class="chapter  new-chapter" data-progress="7" style="left: 85.71428571428571%;"></a>
+    
+        <a href="./08-pattern-matching.html" title="Pattern Matching" class="chapter  new-chapter" data-progress="8" style="left: 92.85714285714286%;"></a>
+    
+        <a href="./09-top-level-definitions.html" title="Top Level Definitions" class="chapter  new-chapter" data-progress="9" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_13">
+                    
+                        <h1 id="12-the-scala-standard-library">12. The Scala Standard Library</h1>
+<p>The Scala standard library consists of the package <code>scala</code> with a
+number of classes and modules. Some of these classes are described in
+the following.</p>
+<p><img src="public/images/classhierarchy.pdf" alt="Class hierarchy of Scala"></p>
+<h2 id="root-classes">Root Classes</h2>
+<p>The root of this hierarchy is formed by class <code>Any</code>.
+Every class in a Scala execution environment inherits directly or
+indirectly from this class.  Class <code>Any</code> has two direct
+subclasses: <code>AnyRef</code> and AnyVal`.</p>
+<p>The subclass <code>AnyRef</code> represents all values which are represented
+as objects in the underlying host system. Classes written in other languages
+inherit from <code>scala.AnyRef</code>.</p>
+<p>The predefined subclasses of class <code>AnyVal</code> describe
+values which are not implemented as objects in the underlying host
+system.</p>
+<p>User-defined Scala classes which do not explicitly inherit from
+<code>AnyVal</code> inherit directly or indirectly from <code>AnyRef</code>. They can
+not inherit from both <code>AnyRef</code> and <code>AnyVal</code>.</p>
+<p>Classes <code>AnyRef</code> and <code>AnyVal</code> are required to provide only
+the members declared in class <code>Any</code>, but implementations may add
+host-specific methods to these classes (for instance, an
+implementation may identify class <code>AnyRef</code> with its own root
+class for objects).</p>
+<p>The signatures of these root classes are described by the following
+definitions.</p>
+<pre><code class="lang-scala">package scala 
+/** The universal root class */
+abstract class Any {
+
+  /** Defined equality; abstract here */
+  def equals(that: Any): Boolean 
+
+  /** Semantic equality between values */
+  final def == (that: Any): Boolean  =  
+    if (null eq this) null eq that else this equals that
+
+  /** Semantic inequality between values */
+  final def != (that: Any): Boolean  =  !(this == that)
+
+  /** Hash code; abstract here */
+  def hashCode: Int = $\ldots$
+
+  /** Textual representation; abstract here */
+  def toString: String = $\ldots$
+
+  /** Type test; needs to be inlined to work as given */
+  def isInstanceOf[a]: Boolean
+
+  /** Type cast; needs to be inlined to work as given */ */
+  def asInstanceOf[A]: A = this match {
+    case x: A =&gt; x
+    case _ =&gt; if (this eq null) this
+              else throw new ClassCastException()
+  }
+}
+
+/** The root class of all value types */
+final class AnyVal extends Any 
+
+/** The root class of all reference types */
+class AnyRef extends Any {
+  def equals(that: Any): Boolean      = this eq that 
+  final def eq(that: AnyRef): Boolean = $\ldots$ // reference equality
+  final def ne(that: AnyRef): Boolean = !(this eq that)
+
+  def hashCode: Int = $\ldots$     // hashCode computed from allocation address
+  def toString: String  = $\ldots$ // toString computed from hashCode and class name
+
+  def synchronized[T](body: =&gt; T): T // execute `body` in while locking `this`.
+}                           
+
+```scala
+The type test `$x$.isInstanceOf[$T$]` is equivalent to a typed
+pattern match
+
+```scala
+$x$ match {
+  case _: $T'$ =&gt; true
+  case _ =&gt; false
+}
+</code></pre>
+<p>where the type $T&#39;$ is the same as $T$ except if $T$ is
+of the form $D$ or $D[\mathit{tps}]$ where $D$ is a type member of some outer class $C$.
+In this case $T&#39;$ is <code>$C$#$D$</code> (or <code>$C$#$D[tps]$</code>, respectively), whereas $T$ itself would expand to <code>$C$.this.$D[tps]$</code>.
+In other words, an <code>isInstanceOf</code> test does not check that types have the same enclosing instance.</p>
+<p>The test <code>$x$.asInstanceOf[$T$]</code> is treated specially if $T$ is a
+<a href="#value-classes">numeric value type</a>. In this case the cast will
+be translated to an application of a <a href="#numeric-value-types">conversion method</a> 
+<code>x.to$T$</code>. For non-numeric values $x$ the operation will raise a
+<code>ClassCastException</code>.</p>
+<h2 id="value-classes">Value Classes</h2>
+<p>Value classes are classes whose instances are not represented as
+objects by the underlying host system.  All value classes inherit from
+class <code>AnyVal</code>. Scala implementations need to provide the
+value classes <code>Unit</code>, <code>Boolean</code>, <code>Double</code>, <code>Float</code>,
+<code>Long</code>, <code>Int</code>, <code>Char</code>, <code>Short</code>, and <code>Byte</code>
+(but are free to provide others as well).
+The signatures of these classes are defined in the following.</p>
+<h3 id="numeric-value-types">Numeric Value Types</h3>
+<p>Classes <code>Double</code>, <code>Float</code>,
+<code>Long</code>, <code>Int</code>, <code>Char</code>, <code>Short</code>, and <code>Byte</code>
+are together called <em>numeric value types</em>. Classes <code>Byte</code>,
+<code>Short</code>, or <code>Char</code> are called <em>subrange types</em>.
+Subrange types, as well as <code>Int</code> and <code>Long</code> are called <em>integer types</em>, whereas <code>Float</code> and <code>Double</code> are called <em>floating point types</em>.</p>
+<p>Numeric value types are ranked in the following partial order:</p>
+<pre><code class="lang-scala">Byte - Short 
+             \
+               Int - Long - Float - Double
+             / 
+        Char
+</code></pre>
+<p><code>Byte</code> and <code>Short</code> are the lowest-ranked types in this order, 
+whereas <code>Double</code> is the highest-ranked.  Ranking does <em>not</em>
+imply a <a href="03-types.html#conformance">conformance relationship</a>; for
+instance <code>Int</code> is not a subtype of <code>Long</code>.  However, object
+<a href="#the-predef-object"><code>Predef</code></a> defines <a href="07-implicit-parameters-and-views.html#views">views</a>
+from every numeric value type to all higher-ranked numeric value types. 
+Therefore, lower-ranked types are implicitly converted to higher-ranked types
+when required by the <a href="06-expressions.html#implicit-conversions">context</a>.</p>
+<p>Given two numeric value types $S$ and $T$, the <em>operation type</em> of
+$S$ and $T$ is defined as follows: If both $S$ and $T$ are subrange
+types then the operation type of $S$ and $T$ is <code>Int</code>.  Otherwise
+the operation type of $S$ and $T$ is the larger of the two types wrt
+ranking. Given two numeric values $v$ and $w$ the operation type of
+$v$ and $w$ is the operation type of their run-time types.</p>
+<p>Any numeric value type $T$ supports the following methods.</p>
+<ul>
+<li>Comparison methods for equals (<code>==</code>), not-equals (<code>!=</code>),
+less-than (<code>&lt;</code>), greater-than (<code>&gt;</code>), less-than-or-equals
+(<code>&lt;=</code>), greater-than-or-equals (<code>&gt;=</code>), which each exist in 7
+overloaded alternatives. Each alternative takes a parameter of some
+numeric value type. Its result type is type <code>Boolean</code>. The
+operation is evaluated by converting the receiver and its argument to
+their operation type and performing the given comparison operation of
+that type.</li>
+<li>Arithmetic methods addition (<code>+</code>), subtraction (<code>-</code>),
+multiplication (<code>*</code>), division (<code>/</code>), and remainder
+(<code>%</code>), which each exist in 7 overloaded alternatives. Each
+alternative takes a parameter of some numeric value type $U$.  Its
+result type is the operation type of $T$ and $U$. The operation is
+evaluated by converting the receiver and its argument to their
+operation type and performing the given arithmetic operation of that
+type.</li>
+<li>Parameterless arithmethic methods identity (<code>+</code>) and negation
+(<code>-</code>), with result type $T$.  The first of these returns the
+receiver unchanged, whereas the second returns its negation.</li>
+<li>Conversion methods <code>toByte</code>, <code>toShort</code>, <code>toChar</code>,
+<code>toInt</code>, <code>toLong</code>, <code>toFloat</code>, <code>toDouble</code> which
+convert the receiver object to the target type, using the rules of
+Java&#39;s numeric type cast operation. The conversion might truncate the
+numeric value (as when going from <code>Long</code> to <code>Int</code> or from
+<code>Int</code> to <code>Byte</code>) or it might lose precision (as when going
+from <code>Double</code> to <code>Float</code> or when converting between
+<code>Long</code> and <code>Float</code>). </li>
+</ul>
+<p>Integer numeric value types support in addition the following operations:</p>
+<ul>
+<li><p>Bit manipulation methods bitwise-and (<code>&amp;</code>), bitwise-or
+{<code>|</code>}, and bitwise-exclusive-or (<code>^</code>), which each exist in 5
+overloaded alternatives. Each alternative takes a parameter of some
+integer numeric value type. Its result type is the operation type of
+$T$ and $U$. The operation is evaluated by converting the receiver and
+its argument to their operation type and performing the given bitwise
+operation of that type.</p>
+</li>
+<li><p>A parameterless bit-negation method (<code>~</code>). Its result type is
+the reciver type $T$ or <code>Int</code>, whichever is larger.
+The operation is evaluated by converting the receiver to the result
+type and negating every bit in its value.</p>
+</li>
+<li>Bit-shift methods left-shift (<code>&lt;&lt;</code>), arithmetic right-shift
+(<code>&gt;&gt;</code>), and unsigned right-shift (<code>&gt;&gt;&gt;</code>). Each of these
+methods has two overloaded alternatives, which take a parameter $n$
+of type <code>Int</code>, respectively <code>Long</code>. The result type of the
+operation is the receiver type $T$, or <code>Int</code>, whichever is larger.
+The operation is evaluated by converting the receiver to the result
+type and performing the specified shift by $n$ bits.</li>
+</ul>
+<p>Numeric value types also implement operations <code>equals</code>,
+<code>hashCode</code>, and <code>toString</code> from class <code>Any</code>.</p>
+<p>The <code>equals</code> method tests whether the argument is a numeric value
+type. If this is true, it will perform the <code>==</code> operation which
+is appropriate for that type. That is, the <code>equals</code> method of a
+numeric value type can be thought of being defined as follows:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">def</span> equals(other: Any): Boolean = other <span class="hljs-keyword">match</span> {
+  <span class="hljs-keyword">case</span> that: Byte   =&gt; <span class="hljs-keyword">this</span> == that
+  <span class="hljs-keyword">case</span> that: Short  =&gt; <span class="hljs-keyword">this</span> == that
+  <span class="hljs-keyword">case</span> that: Char   =&gt; <span class="hljs-keyword">this</span> == that
+  <span class="hljs-keyword">case</span> that: Int    =&gt; <span class="hljs-keyword">this</span> == that
+  <span class="hljs-keyword">case</span> that: Long   =&gt; <span class="hljs-keyword">this</span> == that
+  <span class="hljs-keyword">case</span> that: Float  =&gt; <span class="hljs-keyword">this</span> == that
+  <span class="hljs-keyword">case</span> that: Double =&gt; <span class="hljs-keyword">this</span> == that
+  <span class="hljs-keyword">case</span> _ =&gt; <span class="hljs-keyword">false</span>
+}
+</code></pre>
+<p>The <code>hashCode</code> method returns an integer hashcode that maps equal
+numeric values to equal results. It is guaranteed to be the identity for 
+for type <code>Int</code> and for all subrange types.</p>
+<p>The <code>toString</code> method displays its receiver as an integer or
+floating point number.</p>
+<h3 id="example">Example</h3>
+<p>This is the signature of the numeric value type <code>Int</code>:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> scala
+<span class="hljs-keyword">abstract</span> <span class="hljs-keyword">sealed</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Int</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AnyVal</span> {</span>
+  <span class="hljs-keyword">def</span> == (that: Double): Boolean  <span class="hljs-comment">// double equality</span>
+  <span class="hljs-keyword">def</span> == (that: Float): Boolean   <span class="hljs-comment">// float equality</span>
+  <span class="hljs-keyword">def</span> == (that: Long): Boolean    <span class="hljs-comment">// long equality</span>
+  <span class="hljs-keyword">def</span> == (that: Int): Boolean     <span class="hljs-comment">// int equality</span>
+  <span class="hljs-keyword">def</span> == (that: Short): Boolean   <span class="hljs-comment">// int equality</span>
+  <span class="hljs-keyword">def</span> == (that: Byte): Boolean    <span class="hljs-comment">// int equality</span>
+  <span class="hljs-keyword">def</span> == (that: Char): Boolean    <span class="hljs-comment">// int equality</span>
+  <span class="hljs-comment">/* analogous for !=, &lt;, &gt;, &lt;=, &gt;= */</span>
+
+  <span class="hljs-keyword">def</span> + (that: Double): Double    <span class="hljs-comment">// double addition</span>
+  <span class="hljs-keyword">def</span> + (that: Float): Double     <span class="hljs-comment">// float addition</span>
+  <span class="hljs-keyword">def</span> + (that: Long): Long        <span class="hljs-comment">// long addition</span>
+  <span class="hljs-keyword">def</span> + (that: Int): Int          <span class="hljs-comment">// int addition</span>
+  <span class="hljs-keyword">def</span> + (that: Short): Int        <span class="hljs-comment">// int addition</span>
+  <span class="hljs-keyword">def</span> + (that: Byte): Int         <span class="hljs-comment">// int addition</span>
+  <span class="hljs-keyword">def</span> + (that: Char): Int         <span class="hljs-comment">// int addition</span>
+  <span class="hljs-comment">/* analogous for -, *, /, % */</span>
+
+  <span class="hljs-keyword">def</span> &amp; (that: Long): Long        <span class="hljs-comment">// long bitwise and</span>
+  <span class="hljs-keyword">def</span> &amp; (that: Int): Int          <span class="hljs-comment">// int bitwise and</span>
+  <span class="hljs-keyword">def</span> &amp; (that: Short): Int        <span class="hljs-comment">// int bitwise and</span>
+  <span class="hljs-keyword">def</span> &amp; (that: Byte): Int         <span class="hljs-comment">// int bitwise and</span>
+  <span class="hljs-keyword">def</span> &amp; (that: Char): Int         <span class="hljs-comment">// int bitwise and</span>
+  <span class="hljs-comment">/* analogous for |, ^ */</span>
+
+  <span class="hljs-keyword">def</span> &lt;&lt; (cnt: Int): Int          <span class="hljs-comment">// int left shift</span>
+  <span class="hljs-keyword">def</span> &lt;&lt; (cnt: Long): Int         <span class="hljs-comment">// long left shift</span>
+  <span class="hljs-comment">/* analogous for &gt;&gt;, &gt;&gt;&gt; */</span>
+
+  <span class="hljs-keyword">def</span> unary_+ : Int               <span class="hljs-comment">// int identity</span>
+  <span class="hljs-keyword">def</span> unary_- : Int               <span class="hljs-comment">// int negation</span>
+  <span class="hljs-keyword">def</span> unary_~ : Int               <span class="hljs-comment">// int bitwise negation</span>
+
+  <span class="hljs-keyword">def</span> toByte: Byte                <span class="hljs-comment">// convert to Byte</span>
+  <span class="hljs-keyword">def</span> toShort: Short              <span class="hljs-comment">// convert to Short</span>
+  <span class="hljs-keyword">def</span> toChar: Char                <span class="hljs-comment">// convert to Char</span>
+  <span class="hljs-keyword">def</span> toInt: Int                  <span class="hljs-comment">// convert to Int</span>
+  <span class="hljs-keyword">def</span> toLong: Long                <span class="hljs-comment">// convert to Long</span>
+  <span class="hljs-keyword">def</span> toFloat: Float              <span class="hljs-comment">// convert to Float</span>
+  <span class="hljs-keyword">def</span> toDouble: Double            <span class="hljs-comment">// convert to Double</span>
+}
+</code></pre>
+<h3 id="class-boolean-">Class <code>Boolean</code></h3>
+<p>Class <code>Boolean</code> has only two values: <code>true</code> and
+<code>false</code>. It implements operations as given in the following
+class definition.</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> scala 
+<span class="hljs-keyword">abstract</span> <span class="hljs-keyword">sealed</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Boolean</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AnyVal</span> {</span>
+  <span class="hljs-keyword">def</span> &amp;&amp; (p: =&gt; Boolean): Boolean = <span class="hljs-comment">// boolean and</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>) p <span class="hljs-keyword">else</span> <span class="hljs-keyword">false</span>
+  <span class="hljs-keyword">def</span> || (p: =&gt; Boolean): Boolean = <span class="hljs-comment">// boolean or</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>) <span class="hljs-keyword">true</span> <span class="hljs-keyword">else</span> p
+  <span class="hljs-keyword">def</span> &amp;  (x: Boolean): Boolean =    <span class="hljs-comment">// boolean strict and</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>) x <span class="hljs-keyword">else</span> <span class="hljs-keyword">false</span>
+  <span class="hljs-keyword">def</span> |  (x: Boolean): Boolean =    <span class="hljs-comment">// boolean strict or</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>) <span class="hljs-keyword">true</span> <span class="hljs-keyword">else</span> x
+  <span class="hljs-keyword">def</span> == (x: Boolean): Boolean =    <span class="hljs-comment">// boolean equality</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>) x <span class="hljs-keyword">else</span> x.unary_!
+  <span class="hljs-keyword">def</span> != (x: Boolean): Boolean =    <span class="hljs-comment">// boolean inequality</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>) x.unary_! <span class="hljs-keyword">else</span> x
+  <span class="hljs-keyword">def</span> unary_!: Boolean =            <span class="hljs-comment">// boolean negation</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>) <span class="hljs-keyword">false</span> <span class="hljs-keyword">else</span> <span class="hljs-keyword">true</span>
+}
+</code></pre>
+<p>The class also implements operations <code>equals</code>, <code>hashCode</code>,
+and <code>toString</code> from class <code>Any</code>.</p>
+<p>The <code>equals</code> method returns <code>true</code> if the argument is the
+same boolean value as the receiver, <code>false</code> otherwise.  The
+<code>hashCode</code> method returns a fixed, implementation-specific hash-code when invoked on <code>true</code>, 
+and a different, fixed, implementation-specific hash-code when invoked on <code>false</code>. The <code>toString</code> method
+returns the receiver converted to a string, i.e. either <code>&quot;true&quot;</code> or <code>&quot;false&quot;</code>.</p>
+<h3 id="class-unit-">Class <code>Unit</code></h3>
+<p>Class <code>Unit</code> has only one value: <code>()</code>. It implements only
+the three methods <code>equals</code>, <code>hashCode</code>, and <code>toString</code>
+from class <code>Any</code>.</p>
+<p>The <code>equals</code> method returns <code>true</code> if the argument is the
+unit value <code>()</code>, <code>false</code> otherwise.  The
+<code>hashCode</code> method returns a fixed, implementation-specific hash-code, 
+The <code>toString</code> method returns <code>&quot;()&quot;</code>.</p>
+<h2 id="standard-reference-classes">Standard Reference Classes</h2>
+<p>This section presents some standard Scala reference classes which are
+treated in a special way in Scala compiler -- either Scala provides
+syntactic sugar for them, or the Scala compiler generates special code
+for their operations. Other classes in the standard Scala library are
+documented in the Scala library documentation by HTML pages.</p>
+<h3 id="class-string-">Class <code>String</code></h3>
+<p>Scala&#39;s <code>String</code> class is usually derived from the standard String
+class of the underlying host system (and may be identified with
+it). For Scala clients the class is taken to support in each case a
+method</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">def</span> + (that: Any): String
+</code></pre>
+<p>which concatenates its left operand with the textual representation of its
+right operand.</p>
+<h3 id="the-tuple-classes">The <code>Tuple</code> classes</h3>
+<p>Scala defines tuple classes <code>Tuple$n$</code> for $n = 2 , \ldots , 22$.
+These are defined as follows.</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> scala 
+<span class="hljs-class"><span class="hljs-keyword">case</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Tuple</span>$<span class="hljs-title">n</span>$[+<span class="hljs-title">T_1</span>, ..., +<span class="hljs-title">T_n</span>]<span class="hljs-params">(_1: T_1, ..., _$n$: T_$n$)</span> {</span>
+  <span class="hljs-keyword">def</span> toString = <span class="hljs-string">"("</span> ++ _1 ++ <span class="hljs-string">","</span> ++ $\ldots$ ++ <span class="hljs-string">","</span> ++ _$n$ ++ <span class="hljs-string">")"</span>
+}
+</code></pre>
+<p>The implicitly imported <a href="#the-predef-object"><code>Predef</code></a> object defines
+the names <code>Pair</code> as an alias of <code>Tuple2</code> and <code>Triple</code>
+as an alias for <code>Tuple3</code>.</p>
+<h3 id="the-function-classes">The <code>Function</code> Classes</h3>
+<p>Scala defines function classes <code>Function$n$</code> for $n = 1 , \ldots , 22$.
+These are defined as follows.</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> scala 
+<span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Function</span>$<span class="hljs-title">n</span>$[-<span class="hljs-title">T_1</span>, ..., -<span class="hljs-title">T_</span>$<span class="hljs-title">n</span>$, +<span class="hljs-title">R</span>] {</span>
+  <span class="hljs-keyword">def</span> apply(x_1: T_1, ..., x_$n$: T_$n$): R
+  <span class="hljs-keyword">def</span> toString = <span class="hljs-string">"&lt;function&gt;"</span> 
+}
+</code></pre>
+<p>The <code>PartialFunction</code> subclass of <code>Function1</code> represents functions that (indirectly) specify their domain.
+Use the <code>isDefined</code> method to query whether the partial function is defined for a given input (i.e., whether the input is part of the function&#39;s domain).</p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PartialFunction</span>[-<span class="hljs-title">A</span>, +<span class="hljs-title">B</span>] <span class="hljs-keyword">extends</span> <span class="hljs-title">Function1</span>[<span class="hljs-title">A</span>, <span class="hljs-title">B</span>] {</span>
+  <span class="hljs-keyword">def</span> isDefinedAt(x: A): Boolean
+}
+</code></pre>
+<p>The implicitly imported <a href="#the-predef-object"><code>Predef</code></a> object defines the name 
+<code>Function</code> as an alias of <code>Function1</code>.</p>
+<h3 id="class-array-">Class <code>Array</code></h3>
+<p>All operations on arrays desugar to the corresponding operations of the
+underlying platform. Therefore, the following class definition is given for
+informational purposes only:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Array</span>[<span class="hljs-title">T</span>]<span class="hljs-params">(_length: Int)</span></span>
+<span class="hljs-keyword">extends</span> java.io.Serializable <span class="hljs-keyword">with</span> java.lang.Cloneable {
+  <span class="hljs-keyword">def</span> length: Int = $\ldots$
+  <span class="hljs-keyword">def</span> apply(i: Int): T = $\ldots$
+  <span class="hljs-keyword">def</span> update(i: Int, x: T): Unit = $\ldots$
+  <span class="hljs-keyword">override</span> <span class="hljs-keyword">def</span> clone(): Array[T] = $\ldots$
+}
+</code></pre>
+<p>If $T$ is not a type parameter or abstract type, the type <code>Array[T]</code>
+is represented as the array type <code>|T|[]</code> in the
+underlying host system, where <code>|T|</code> is the erasure of <code>T</code>.
+If $T$ is a type parameter or abstract type, a different representation might be
+used (it is <code>Object</code> on the Java platform).</p>
+<h4 id="operations">Operations</h4>
+<p><code>length</code> returns the length of the array, <code>apply</code> means subscripting,
+and <code>update</code> means element update.</p>
+<p>Because of the syntactic sugar for <code>apply</code> and <code>update</code> operations,
+we have the following correspondences between Scala and Java code for
+operations on an array <code>xs</code>:</p>
+<table>
+<thead>
+<tr>
+<th><em>Scala</em></th>
+<th><em>Java</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>xs.length</code></td>
+<td><code>xs.length</code></td>
+</tr>
+<tr>
+<td><code>xs(i)</code></td>
+<td><code>xs[i]</code></td>
+</tr>
+<tr>
+<td><code>xs(i) = e</code></td>
+<td><code>xs[i] = e</code></td>
+</tr>
+</tbody>
+</table>
+<p>Two implicit conversions exist in <code>Predef</code> that are frequently applied to arrays:
+a conversion to <code>scala.collection.mutable.ArrayOps</code> and a conversion to
+<code>scala.collection.mutable.WrappedArray</code> (a subtype of <code>scala.collection.Seq</code>).</p>
+<p>Both types make many of the standard operations found in the Scala
+collections API available. The conversion to <code>ArrayOps</code> is temporary, as all operations
+defined on <code>ArrayOps</code> return a value of type <code>Array</code>, while the conversion to <code>WrappedArray</code>
+is permanent as all operations return a value of type <code>WrappedArray</code>.
+The conversion to <code>ArrayOps</code> takes priority over the conversion to <code>WrappedArray</code>.</p>
+<p>Because of the tension between parametrized types in Scala and the ad-hoc
+implementation of arrays in the host-languages, some subtle points
+need to be taken into account when dealing with arrays. These are
+explained in the following.</p>
+<h4 id="variance">Variance</h4>
+<p>Unlike arrays in Java, arrays in Scala are <em>not</em>
+co-variant; That is, $S &lt;: T$ does not imply 
+<code>Array[$S$] $&lt;:$ Array[$T$]</code> in Scala.<br>However, it is possible to cast an array
+of $S$ to an array of $T$ if such a cast is permitted in the host
+environment.</p>
+<p>For instance <code>Array[String]</code> does not conform to
+<code>Array[Object]</code>, even though <code>String</code> conforms to <code>Object</code>.
+However, it is possible to cast an expression of type
+<code>Array[String]</code> to <code>Array[Object]</code>, and this
+cast will succeed without raising a <code>ClassCastException</code>. Example:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">val</span> xs = <span class="hljs-keyword">new</span> Array[String](<span class="hljs-number">2</span>)
+<span class="hljs-comment">// val ys: Array[Object] = xs   // **** error: incompatible types</span>
+<span class="hljs-keyword">val</span> ys: Array[Object] = xs.asInstanceOf[Array[Object]] <span class="hljs-comment">// OK</span>
+</code></pre>
+<p>The instantiation of an array with a polymorphic element type $T$ requires
+information about type $T$ at runtime.
+This information is synthesized by adding a <a href="07-implicit-parameters-and-views.html#context-bounds-and-view-bounds">context bound</a>
+of <code>scala.reflect.ClassTag</code> to type $T$.
+An example is the
+following implementation of method <code>mkArray</code>, which creates
+an array of an arbitrary type $T$, given a sequence of $T$`s which
+defines its elements:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">import</span> reflect.ClassTag
+<span class="hljs-keyword">def</span> mkArray[T : ClassTag](elems: Seq[T]): Array[T] = {
+  <span class="hljs-keyword">val</span> result = <span class="hljs-keyword">new</span> Array[T](elems.length)
+  <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">for</span> (elem &lt;- elems) {
+    result(i) = elem
+    i += <span class="hljs-number">1</span>
+  }
+  result
+}
+</code></pre>
+<p>If type $T$ is a type for which the host platform offers a specialized array
+representation, this representation is used.</p>
+<h6 id="example">Example</h6>
+<p>On the Java Virtual Machine, an invocation of <code>mkArray(List(1,2,3))</code>
+will return a primitive array of <code>int</code>s, written as <code>int[]</code> in Java.</p>
+<h4 id="companion-object">Companion object</h4>
+<p><code>Array</code>&#39;s companion object provides various factory methods for the
+instantiation of single- and multi-dimensional arrays, an extractor method
+<a href="08-pattern-matching.html#extractor-patterns"><code>unapplySeq</code></a> which enables pattern matching
+over arrays and additional utility methods:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> scala
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Array</span> {</span> 
+  <span class="hljs-javadoc">/** copies array elements from `src` to `dest`. */</span>
+  <span class="hljs-keyword">def</span> copy(src: AnyRef, srcPos: Int,
+           dest: AnyRef, destPos: Int, length: Int): Unit = $\ldots$
+
+  <span class="hljs-javadoc">/** Returns an array of length 0 */</span>
+  <span class="hljs-keyword">def</span> empty[T: ClassTag]: Array[T] =
+
+  <span class="hljs-javadoc">/** Create an array with given elements. */</span>
+  <span class="hljs-keyword">def</span> apply[T: ClassTag](xs: T*): Array[T] = $\ldots$
+
+  <span class="hljs-javadoc">/** Creates array with given dimensions */</span>
+  <span class="hljs-keyword">def</span> ofDim[T: ClassTag](n1: Int): Array[T] = $\ldots$
+  <span class="hljs-javadoc">/** Creates a 2-dimensional array */</span>
+  <span class="hljs-keyword">def</span> ofDim[T: ClassTag](n1: Int, n2: Int): Array[Array[T]] = $\ldots$
+  $\ldots$
+
+  <span class="hljs-javadoc">/** Concatenate all argument arrays into a single array. */</span>
+  <span class="hljs-keyword">def</span> concat[T: ClassTag](xss: Array[T]*): Array[T] = $\ldots$
+
+  <span class="hljs-javadoc">/** Returns an array that contains the results of some element computation a number
+    * of times. */</span>
+  <span class="hljs-keyword">def</span> fill[T: ClassTag](n: Int)(elem: =&gt; T): Array[T] = $\ldots$
+  <span class="hljs-javadoc">/** Returns a two-dimensional array that contains the results of some element
+    * computation a number of times. */</span>
+  <span class="hljs-keyword">def</span> fill[T: ClassTag](n1: Int, n2: Int)(elem: =&gt; T): Array[Array[T]] = $\ldots$
+  $\ldots$
+
+  <span class="hljs-javadoc">/** Returns an array containing values of a given function over a range of integer
+    * values starting from 0. */</span>
+  <span class="hljs-keyword">def</span> tabulate[T: ClassTag](n: Int)(f: Int =&gt; T): Array[T] = $\ldots$
+  <span class="hljs-javadoc">/** Returns a two-dimensional array containing values of a given function
+    * over ranges of integer values starting from `0`. */</span>
+  <span class="hljs-keyword">def</span> tabulate[T: ClassTag](n1: Int, n2: Int)(f: (Int, Int) =&gt; T): Array[Array[T]] = $\ldots$
+  $\ldots$
+
+  <span class="hljs-javadoc">/** Returns an array containing a sequence of increasing integers in a range. */</span>
+  <span class="hljs-keyword">def</span> range(start: Int, end: Int): Array[Int] = $\ldots$
+  <span class="hljs-javadoc">/** Returns an array containing equally spaced values in some integer interval. */</span>
+  <span class="hljs-keyword">def</span> range(start: Int, end: Int, step: Int): Array[Int] = $\ldots$
+
+  <span class="hljs-javadoc">/** Returns an array containing repeated applications of a function to a start value. */</span>
+  <span class="hljs-keyword">def</span> iterate[T: ClassTag](start: T, len: Int)(f: T =&gt; T): Array[T] = $\ldots$
+
+  <span class="hljs-javadoc">/** Enables pattern matching over arrays */</span>
+  <span class="hljs-keyword">def</span> unapplySeq[A](x: Array[A]): Option[IndexedSeq[A]] = Some(x)
+}
+</code></pre>
+<h2 id="class-node">Class Node</h2>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> scala.xml 
+
+<span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Node</span> {</span>
+
+  <span class="hljs-javadoc">/** the label of this node */</span>
+  <span class="hljs-keyword">def</span> label: String               
+
+  <span class="hljs-javadoc">/** attribute axis */</span>
+  <span class="hljs-keyword">def</span> attribute: Map[String, String] 
+
+  <span class="hljs-javadoc">/** child axis (all children of this node) */</span>
+  <span class="hljs-keyword">def</span> child: Seq[Node]          
+
+  <span class="hljs-javadoc">/** descendant axis (all descendants of this node) */</span>
+  <span class="hljs-keyword">def</span> descendant: Seq[Node] = child.toList.flatMap { 
+    x =&gt; x::x.descendant.asInstanceOf[List[Node]] 
+  } 
+
+  <span class="hljs-javadoc">/** descendant axis (all descendants of this node) */</span>
+  <span class="hljs-keyword">def</span> descendant_or_self: Seq[Node] = <span class="hljs-keyword">this</span>::child.toList.flatMap { 
+    x =&gt; x::x.descendant.asInstanceOf[List[Node]] 
+  } 
+
+  <span class="hljs-keyword">override</span> <span class="hljs-keyword">def</span> equals(x: Any): Boolean = x <span class="hljs-keyword">match</span> {
+    <span class="hljs-keyword">case</span> that:Node =&gt; 
+      that.label == <span class="hljs-keyword">this</span>.label &amp;&amp; 
+        that.attribute.sameElements(<span class="hljs-keyword">this</span>.attribute) &amp;&amp; 
+          that.child.sameElements(<span class="hljs-keyword">this</span>.child)
+    <span class="hljs-keyword">case</span> _ =&gt; <span class="hljs-keyword">false</span>
+  } 
+
+ <span class="hljs-javadoc">/** XPath style projection function. Returns all children of this node
+  *  that are labeled with 'that'. The document order is preserved.
+  */</span>
+    <span class="hljs-keyword">def</span> \(that: Symbol): NodeSeq = {
+      <span class="hljs-keyword">new</span> NodeSeq({
+        that.name <span class="hljs-keyword">match</span> {
+          <span class="hljs-keyword">case</span> <span class="hljs-string">"_"</span> =&gt; child.toList  
+          <span class="hljs-keyword">case</span> _ =&gt;
+            <span class="hljs-keyword">var</span> res:List[Node] = Nil 
+            <span class="hljs-keyword">for</span> (x &lt;- child.elements <span class="hljs-keyword">if</span> x.label == that.name) {
+              res = x::res 
+            }
+            res.reverse
+        }
+      }) 
+    }
+
+ <span class="hljs-javadoc">/** XPath style projection function. Returns all nodes labeled with the 
+  *  name 'that' from the 'descendant_or_self' axis. Document order is preserved.
+  */</span>
+  <span class="hljs-keyword">def</span> \\(that: Symbol): NodeSeq = {
+    <span class="hljs-keyword">new</span> NodeSeq(
+      that.name <span class="hljs-keyword">match</span> {
+        <span class="hljs-keyword">case</span> <span class="hljs-string">"_"</span> =&gt; <span class="hljs-keyword">this</span>.descendant_or_self 
+        <span class="hljs-keyword">case</span> _ =&gt; <span class="hljs-keyword">this</span>.descendant_or_self.asInstanceOf[List[Node]].
+        filter(x =&gt; x.label == that.name) 
+      })
+  }
+
+  <span class="hljs-javadoc">/** hashcode for this XML node */</span>
+  <span class="hljs-keyword">override</span> <span class="hljs-keyword">def</span> hashCode = 
+    Utility.hashCode(label, attribute.toList.hashCode, child) 
+
+  <span class="hljs-javadoc">/** string representation of this node */</span>
+  <span class="hljs-keyword">override</span> <span class="hljs-keyword">def</span> toString = Utility.toXML(<span class="hljs-keyword">this</span>) 
+
+}
+</code></pre>
+<h2 id="the-predef-object">The <code>Predef</code> Object</h2>
+<p>The <code>Predef</code> object defines standard functions and type aliases
+for Scala programs. It is always implicitly imported, so that all its
+defined members are available without qualification. Its definition
+for the JVM environment conforms to the following signature:</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> scala
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Predef</span> {</span>
+
+  <span class="hljs-comment">// classOf ---------------------------------------------------------</span>
+
+  <span class="hljs-javadoc">/** Returns the runtime representation of a class type. */</span>
+  <span class="hljs-keyword">def</span> classOf[T]: Class[T] = <span class="hljs-keyword">null</span>  
+   <span class="hljs-comment">// this is a dummy, classOf is handled by compiler.</span>
+
+  <span class="hljs-comment">// Standard type aliases ---------------------------------------------</span>
+
+  <span class="hljs-keyword">type</span> String    = java.lang.String
+  <span class="hljs-keyword">type</span> Class[T]  = java.lang.Class[T]
+
+  <span class="hljs-comment">// Miscellaneous -----------------------------------------------------</span>
+
+  <span class="hljs-keyword">type</span> Function[-A, +B] = Function1[A, B]
+
+  <span class="hljs-keyword">type</span> Map[A, +B] = collection.immutable.Map[A, B]
+  <span class="hljs-keyword">type</span> Set[A] = collection.immutable.Set[A]
+
+  <span class="hljs-keyword">val</span> Map = collection.immutable.Map
+  <span class="hljs-keyword">val</span> Set = collection.immutable.Set
+
+  <span class="hljs-comment">// Manifest types, companions, and incantations for summoning ---------</span>
+
+  <span class="hljs-keyword">type</span> ClassManifest[T] = scala.reflect.ClassManifest[T]
+  <span class="hljs-keyword">type</span> Manifest[T]      = scala.reflect.Manifest[T]
+  <span class="hljs-keyword">type</span> OptManifest[T]   = scala.reflect.OptManifest[T]
+  <span class="hljs-keyword">val</span> ClassManifest     = scala.reflect.ClassManifest
+  <span class="hljs-keyword">val</span> Manifest          = scala.reflect.Manifest
+  <span class="hljs-keyword">val</span> NoManifest        = scala.reflect.NoManifest
+
+  <span class="hljs-keyword">def</span> manifest[T](implicit m: Manifest[T])           = m
+  <span class="hljs-keyword">def</span> classManifest[T](implicit m: ClassManifest[T]) = m
+  <span class="hljs-keyword">def</span> optManifest[T](implicit m: OptManifest[T])     = m
+
+  <span class="hljs-comment">// Minor variations on identity functions -----------------------------</span>
+  <span class="hljs-keyword">def</span> identity[A](x: A): A         = x    <span class="hljs-comment">// @see `conforms` for the implicit version</span>
+  <span class="hljs-keyword">def</span> implicitly[T](implicit e: T) = e    <span class="hljs-comment">// for summoning implicit values from the nether world</span>
+  <span class="hljs-annotation">@inline</span> <span class="hljs-keyword">def</span> locally[T](x: T): T  = x    <span class="hljs-comment">// to communicate intent and avoid unmoored statements</span>
+
+  <span class="hljs-comment">// Asserts, Preconditions, Postconditions -----------------------------</span>
+
+  <span class="hljs-keyword">def</span> assert(assertion: Boolean) {
+    <span class="hljs-keyword">if</span> (!assertion)
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> java.lang.AssertionError(<span class="hljs-string">"assertion failed"</span>)
+  }
+
+  <span class="hljs-keyword">def</span> assert(assertion: Boolean, message: =&gt; Any) {
+    <span class="hljs-keyword">if</span> (!assertion)
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> java.lang.AssertionError(<span class="hljs-string">"assertion failed: "</span> + message)
+  }
+
+  <span class="hljs-keyword">def</span> assume(assumption: Boolean) {
+    <span class="hljs-keyword">if</span> (!assumption)
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">"assumption failed"</span>)
+  }
+
+  <span class="hljs-keyword">def</span> assume(assumption: Boolean, message: =&gt; Any) {
+    <span class="hljs-keyword">if</span> (!assumption)
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(message.toString)
+  }
+
+  <span class="hljs-keyword">def</span> require(requirement: Boolean) {
+    <span class="hljs-keyword">if</span> (!requirement)
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">"requirement failed"</span>)
+  }
+
+  <span class="hljs-keyword">def</span> require(requirement: Boolean, message: =&gt; Any) {
+    <span class="hljs-keyword">if</span> (!requirement)
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">"requirement failed: "</span>+ message)
+  }
+</code></pre>
+<pre><code class="lang-scala">  <span class="hljs-comment">// tupling ---------------------------------------------------------</span>
+
+  <span class="hljs-keyword">type</span> Pair[+A, +B] = Tuple2[A, B]
+  <span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Pair</span> {</span>
+    <span class="hljs-keyword">def</span> apply[A, B](x: A, y: B) = Tuple2(x, y)
+    <span class="hljs-keyword">def</span> unapply[A, B](x: Tuple2[A, B]): Option[Tuple2[A, B]] = Some(x)
+  }
+
+  <span class="hljs-keyword">type</span> Triple[+A, +B, +C] = Tuple3[A, B, C]
+  <span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Triple</span> {</span>
+    <span class="hljs-keyword">def</span> apply[A, B, C](x: A, y: B, z: C) = Tuple3(x, y, z)
+    <span class="hljs-keyword">def</span> unapply[A, B, C](x: Tuple3[A, B, C]): Option[Tuple3[A, B, C]] = Some(x)
+  }
+
+  <span class="hljs-comment">// Printing and reading -----------------------------------------------</span>
+
+  <span class="hljs-keyword">def</span> print(x: Any) = Console.print(x)
+  <span class="hljs-keyword">def</span> println() = Console.println()
+  <span class="hljs-keyword">def</span> println(x: Any) = Console.println(x)
+  <span class="hljs-keyword">def</span> printf(text: String, xs: Any*) = Console.printf(text.format(xs: _*))
+
+  <span class="hljs-keyword">def</span> readLine(): String = Console.readLine()
+  <span class="hljs-keyword">def</span> readLine(text: String, args: Any*) = Console.readLine(text, args)
+  <span class="hljs-keyword">def</span> readBoolean() = Console.readBoolean()
+  <span class="hljs-keyword">def</span> readByte() = Console.readByte()
+  <span class="hljs-keyword">def</span> readShort() = Console.readShort()
+  <span class="hljs-keyword">def</span> readChar() = Console.readChar()
+  <span class="hljs-keyword">def</span> readInt() = Console.readInt()
+  <span class="hljs-keyword">def</span> readLong() = Console.readLong()
+  <span class="hljs-keyword">def</span> readFloat() = Console.readFloat()
+  <span class="hljs-keyword">def</span> readDouble() = Console.readDouble()
+  <span class="hljs-keyword">def</span> readf(format: String) = Console.readf(format)
+  <span class="hljs-keyword">def</span> readf1(format: String) = Console.readf1(format)
+  <span class="hljs-keyword">def</span> readf2(format: String) = Console.readf2(format)
+  <span class="hljs-keyword">def</span> readf3(format: String) = Console.readf3(format)
+
+  <span class="hljs-comment">// Implict conversions ------------------------------------------------</span>
+
+  ...
+}
+</code></pre>
+<h3 id="predefined-implicit-definitions">Predefined Implicit Definitions</h3>
+<p>The <code>Predef</code> object also contains a number of implicit definitions, which are available by default (because <code>Predef</code> is implicitly imported).
+Implicit definitions come in two priorities. High-priority implicits are defined in the <code>Predef</code> class itself whereas low priority implicits are defined in a class inherited by <code>Predef</code>. The rules of 
+static <a href="06-expressions.html#overloading-resolution">overloading resolution</a>
+stipulate that, all other things being equal, implicit resolution 
+prefers high-priority implicits over low-priority ones.</p>
+<p>The available low-priority implicits include definitions falling into the following categories.</p>
+<ol>
+<li><p>For every primitive type, a wrapper that takes values of that type
+to instances of a <code>runtime.Rich*</code> class. For instance, values of type <code>Int</code>
+can be implicitly converted to instances of class <code>runtime.RichInt</code>.</p>
+</li>
+<li><p>For every array type with elements of primitive type, a wrapper that
+takes the arrays of that type to instances of a <code>runtime.WrappedArray</code> class. For instance, values of type <code>Array[Float]</code> can be implicitly converted to instances of class <code>runtime.WrappedArray[Float]</code>.
+There are also generic array wrappers that take elements
+of type <code>Array[T]</code> for arbitrary <code>T</code> to <code>WrappedArray</code>s.</p>
+</li>
+<li><p>An implicit conversion from <code>String</code> to <code>WrappedString</code>.</p>
+</li>
+</ol>
+<p>The available high-priority implicits include definitions falling into the following categories.</p>
+<ul>
+<li><p>An implicit wrapper that adds <code>ensuring</code> methods 
+with the following overloaded variants to type <code>Any</code>.</p>
+<pre><code>def ensuring(cond: Boolean): A = { assert(cond); x }
+def ensuring(cond: Boolean, msg: Any): A = { assert(cond, msg); x }
+def ensuring(cond: A =&gt; Boolean): A = { assert(cond(x)); x }
+def ensuring(cond: A =&gt; Boolean, msg: Any): A = { assert(cond(x), msg); x }
+</code></pre></li>
+<li><p>An implicit wrapper that adds a <code>-&gt;</code> method with the following implementation
+to type <code>Any</code>.</p>
+<pre><code>def -&gt; [B](y: B): (A, B) = (x, y)
+</code></pre></li>
+<li><p>For every array type with elements of primitive type, a wrapper that
+takes the arrays of that type to instances of a <code>runtime.ArrayOps</code>
+class. For instance, values of type <code>Array[Float]</code> can be implicitly
+converted to instances of class <code>runtime.ArrayOps[Float]</code>.  There are
+also generic array wrappers that take elements of type <code>Array[T]</code> for
+arbitrary <code>T</code> to <code>ArrayOps</code>s.</p>
+</li>
+<li><p>An implicit wrapper that adds <code>+</code> and <code>formatted</code> method with the following
+implementations to type <code>Any</code>.</p>
+<pre><code>def +(other: String) = String.valueOf(self) + other
+def formatted(fmtstr: String): String = fmtstr format self
+</code></pre></li>
+<li><p>Numeric primitive conversions that implement the transitive closure of the 
+following mappings:</p>
+<pre><code>Byte  -&gt; Short
+Short -&gt; Int
+Char  -&gt; Int
+Int   -&gt; Long
+Long  -&gt; Float
+Float -&gt; Double
+</code></pre></li>
+<li><p>Boxing and unboxing conversions between primitive types and their boxed 
+versions:</p>
+<pre><code>Byte    &lt;-&gt; java.lang.Byte
+Short   &lt;-&gt; java.lang.Short
+Char    &lt;-&gt; java.lang.Character
+Int     &lt;-&gt; java.lang.Integer
+Long    &lt;-&gt; java.lang.Long
+Float   &lt;-&gt; java.lang.Float
+Double  &lt;-&gt; java.lang.Double
+Boolean &lt;-&gt; java.lang.Boolean
+</code></pre></li>
+<li><p>An implicit definition that generates instances of type <code>T &lt;:&lt; T</code>, for
+any type <code>T</code>. Here, <code>&lt;:&lt;</code> is a class defined as follows.</p>
+<pre><code>sealed abstract class &lt;:&lt;[-From, +To] extends (From =&gt; To)
+</code></pre><p>Implicit parameters of <code>&lt;:&lt;</code> types are typically used to implement type constraints.</p>
+</li>
+</ul>
+
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./11-user-defined-annotations.html" class="navigation navigation-prev"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./13-syntax-summary.html" class="navigation navigation-next"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+        <link rel="stylesheet" href="gitbook/style.css">
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/mode-javascript.js"></script>
+        <script src="gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+        <script src="gitbook/app.js"></script>
+        
+    </body>
+</html>
